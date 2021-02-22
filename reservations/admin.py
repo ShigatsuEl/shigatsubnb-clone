@@ -1,3 +1,10 @@
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+
+@admin.register(models.Reservation)
+class AdminReservation(admin.ModelAdmin):
+
+    """ Reservation Admin Definition """
+
+    pass
