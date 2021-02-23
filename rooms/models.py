@@ -82,8 +82,15 @@ class Room(core_models.TimeStampModel):
     check_in = models.TimeField()
     check_out = models.TimeField()
     instant_book = models.BooleanField(default=False)
-    host = models.ForeignKey("users.User", on_delete=models.CASCADE)
+    # Foreign Key = 일대다 관계를 가지고 있다
+    # Room 어드민 패널은 User Model을 가지고 있지만 반대로 User 어드민 패널은 Room Model이 없다
+    # User 어드민 패널에선 볼 수 없지만 Django가 set 필드를 주기 때문에 접근이 가능하다
+    # 즉, Foreign Key로 참조하게 되면 참조된 모델도 참조한 모델을 접근할 수 있다
+    host = models.ForeignKey(
+        "users.User", related_name="rooms", on_delete=models.CASCADE
+    )
     room_type = models.ForeignKey("RoomType", on_delete=models.SET_NULL, null=True)
+    # Many To Many Field = 다대다 관계를 가지고 있다
     amenities = models.ManyToManyField("Amenity", blank=True)
     facilities = models.ManyToManyField("Facility", blank=True)
     house_rules = models.ManyToManyField("HouseRule", blank=True)
