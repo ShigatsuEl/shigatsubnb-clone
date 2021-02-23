@@ -7,7 +7,10 @@ class ItemAdmin(admin.ModelAdmin):
 
     """ Item Admin Definition """
 
-    pass
+    list_display = ("name", "used_by")
+
+    def used_by(self, obj):
+        return obj.rooms.count()
 
 
 @admin.register(models.Room)
@@ -44,6 +47,7 @@ class RoomAdmin(admin.ModelAdmin):
         "check_out",
         "instant_book",
         "count_amenities",
+        "count_photos",
     )
 
     # ordering = 자동정렬기능(앞에 오는 것이 더 빠른 순번이다)
@@ -72,6 +76,9 @@ class RoomAdmin(admin.ModelAdmin):
     # Many to Many Field는 list가 될 수 없으므로 Custom Admin Function으로 list를 생성할 수 있다
     def count_amenities(self, obj):
         return obj.amenities.count()
+
+    def count_photos(self, obj):
+        return obj.photos.count()
 
     count_amenities.short_description = "Count Amenity"
 
