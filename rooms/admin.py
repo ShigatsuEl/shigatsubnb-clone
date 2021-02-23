@@ -15,6 +15,7 @@ class RoomAdmin(admin.ModelAdmin):
 
     """ Room Admin Definition """
 
+    # fieldsets = Model이 어떻게 보여질지 구성하는 필드
     fieldsets = (
         (
             "Basic Info",
@@ -29,6 +30,7 @@ class RoomAdmin(admin.ModelAdmin):
         ("Last Details", {"fields": ("host",)}),
     )
 
+    # list_display = 어드민 패널에서 보여지는 구성리스트
     list_display = (
         "name",
         "country",
@@ -44,8 +46,10 @@ class RoomAdmin(admin.ModelAdmin):
         "count_amenities",
     )
 
+    # ordering = 자동정렬기능(앞에 오는 것이 더 빠른 순번이다)
     ordering = ("name", "price", "bedrooms")
 
+    # list_filter = 필터링 기능
     list_filter = (
         "instant_book",
         "host__superhost",
@@ -57,13 +61,17 @@ class RoomAdmin(admin.ModelAdmin):
         "country",
     )
 
+    # search_fields = 검색 기능
+    # (기본으로 대,소문자 구별없이 검색 가능 / ^옵션은 첫글자가 일치해야 검색 가능 / =옵션은 정확히 일치해야 검색 가능)
     search_fields = ("^city", "^host__username")
 
+    # filter_horizontal = Many to Many Field에만 가능한 필드이다
     filter_horizontal = ("amenities", "facilities", "house_rules")
 
+    # Custom Admin Function
+    # Many to Many Field는 list가 될 수 없으므로 Custom Admin Function으로 list를 생성할 수 있다
     def count_amenities(self, obj):
-        print(obj.amenities.all())
-        return "Amenity's Count"
+        return obj.amenities.count()
 
     count_amenities.short_description = "Count Amenity"
 
