@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
 ]
+
+# DEBUG = True(개발서버)인 경우에만 실행
+# settings에서 Django가 정적파일이 저장될 루트와 어느 url에서 찾을지 정해주었음
+# 이제 Djnago가 파일을 우리에게 제공하기 위해 urls에서 설정할 수 있다
+# static은 정적파일을 제공하는 것을 도움
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
