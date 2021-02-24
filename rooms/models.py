@@ -101,6 +101,7 @@ class Room(core_models.TimeStampModel):
     def __str__(self):
         return self.name
 
+    # review 수가 0이면 0값 반환 그 외는 평균점수를 반환
     def total_rating(self):
         all_reviews = self.reviews.all()
         all_rating = 0

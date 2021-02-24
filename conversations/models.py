@@ -10,8 +10,23 @@ class Conversation(core_models.TimeStampModel):
         "users.User", related_name="conversations", blank=True
     )
 
+    # __str__메서드는 str을 반환한다
+    # 따라서 return 값은 리스트가 아니라 join메서드를 사용한 문자열을 반환한다
     def __str__(self):
-        return str(self.created)
+        usernames = []
+        for user in self.participants.all():
+            usernames.append(user.username)
+        return ", ".join(usernames)
+
+    def count_messages(self):
+        return self.messages.count()
+
+    count_messages.short_description = "Number of Messages"
+
+    def count_participants(self):
+        return self.participants.count()
+
+    count_participants.short_description = "Number of Participants"
 
 
 class Message(core_models.TimeStampModel):
