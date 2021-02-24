@@ -14,10 +14,23 @@ class ItemAdmin(admin.ModelAdmin):
         return obj.rooms.count()
 
 
+# Inline Aamin = Admin 안에 Admin을 집어넣는 방법
+# inlines 필드에 넣어서 연결시킬 수 있다
+class PhotoInline(admin.TabularInline):
+
+    """ PhotoInline Admin Definition """
+
+    model = models.Photo
+
+
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
 
     """ Room Admin Definition """
+
+    # inlines 필드에 Inline클래스를 넣으면 Django가 자동으로 Admin 안에 Admin을 추가한다
+    # 이것이 가능한 이유는 Django가 Room과 관련된 Photo Foreign Key를 찾아주기 때문이다
+    inlines = (PhotoInline,)
 
     # fieldsets = Model이 어떻게 보여질지 구성하는 필드
     fieldsets = (
@@ -66,6 +79,9 @@ class RoomAdmin(admin.ModelAdmin):
         "house_rules",
         "country",
     )
+
+    # raw_id_fields는 Foreign Key 필드를 도와주는 역할을 한다
+    raw_id_fields = ("host",)
 
     # search_fields = 검색 기능
     # (기본으로 대,소문자 구별없이 검색 가능 / ^옵션은 첫글자가 일치해야 검색 가능 / =옵션은 정확히 일치해야 검색 가능)
