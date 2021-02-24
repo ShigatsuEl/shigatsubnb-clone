@@ -48,6 +48,7 @@ class RoomAdmin(admin.ModelAdmin):
         "instant_book",
         "count_amenities",
         "count_photos",
+        "total_rating",
     )
 
     # ordering = 자동정렬기능(앞에 오는 것이 더 빠른 순번이다)

@@ -86,6 +86,7 @@ class Room(core_models.TimeStampModel):
     # Room 어드민 패널은 User Model을 가지고 있지만 반대로 User 어드민 패널은 Room Model이 없다
     # User 어드민 패널에선 볼 수 없지만 Django가 set 필드를 주기 때문에 접근이 가능하다
     # 즉, Foreign Key로 참조하게 되면 참조된 모델도 참조한 모델을 접근할 수 있다
+    # related_name -> 어떤 모델(1번째 인자)에서 접근할 때 사용되는 키워드이다(set 대신 사용)
     host = models.ForeignKey(
         "users.User", related_name="rooms", on_delete=models.CASCADE
     )
@@ -99,3 +100,10 @@ class Room(core_models.TimeStampModel):
 
     def __str__(self):
         return self.name
+
+    def total_rating(self):
+        all_reviews = self.reviews.all()
+        all_rating = []
+        for review in all_reviews:
+            print(review.rating_average())
+        return 0
