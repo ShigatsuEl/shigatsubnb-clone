@@ -98,6 +98,13 @@ class Room(core_models.TimeStampModel):
     facilities = models.ManyToManyField("Facility", related_name="rooms", blank=True)
     house_rules = models.ManyToManyField("HouseRule", related_name="rooms", blank=True)
 
+    # 장고의 모든 모델들은 save 메서드를 가지고 있다.
+    # save 메서드를 오버라이드해서 중간에 결과를 가로챈 후 부모의 save메서드를 호출할 것이다
+    def save(self, *args, **kwargs):
+        # 여기에서 저장하기 전에 결과를 가로채어 어떠한 작업을 한 후 super메서드를 실행
+        # super 메서드로 부모의 save 메서드를 호출하여 저장작업을 한다
+        super(ModelName, self).save(*args, **kwargs)  # Call the real save() method
+
     def __str__(self):
         return self.name
 
