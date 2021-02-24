@@ -103,7 +103,10 @@ class Room(core_models.TimeStampModel):
 
     def total_rating(self):
         all_reviews = self.reviews.all()
-        all_rating = []
+        all_rating = 0
         for review in all_reviews:
-            print(review.rating_average())
-        return 0
+            all_rating += review.rating_average()
+        if len(all_reviews) > 0:
+            return all_rating / len(all_reviews)
+        else:
+            return 0
