@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import mark_safe
 from . import models
 
 
@@ -89,4 +90,11 @@ class PhotoAdmin(admin.ModelAdmin):
 
     """ """
 
-    pass
+    list_display = ("__str__", "get_thumbnail")
+
+    def get_thumbnail(self, obj):
+        # Django는 우리를 해킹으로부터 지키기 위해 이러한 html형식을 막게 되어있다
+        # 따라서 Django에게 이것은 안전한 문자열임을 알릴 필요가 있다
+        return mark_safe(f'<img src="{obj.file.url}" width="50px" />')
+
+    get_thumbnail.short_description = "Thumbnail"
