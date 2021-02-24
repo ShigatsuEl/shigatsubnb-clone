@@ -36,7 +36,7 @@ class RoomAdmin(admin.ModelAdmin):
     fieldsets = (
         (
             "Basic Info",
-            {"fields": ("name", "description", "country", "address", "price")},
+            {"fields": ("name", "description", "country", "city", "address", "price")},
         ),
         ("Times", {"fields": ("check_in", "check_out", "instant_book")}),
         ("Spaces", {"fields": ("guests", "beds", "bedrooms", "baths")}),
@@ -89,6 +89,12 @@ class RoomAdmin(admin.ModelAdmin):
 
     # filter_horizontal = Many to Many Field에만 가능한 필드이다
     filter_horizontal = ("amenities", "facilities", "house_rules")
+
+    # 모델에서는 저장하기 전에 반드시 save 메서드가 실행된다
+    # 어드민에서 저장되기 전에 컨트롤 하고 싶다면 save메서드 대신 save_model메서드를 사용한다
+    def save_model(self, request, obj, form, change):
+        print(obj, form, change)
+        super().save_model(request, obj, form, change)
 
     # Custom Admin Function
     # Many to Many Field는 list가 될 수 없으므로 Custom Admin Function으로 list를 생성할 수 있다

@@ -103,7 +103,8 @@ class Room(core_models.TimeStampModel):
     def save(self, *args, **kwargs):
         # 여기에서 저장하기 전에 결과를 가로채어 어떠한 작업을 한 후 super메서드를 실행
         # super 메서드로 부모의 save 메서드를 호출하여 저장작업을 한다
-        super(ModelName, self).save(*args, **kwargs)  # Call the real save() method
+        self.city = str.capitalize(self.city)
+        super().save(*args, **kwargs)  # Call the real save() method
 
     def __str__(self):
         return self.name
