@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+# Divide and Conquer -> URL과 VIEW를 쪼개보자
 urlpatterns = [
     path("", include("core.urls", namespace="core")),
     path("admin/", admin.site.urls),
