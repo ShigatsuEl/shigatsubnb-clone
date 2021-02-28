@@ -6,21 +6,21 @@
 
 {% block content %}
 
-    {% for room in page.object_list %}
+    {% for room in object_list %}
         <h1>{{room.name}} / ${{room.price}}</h1>
     {% endfor %}
 
     <h5>
     {% comment %} Django Template에서는 함수를 실행할 수 없다. {% endcomment %}
     {% comment %} 때문에 ()를 사용해 호출하지 않고 아래와 같이 없는채로 사용한다 {% endcomment %}
-    {% if page.has_previous %}
-        <a href="?page={{page.previous_page_number}}">Previous</a>
+    {% if page_obj.has_previous %}
+        <a href="?page={{page_obj.previous_page_number}}">Previous</a>
     {% endif %}
 
-    Page {{page.number}} of {{page.paginator.num_pages}}
+    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
 
-    {% if page.has_next %}
-        <a href="?page={{page.next_page_number}}">Next</a>
+    {% if page_obj.has_next %}
+        <a href="?page={{page_obj.next_page_number}}">Next</a>
     {% endif %}
     </h5>
 
