@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.core.paginator import Paginator
+from django.shortcuts import render, redirect
+from django.core.paginator import Paginator, EmptyPage
 from . import models
 
 
@@ -10,11 +10,15 @@ def all_rooms(request):
     room_list = models.Room.objects.all()
     # Paginator 클래스는 첫번째 인자로 objet_list를 두번째 인자는 페이지 당 몇개의 리스트를 받는지 정함
     paginator = Paginator(room_list, 10, orphans=5)
-    # get_page 메서드는 하나의 Page object를 반환
-    rooms = paginator.page(int(page))
-    # 2번째 인자는 templates이름과 동일해야 한다
-    return render(
-        request,
-        "rooms/home.html",
-        context={"page": rooms},
-    )
+    # 모든 예외를 처리하고 싶다면 try except를 사용하고 except에 들어갈 인자는 Exception이다.
+    try:
+        # page or get_page 메서드는 하나의 Page object를 반환
+        rooms = paginator.page(int(page))
+        # 2번째 인자는 templates이름과 동일해야 한다
+        return render(
+            request,
+            "rooms/home.html",
+            context={"page": rooms},
+        )
+    except EmptyPage:
+        return redirect("/")
