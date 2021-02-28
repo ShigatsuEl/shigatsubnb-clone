@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django_countries.fields import CountryField
 from core import models as core_models
 
@@ -98,6 +99,9 @@ class Room(core_models.TimeStampModel):
     facilities = models.ManyToManyField("Facility", related_name="rooms", blank=True)
     house_rules = models.ManyToManyField("HouseRule", related_name="rooms", blank=True)
 
+    def __str__(self):
+        return self.name
+
     # 장고의 모든 모델들은 save 메서드를 가지고 있다.
     # save 메서드를 오버라이드해서 중간에 결과를 가로챈 후 부모의 save메서드를 호출할 것이다
     def save(self, *args, **kwargs):
@@ -106,8 +110,9 @@ class Room(core_models.TimeStampModel):
         self.city = str.capitalize(self.city)
         super().save(*args, **kwargs)  # Call the real save() method
 
-    def __str__(self):
-        return self.name
+    # admin 패널에서도 URL을 다루는 메서드
+    def get_absolute_url(self):
+        return reverse("rooms:detail", kwargs={"pk": self.pk})
 
     # review 수가 0이면 0값 반환 그 외는 평균점수를 반환
     def total_rating(self):
