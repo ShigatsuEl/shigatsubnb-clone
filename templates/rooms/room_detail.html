@@ -7,7 +7,9 @@
 {% block content %}
 
 <div>
-    <h1>{{room.name}}</h1>
+    {% comment %} Model 이름인 Room을 Django가 첫글자만 소문자로 바꿔서 room으로 준다 {% endcomment %}
+    {% comment %} room 대신 object를 사용해도 된다 {% endcomment %}
+    <h1>{{object.name}}</h1>
     <h3>{{room.description}}</h3>
 </div>
 <div>
