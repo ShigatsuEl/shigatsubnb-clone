@@ -65,12 +65,32 @@
         </div>
 
         <div>
+            <label for="instant_book">Instant Book Only</label>
+            <input id="instant_book" name="instant_book" type="checkbox" {% if instant_book %}checked{% endif %}>
+        </div>
+
+        <div>
+            <label for="super_host">By Superhost Only</label>
+            <input id="super_host" name="super_host" type="checkbox" {% if super_host %}checked{% endif %}>
+        </div>
+
+        <div>
             <h3>Amenity</h3>
             <ul>
                 {% for amenity in amenities %}
                     <li>
                         <label for="amenity_{{amenity.pk}}">{{amenity.name}}</label>
-                        <input value={{amenity.pk}} id="amenity_{{amenity.pk}}" name="amenities" type="checkbox">
+                        {% comment %} slugify는 모든 것을 str로 변환해준다 {% endcomment %}
+                        {% comment %} 현재 amenity.pk는 integer이기 때문에 타입을 변환해주어야 함 {% endcomment %}
+                        <input 
+                            value={{amenity.pk}}
+                            id="amenity_{{amenity.pk}}"
+                            name="amenities"
+                            type="checkbox"
+                            {% if amenity.pk|slugify in select_amenities %}
+                                checked
+                            {% endif %} 
+                            />
                     </li>
                 {% endfor %}
             </ul>
@@ -82,7 +102,15 @@
                 {% for facility in facilities %}
                     <li>
                         <label for="facility_{{facility.pk}}">{{facility.name}}</label>
-                        <input value={{facility.pk}} id="facility_{{facility.pk}}" name="facilities" type="checkbox">
+                        <input
+                        value={{facility.pk}}
+                        id="facility_{{facility.pk}}"
+                        name="facilities"
+                        type="checkbox"
+                        {% if facility.pk|slugify in select_facilities %}
+                            checked
+                        {% endif %}
+                        />
                     </li>
                 {% endfor %}
             </ul>

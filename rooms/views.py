@@ -33,9 +33,10 @@ def search(requset):
     bedrooms = int(requset.GET.get("bedrooms", 0))
     beds = int(requset.GET.get("beds", 0))
     baths = int(requset.GET.get("baths", 0))
-    select_amenities = requset.GET.get("amenities")
-    select_facilities = requset.GET.get("facilities")
-    print(select_amenities, select_facilities)
+    select_amenities = requset.GET.getlist("amenities")
+    select_facilities = requset.GET.getlist("facilities")
+    instant_book = requset.GET.get("instant_book", False)
+    super_host = requset.GET.get("super_host", False)
 
     form = {
         "city": city,
@@ -46,6 +47,10 @@ def search(requset):
         "bedrooms": bedrooms,
         "beds": beds,
         "baths": baths,
+        "select_amenities": select_amenities,
+        "select_facilities": select_facilities,
+        "instant_book": instant_book,
+        "super_host": super_host,
     }
 
     room_types = models.RoomType.objects.all()
