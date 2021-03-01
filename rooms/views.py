@@ -1,4 +1,5 @@
 from django.views.generic import ListView, DetailView
+from django.shortcuts import render
 from . import models
 
 
@@ -19,3 +20,9 @@ class RoomDetailView(DetailView):
     """ RoomDetailView Definition """
 
     model = models.Room
+
+
+def search(requset):
+    city = requset.GET.get("city")
+    print(str.capitalize(city))
+    return render(requset, "rooms/search.html", {"city": city})
