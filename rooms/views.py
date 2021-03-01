@@ -26,9 +26,19 @@ class RoomDetailView(DetailView):
 def search(requset):
     city = requset.GET.get("city", "Anywhere")
     city = str.capitalize(city)
+    country = requset.GET.get("country", "KR")
+    room_type = int(requset.GET.get("room_type", 0))
     room_types = models.RoomType.objects.all()
-    return render(
-        requset,
-        "rooms/search.html",
-        {"city": city, "countries": countries, "room_types": room_types},
-    )
+
+    form = {
+        "city": city,
+        "select_room_type": room_type,
+        "select_country": country,
+    }
+
+    choices = {
+        "countries": countries,
+        "room_types": room_types,
+    }
+
+    return render(requset, "rooms/search.html", {**form, **choices})
