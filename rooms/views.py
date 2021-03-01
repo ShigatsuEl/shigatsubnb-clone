@@ -28,17 +28,35 @@ def search(requset):
     city = str.capitalize(city)
     country = requset.GET.get("country", "KR")
     room_type = int(requset.GET.get("room_type", 0))
-    room_types = models.RoomType.objects.all()
+    price = int(requset.GET.get("price", 0))
+    guests = int(requset.GET.get("guests", 0))
+    bedrooms = int(requset.GET.get("bedrooms", 0))
+    beds = int(requset.GET.get("beds", 0))
+    baths = int(requset.GET.get("baths", 0))
+    select_amenities = requset.GET.get("amenities")
+    select_facilities = requset.GET.get("facilities")
+    print(select_amenities, select_facilities)
 
     form = {
         "city": city,
         "select_room_type": room_type,
         "select_country": country,
+        "price": price,
+        "guests": guests,
+        "bedrooms": bedrooms,
+        "beds": beds,
+        "baths": baths,
     }
+
+    room_types = models.RoomType.objects.all()
+    amenities = models.Amenity.objects.all()
+    facilities = models.Facility.objects.all()
 
     choices = {
         "countries": countries,
         "room_types": room_types,
+        "amenities": amenities,
+        "facilities": facilities,
     }
 
     return render(requset, "rooms/search.html", {**form, **choices})

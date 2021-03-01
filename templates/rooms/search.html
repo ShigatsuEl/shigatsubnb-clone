@@ -16,7 +16,7 @@
     <form method="get" action="{% url "rooms:search" %}">
         <div>
             <label for="city">City</label>
-            <input id="city" type="text" placeholder="Search by city" name="city" value="{{city}}" />
+            <input value="{{city}}" id="city" name="city" type="text" placeholder="Search by city" />
         </div>
 
         <div>
@@ -37,6 +37,55 @@
                 <option value="{{room_type.pk}}" {% if select_room_type == room_type.pk %}selected{% endif %}>{{room_type.name}}</option>
             {% endfor %}
             </select>
+        </div>
+
+        <div>
+            <label for="price">Price</label>
+            <input value="{{price}}" id="price" name="price" type="number" placeholder="Price">
+        </div>
+
+        <div>
+            <label for="guests">Guests</label>
+            <input value="{{guests}}" id="guests" name="guests" type="number" placeholder="guests">
+        </div>
+
+        <div>
+            <label for="bedrooms">Bedrooms</label>
+            <input value="{{bedrooms}}" id="bedrooms" name="bedrooms" type="number" placeholder="bedrooms">
+        </div>
+
+        <div>
+            <label for="beds">Beds</label>
+            <input value="{{beds}}" id="beds" name="beds" type="number" placeholder="beds">
+        </div>
+
+        <div>
+            <label for="baths">Baths</label>
+            <input value="{{baths}}" id="baths" name="baths" type="number" placeholder="baths">
+        </div>
+
+        <div>
+            <h3>Amenity</h3>
+            <ul>
+                {% for amenity in amenities %}
+                    <li>
+                        <label for="amenity_{{amenity.pk}}">{{amenity.name}}</label>
+                        <input value={{amenity.pk}} id="amenity_{{amenity.pk}}" name="amenities" type="checkbox">
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <h3>Facility</h3>
+            <ul>
+                {% for facility in facilities %}
+                    <li>
+                        <label for="facility_{{facility.pk}}">{{facility.name}}</label>
+                        <input value={{facility.pk}} id="facility_{{facility.pk}}" name="facilities" type="checkbox">
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
         <button>Search</button>
     </form>
