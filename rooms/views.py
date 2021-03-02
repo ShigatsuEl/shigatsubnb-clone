@@ -1,5 +1,6 @@
 from django.views.generic import ListView, DetailView, View
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from . import models
 from . import forms
 
@@ -79,8 +80,6 @@ class SearchView(View):
                 if baths is not None:
                     filter_args["baths__gte"] = baths
 
-                print(instant_book, superhost)
-
                 if instant_book is True:
                     filter_args["instant_book"] = True
 
@@ -93,7 +92,13 @@ class SearchView(View):
                 for facility in facilities:
                     filter_args["facilities"] = facility
 
-                rooms = models.Room.objects.filter(**filter_args)
+                qs = models.Room.objects.filter(**filter_args).order_by("created")
+
+                paginator = Paginator(qs, 10, orphans=5)
+
+                page = request.GET.get("page", 1)
+
+                rooms = paginator.get_page(page)
 
                 return render(
                     request, "rooms/search.html", {"form": form, "rooms": rooms}
@@ -103,4 +108,5 @@ class SearchView(View):
 
             # Unbounded Form
             form = forms.SearchForm()
-            return render(request, "rooms/search.html", {"form": form})
+
+        return render(request, "rooms/search.html", {"form": form})
