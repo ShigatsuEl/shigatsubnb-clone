@@ -1,31 +1,26 @@
-from django.views import View
-from django.shortcuts import render, redirect, reverse
+from django.views.generic import FormView
+from django.urls import reverse_lazy
+from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from . import forms
 
 
-class LoginView(View):
+class LoginView(FormView):
 
     """ Login View Definition """
 
-    def get(self, request):
-        form = forms.LoginForm(initial={"email": "shigatsu@gmail.com"})
-        return render(request, "users/login.html", {"form": form})
+    template_name = "users/login.html"
+    form_class = forms.LoginForm
+    success_url = reverse_lazy("core:home")
 
-    def post(self, request):
-        form = forms.LoginForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data.get("email")
-            password = form.cleaned_data.get("password")
-            user = authenticate(request, username=email, password=password)
-            if user is not None:
-                # A backend authenticated the credentials
-                login(request, user)
-                return redirect(reverse("core:home"))
-            else:
-                # No backend authenticated the credentials
-                pass
-        return render(request, "users/login.html", {"form": form})
+    def form_valid(self, form):
+        email = form.cleaned_data.get("email")
+        password = form.cleaned_data.get("password")
+        user = authenticate(self.request, username=email, password=password)
+        if user is not None:
+            # A backend authenticated the credentials
+            login(self.request, user)
+        return super().form_valid(form)
 
 
 def logout_view(request):
