@@ -3,6 +3,7 @@ from django_countries.fields import CountryField
 from . import models
 
 
+# Djnago Template에서 Form을 만드는 대신 forms.py에서 Form을 간편하게 생성한다
 class SearchForm(forms.Form):
 
     city = forms.CharField(initial="Anywhere")
@@ -22,8 +23,12 @@ class SearchForm(forms.Form):
     superhost = forms.BooleanField(required=False)
     # ModelMultipleChoiceField는 Many to Many Field에 해당한다
     amenities = forms.ModelMultipleChoiceField(
-        queryset=models.Amenity.objects.all(), widget=forms.CheckboxSelectMultiple
+        required=False,
+        queryset=models.Amenity.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
     )
     facilities = forms.ModelMultipleChoiceField(
-        queryset=models.Facility.objects.all(), widget=forms.CheckboxSelectMultiple
+        required=False,
+        queryset=models.Facility.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
     )
