@@ -2,6 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import dotenv
 
 
 def main():
@@ -19,4 +20,6 @@ def main():
 
 
 if __name__ == "__main__":
+    # dotenv를 읽기위함
+    dotenv.read_dotenv()
     main()
