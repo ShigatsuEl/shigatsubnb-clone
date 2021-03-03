@@ -40,3 +40,13 @@ class SignUpView(FormView):
         "last_name": "Minchan",
         "email": "shigatsu@gmail.com",
     }
+
+    def form_valid(self, form):
+        form.save()
+        email = form.cleaned_data.get("email")
+        password = form.cleaned_data.get("password")
+        user = authenticate(self.request, username=email, password=password)
+        if user is not None:
+            # A backend authenticated the credentials
+            login(self.request, user)
+        return super().form_valid(form)
