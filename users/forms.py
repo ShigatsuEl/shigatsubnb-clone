@@ -26,23 +26,16 @@ class LoginForm(forms.Form):
             self.add_error("email", forms.ValidationError("User does not exist"))
 
 
-class SignUpForm(forms.Form):
+class SignUpForm(forms.ModelForm):
 
     """ SignUp Form Definition """
 
-    first_name = forms.CharField(max_length=80)
-    last_name = forms.CharField(max_length=80)
-    email = forms.EmailField()
+    class Meta:
+        model = models.User
+        fields = ("first_name", "last_name", "email")
+
     password = forms.CharField(widget=forms.PasswordInput)
     password1 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
-
-    def clean_email(self):
-        email = self.cleaned_data.get("email")
-        try:
-            models.User.objects.get(email=email)
-            raise forms.ValidationError("User already exists with that email")
-        except models.User.DoesNotExist:
-            return email
 
     # clean_password로 선언하면 작동하지 않을 것이다
     # Django는 순서대로 data를 clean하기 때문에 password를 clean하는 메서드엔 password1이 없다
@@ -56,14 +49,12 @@ class SignUpForm(forms.Form):
         else:
             return password
 
-    def save(self):
-        first_name = self.cleaned_data.get("first_name")
-        last_name = self.cleaned_data.get("last_name")
+    # save 메서드는 model을 통해 object를 생성하고 데이터베이스에 저장하는 역할을 한다
+    def save(self, *args, **kwargs):
         email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
-
-        # create_user 메서드는 password를 암호화시키기 위해 사용(create메서드는 x)
-        user = models.User.objects.create_user(email, email, password)
-        user.first_name = first_name
-        user.last_name = last_name
+        # commit옵션을 False로 지정하면 object를 생성하지만 데이터베이스에 저장은 하지 않는다
+        user = super().save(commit=False)
+        user.username = email
+        user.set_password(password)
         user.save()
