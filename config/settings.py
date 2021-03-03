@@ -142,3 +142,10 @@ MEDIA_ROOT = BASE_DIR / "uploads"
 # Django가 정적파일을 찾기위해 사용하는 URL
 # 여기서는 절대경로로 /media/ URL을 접근하면 uploads 폴더의 정적파일을 접근하도록 함
 MEDIA_URL = "/media/"
+
+
+# Email Configuration
+EMAIL_HOST = "smtp.mailgun.org"
+EMAIL_PORT = "587"
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
