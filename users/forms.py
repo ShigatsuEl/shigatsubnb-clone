@@ -51,10 +51,10 @@ class SignUpForm(forms.ModelForm):
 
     # save 메서드는 model을 통해 object를 생성하고 데이터베이스에 저장하는 역할을 한다
     def save(self, *args, **kwargs):
-        email = self.cleaned_data.get("email")
-        password = self.cleaned_data.get("password")
         # commit옵션을 False로 지정하면 object를 생성하지만 데이터베이스에 저장은 하지 않는다
         user = super().save(commit=False)
+        email = self.cleaned_data.get("email")
+        password = self.cleaned_data.get("password")
         user.username = email
         user.set_password(password)
         user.save()
