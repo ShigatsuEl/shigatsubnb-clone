@@ -4,6 +4,7 @@ from django.views.generic import FormView
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
+from django.core.files.base import ContentFile
 from . import forms
 from . import models
 
@@ -201,6 +202,14 @@ def kakao_callback(request):
             )
             user.set_unusable_password()
             user.save()
+            if profile_image is not None:
+                # photo_request.content는 bullsheet file이다
+                # ImageField인 avatar는 save메서드를 가지고 있는데 파일을 저장할 수 있게 해준다
+                # content는 bullsheet file이기 때문에 Django에서 제공하는 ContentFile가 필요
+                photo_request = requests.get(profile_image)
+                user.avatar.save(
+                    f"{nickname}-avatar", ContentFile(photo_request.content)
+                )
         login(request, user)
         return redirect(reverse("core:home"))
     except KakaoException:
