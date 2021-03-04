@@ -143,3 +143,29 @@ def github_callback(request):
     except GithubException:
         # send error message
         return redirect(reverse("users:login"))
+
+
+def kakao_login(request):
+    # Kakao Login 클릭 시, Kakao authorize로 이동
+    # Kakao authorize 페이지에서 모든 정보를 동의 후 callback url로 redirect
+    REST_API_KEY = os.environ.get("KAKAO_KEY")
+    REDIRECT_URI = "http://127.0.0.1:8000/users/login/kakao/callback"
+    return redirect(
+        f"https://kauth.kakao.com/oauth/authorize?client_id={REST_API_KEY}&redirect_uri={REDIRECT_URI}&response_type=code"
+    )
+
+
+class KakaoException(Exception):
+    pass
+
+
+def kakao_callback(request):
+    try:
+        # code를 통해 token으로 발급받는 과정
+        code = request.GET.get("code")
+        REST_API_KEY = os.environ.get("KAKAO_KEY")
+        token_request = requests.get(
+            f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={REST_API_KEY}"
+        )
+    except KakaoException:
+        return redirect(reverse("users:login"))
