@@ -84,20 +84,21 @@ def github_callback(request):
         client_secret = os.environ.get("GITHUB_SECRET")
         code = request.GET.get("code", None)
         # code가 존재한다면 정상적으로 authorize했다는 의미이다
+        # code를 받아왔다면 code로부터 token을 만들수 있다
         # code는 10분 limit time이 존재하기 때문에 code가 없는 경우 home으로 redirect시킨다
         if code is not None:
-            result = requests.post(
+            token_request = requests.post(
                 f"https://github.com/login/oauth/access_token?client_id={client_id}&client_secret={client_secret}&code={code}",
                 headers={"Accept": "application/json"},
             )
-            result_json = result.json()
-            error = result_json.get("error", None)
+            token_json = token_request.json()
+            error = token_json.get("error", None)
             # code가 limit time이 지나 만료된 code로 access_token을 얻으려 한다면 error가 발생
             if error is not None:
                 raise GithubException()
             else:
                 # ACCESS TOKEN을 얻는다면 이제 정상적으로 Github에게 API를 요청할 수 있다
-                access_token = result_json.get("access_token")
+                access_token = token_json.get("access_token")
                 # ACCESS TOKEN을 가지고 Github에게 profile을 요청
                 profile_request = requests.get(
                     "https://api.github.com/user",
@@ -110,13 +111,35 @@ def github_callback(request):
                 username = profile_json.get("login", None)
                 # username이 없다는 것은 Github에서 user정보를 받아오지 못함을 의미
                 if username is not None:
+                    # Github에서 받아온 json에 name & email & bio가 None이면 아래와 같이 삼항처리
                     name = profile_json.get("name")
+                    name = username if name is None else name
                     email = profile_json.get("email")
+                    email = name if email is None else email
                     bio = profile_json.get("bio")
-                    user = models.User.objects.get(email=email)
+                    bio = "" if bio is None else bio
+                    # Github으로 login을 시도할 때 user가 db에 존재한다면 로그인, 아니면 에러를 발생시킨다
+                    try:
+                        user = models.User.objects.get(email=email)
+                        if user.login_method != models.User.LOGIN_GITHUB:
+                            raise GithubException()
+                    # DB에 user가 존재하지 않으면 Github을 통해 새 유저를 만들고 로그인하여 홈으로 리다이렉트한다
+                    except models.User.DoesNotExist:
+                        user = models.User.objects.create(
+                            email=email,
+                            first_name=name,
+                            username=email,
+                            bio=bio,
+                            login_method=models.User.LOGIN_GITHUB,
+                        )
+                        user.set_unusable_password()
+                        user.save()
+                    login(request, user)
+                    return redirect(reverse("core:home"))
                 else:
                     raise GithubException()
         else:
             raise GithubException()
     except GithubException:
+        # send error message
         return redirect(reverse("users:login"))
