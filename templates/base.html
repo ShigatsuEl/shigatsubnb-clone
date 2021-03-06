@@ -8,14 +8,20 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>{% block page_title %}{% endblock page_title %} | Shigatsubnb</title>
 </head>
-<body>
-    <header>
-        {% include "partials/nav.html" %}
+<body class="text-gray-700">
+    <header class="container max-w-full flex items-center justify-between px-20 h-20 border-b shadow-md">
+        <div class="flex items-center">
+            <a class="flex items-center" href="{% url "core:home" %}">
+                <img class="w-7 mr-2" src="{% static 'img/logo.png' %}">
+                <h1 class="text-base text-red-400">Shigatsubnb</h1>
+            </a>
+        </div>
         {% block search-bar %}
             <form method="get" action="{% url "rooms:search" %}">
-                <input type="text" placeholder="Search by city" name="city" />
+                <input class="border rounded-3xl focus:outline-none focus:ring-1 focus:ring-gray-400 px-6 py-2" type="text" placeholder="Search by city" name="city" />
             </form>
         {% endblock search-bar %}
+        {% include "partials/nav.html" %}
     </header>
 
     {% block content %}{% endblock content %}
