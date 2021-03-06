@@ -134,6 +134,9 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
+# STATIC_URL로 접속하면 STATICFILES_DIRS경로에 있는 폴더를 액세스함
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
 AUTH_USER_MODEL = "users.User"
 
 # Django가 정적파일을 저장하는 공간
