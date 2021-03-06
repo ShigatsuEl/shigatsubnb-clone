@@ -5,4 +5,11 @@
   transition: box-shadow 0.2s linear;
 }
 
+.nav_link {
+  @apply flex items-center ml-4 border-white border-b-2 border-opacity-0 h-full hover:text-red-400 hover:border-red-400;
+  a {
+    @apply py-9 px-4;
+  }
+}
+
 @tailwind utilities;
