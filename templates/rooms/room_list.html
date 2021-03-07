@@ -19,34 +19,34 @@
             {% endfor %}
         </div>
 
-        <div>    
+        <div class="flex justify-center pt-5 pb-16">    
             {% if page_obj.paginator.num_pages > 1 %}
-                <ul class="flex">
+                <ul class="flex justify-center items-center">
                 {% for n in page_obj.paginator.page_range %}
                     {% if page_obj.number|add:'-3' == n %}
                         {# First page #}
-                        <li>
+                        <li class="paginator-item hover:bg-gray-100">
                             <a href="?page={{ page_obj.previous_page_number }}">
                                 <i class="fas fa-chevron-left"></i>
                             </a>
                         </li>
-                        <li><a href="?page=1">1</a></li>
+                        <li class="paginator-item hover:bg-gray-100"><a href="?page=1">1</a></li>
                         {% if n != 1 %}
-                            <li class="disabled"><a>&#8943;</a></li>
+                            <li class="paginator-item disabled"><a>&#8943;</a></li>
                         {% endif %}
                     {% elif page_obj.number == n %}
                         {# Current page #}
-                        <li class="active">{{page_obj.number}}</li>
+                        <li class="active paginator-item rounded-full text-white bg-black">{{page_obj.number}}</li>
                     {% elif page_obj.number|add:'-3' < n and n < page_obj.number|add:'3' %}
                         {# Pages around current page #}
-                        <li><a href="?page={{n}}">{{n}}</a></li>
+                        <li class="paginator-item hover:bg-gray-100"><a href="?page={{n}}">{{n}}</a></li>
                     {% elif page_obj.number|add:'3' == n %}
                         {# Last page #}
                         {% if n != num_pages %}
-                            <li class="disabled"><a>&#8943;</a></li>
+                            <li class="paginator-item disabled"><a>&#8943;</a></li>
                         {% endif %}
-                        <li><a href="?page={{page_obj.paginator.num_pages}}">{{page_obj.paginator.num_pages}}</a></li>
-                        <li>
+                        <li class="paginator-item hover:bg-gray-100"><a href="?page={{page_obj.paginator.num_pages}}">{{page_obj.paginator.num_pages}}</a></li>
+                        <li class="paginator-item hover:bg-gray-100">
                             <a href="?page={{page_obj.next_page_number}}">
                                 <i class="fas fa-chevron-right"></i>
                             </a>

@@ -12,4 +12,8 @@
   }
 }
 
+.paginator-item {
+  @apply flex justify-center items-center mx-2 rounded-full w-8 h-8;
+}
+
 @tailwind utilities;
