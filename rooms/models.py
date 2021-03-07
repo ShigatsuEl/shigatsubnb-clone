@@ -132,3 +132,9 @@ class Room(core_models.TimeStampModel):
         # 아래 식은 Array가 아닌 QuerySet이므로 작동하진 않지만 ,를 붙여주면 Python이 배열로 인식한다
         (photo,) = self.photos.all()[:1]
         return photo.file.url
+
+    def formatted(self):
+        location = f"{self.city} · {self.country.name}"
+        location = location if len(location) < 20 else f"{location[:20]}..."
+        name = self.name if len(self.name) < 35 else f"{self.name[:35]}..."
+        return {"location": location, "name": name}

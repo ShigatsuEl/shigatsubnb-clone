@@ -23,13 +23,17 @@
         {% comment %} Django Template에서는 함수를 실행할 수 없다. {% endcomment %}
         {% comment %} 때문에 ()를 사용해 호출하지 않고 아래와 같이 없는채로 사용한다 {% endcomment %}
         {% if page_obj.has_previous %}
-            <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+            <a href="?page={{page_obj.previous_page_number}}">
+                <i class="fas fa-chevron-left"></i>
+            </a>
         {% endif %}
 
         Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
 
         {% if page_obj.has_next %}
-            <a href="?page={{page_obj.next_page_number}}">Next</a>
+            <a href="?page={{page_obj.next_page_number}}">
+                <i class="fas fa-chevron-right"></i>
+            </a>
         {% endif %}
         </h5>
 
