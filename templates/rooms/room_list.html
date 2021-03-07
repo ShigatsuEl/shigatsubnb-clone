@@ -6,6 +6,11 @@
 
 {% block content %}
 
+    <div class="flex flex-col justify-center w-full h-80vh bg-black">
+        <div class="bg-gray-800 h-3/4 mx-8 mt-8 bg-cover bg-center" style="background-image:url(https://images.unsplash.com/photo-1473615695634-d284ec918736?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop)"></div>
+        <h2 class="text-3xl text-center text-white py-8">Welcomte to Shigatsubnb</h2>
+    </div>
+
     {% for room in rooms %}
         <h3>
             {% comment %} rooms/:pk와 똑같은 역할을 수행한다 {% endcomment %}
