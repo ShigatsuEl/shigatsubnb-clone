@@ -6,7 +6,7 @@
 }
 
 .nav_link {
-  @apply flex items-center ml-4 border-white border-b-2 border-opacity-0 h-full hover:text-red-400 hover:border-red-400;
+  @apply flex items-center text-white ml-4 border-white border-b-2 border-opacity-0 h-full hover:border-white;
   a {
     @apply py-9 px-4;
   }
