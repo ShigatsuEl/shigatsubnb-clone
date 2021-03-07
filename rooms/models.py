@@ -124,3 +124,11 @@ class Room(core_models.TimeStampModel):
             return round(all_rating / len(all_reviews))
         else:
             return 0
+
+    def first_photo(self):
+        # Python은 array의 멤버를 아래와 같이 변수로 하나하나 할당하는 것이 가능하다
+        # one, two, three = self.photos.all()[:1]
+        # one, two, three에 각각 해당하는 배열의 인덱스를 할당할 것이다
+        # 아래 식은 Array가 아닌 QuerySet이므로 작동하진 않지만 ,를 붙여주면 Python이 배열로 인식한다
+        (photo,) = self.photos.all()[:1]
+        return photo.file.url
