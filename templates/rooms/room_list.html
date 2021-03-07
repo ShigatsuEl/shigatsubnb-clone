@@ -19,23 +19,43 @@
             {% endfor %}
         </div>
 
-        <h5>
-        {% comment %} Django Template에서는 함수를 실행할 수 없다. {% endcomment %}
-        {% comment %} 때문에 ()를 사용해 호출하지 않고 아래와 같이 없는채로 사용한다 {% endcomment %}
-        {% if page_obj.has_previous %}
-            <a href="?page={{page_obj.previous_page_number}}">
-                <i class="fas fa-chevron-left"></i>
-            </a>
-        {% endif %}
-
-        Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
-
-        {% if page_obj.has_next %}
-            <a href="?page={{page_obj.next_page_number}}">
-                <i class="fas fa-chevron-right"></i>
-            </a>
-        {% endif %}
-        </h5>
+        <div>    
+            {% if page_obj.paginator.num_pages > 1 %}
+                <ul class="flex">
+                {% for n in page_obj.paginator.page_range %}
+                    {% if page_obj.number|add:'-3' == n %}
+                        {# First page #}
+                        <li>
+                            <a href="?page={{ page_obj.previous_page_number }}">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                        </li>
+                        <li><a href="?page=1">1</a></li>
+                        {% if n != 1 %}
+                            <li class="disabled"><a>&#8943;</a></li>
+                        {% endif %}
+                    {% elif page_obj.number == n %}
+                        {# Current page #}
+                        <li class="active">{{page_obj.number}}</li>
+                    {% elif page_obj.number|add:'-3' < n and n < page_obj.number|add:'3' %}
+                        {# Pages around current page #}
+                        <li><a href="?page={{n}}">{{n}}</a></li>
+                    {% elif page_obj.number|add:'3' == n %}
+                        {# Last page #}
+                        {% if n != num_pages %}
+                            <li class="disabled"><a>&#8943;</a></li>
+                        {% endif %}
+                        <li><a href="?page={{page_obj.paginator.num_pages}}">{{page_obj.paginator.num_pages}}</a></li>
+                        <li>
+                            <a href="?page={{page_obj.next_page_number}}">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
 
     </div>
 
