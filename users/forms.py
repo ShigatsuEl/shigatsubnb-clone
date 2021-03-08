@@ -6,8 +6,24 @@ class LoginForm(forms.Form):
 
     """ Login Form Definition """
 
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                "placeholder": "Email",
+                "class": "border rounded-t-lg px-2 py-3 w-full",
+            }
+        ),
+        label="",
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Password",
+                "class": "border rounded-b-lg mb-6 px-2 py-3 w-full",
+            }
+        ),
+        label="",
+    )
 
     # 지어낸 메서드가 아니며 어떠한 필드를 확인하고 싶다면 clean_(field)로 메서드를 설정한다
     # clean 메서드에서 어떤것도 return하지 않으면 기본적으로 field를 정리한다
