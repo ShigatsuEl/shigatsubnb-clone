@@ -10,7 +10,7 @@ class LoginForm(forms.Form):
         widget=forms.EmailInput(
             attrs={
                 "placeholder": "Email",
-                "class": "border rounded-t-lg px-2 py-3 w-full",
+                "class": "form-btn rounded-t-lg",
             }
         ),
         label="",
@@ -19,7 +19,7 @@ class LoginForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 "placeholder": "Password",
-                "class": "border rounded-b-lg mb-6 px-2 py-3 w-full",
+                "class": "form-btn rounded-b-lg mb-6",
             }
         ),
         label="",
@@ -49,9 +49,38 @@ class SignUpForm(forms.ModelForm):
     class Meta:
         model = models.User
         fields = ("first_name", "last_name", "email")
+        widgets = {
+            "first_name": forms.TextInput(
+                attrs={"placeholder": "First Name", "class": "form-btn rounded-t-lg"}
+            ),
+            "last_name": forms.TextInput(
+                attrs={"placeholder": "Last Name", "class": "form-btn"}
+            ),
+            "email": forms.TextInput(
+                attrs={"placeholder": "Email", "class": "form-btn"}
+            ),
+        }
+        labels = {
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+        }
 
-    password = forms.CharField(widget=forms.PasswordInput)
-    password1 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={"placeholder": "Password", "class": "form-btn"}
+        ),
+        label="",
+    )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Confirm Password",
+                "class": "form-btn rounded-b-lg mb-6",
+            }
+        ),
+        label="",
+    )
 
     # clean_password로 선언하면 작동하지 않을 것이다
     # Django는 순서대로 data를 clean하기 때문에 password를 clean하는 메서드엔 password1이 없다

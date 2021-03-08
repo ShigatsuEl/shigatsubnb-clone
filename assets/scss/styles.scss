@@ -16,4 +16,8 @@
   @apply flex justify-center items-center mx-2 rounded-full w-8 h-8;
 }
 
+.form-btn {
+  @apply border px-2 py-3 w-full;
+}
+
 @tailwind utilities;
