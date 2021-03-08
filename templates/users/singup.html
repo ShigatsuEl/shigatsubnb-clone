@@ -14,40 +14,9 @@
     <div class="flex flex-col items-center mt-32 mx-auto mb-10 border-2 rounded-lg xl:w-1/3 lg:w-2/5 md:w-2/5 sm:w-4/5  shadow-lg">
         <h3 class="flex justify-center items-center border-b w-full h-16 text-base font-extrabold">Sign Up</h3>
         <div class="p-6 w-full">
-            <form class="w-full" method="POST" action="{% url "users:signup" %}">
-                {% csrf_token %}
+            {% include "mixins/auth/form.html" with form=form %}
 
-                {% for field in form %}
-                    <div class="input {% if field.errors %}has_error{% endif %}">
-                        {{field}}
-                        {% if field.errors %}
-                            {% for error in field.errors %}
-                                <div class="p-1">
-                                    <span class="text-red-700 font-medium text-sm">{{error}}</span> 
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                    </div>
-                {% endfor %}
-
-                {% comment %} None Field Error가 존재하면 보여주는 에러 메시지 {% endcomment %}
-                {% comment %} 현재는 None Field Error가 존재하지 않음(참고용) {% endcomment %}
-                {% if form.non_field_errors %}
-                    {% for error in form.non_field_errors %}
-                        <div class="p-1">
-                            <span class="text-red-700 font-medium text-sm">{{error}}</span> 
-                        </div>
-                    {% endfor %}
-                {% endif %}
-
-                <button class="rounded-lg mt-6 px-2 py-3 w-full text-white font-medium bg-red-500">Continue</button>
-            </form>
-
-            {% include "partials/social_login.html" %}
-
-            <div>
-                <span>Already have account? <a class="font-bold text-sm underline" href="{% url "users:login" %}">Log In</a></span>
-            </div>
+            {% include "partials/social_login.html" with form_question="Already have account? " target_page="Log In" %}
 
         </div>
     </div>
