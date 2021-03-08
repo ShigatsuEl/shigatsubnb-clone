@@ -13,7 +13,10 @@
 }
 
 .paginator-item {
-  @apply flex justify-center items-center mx-2 rounded-full w-8 h-8;
+  @apply mx-2 rounded-full w-8 h-8;
+  a {
+    @apply flex justify-center items-center rounded-full w-full h-full;
+  }
 }
 
 .form-btn {
