@@ -16,8 +16,31 @@
         <div class="p-6 w-full">
             <form class="w-full" method="POST" action="{% url "users:login" %}">
                 {% csrf_token %}
-                {{form.as_p}}
-                <button class="rounded-lg px-2 py-3 w-full text-white font-medium bg-red-500">Continue</button>
+
+                {% for field in form %}
+                    <div class="input {% if field.errors %}has_error{% endif %}">
+                        {{field}}
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <div class="p-1">
+                                    <span class="text-red-700 font-medium text-sm">{{error}}</span> 
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                {% comment %} None Field Error가 존재하면 보여주는 에러 메시지 {% endcomment %}
+                {% comment %} 현재는 None Field Error가 존재하지 않음(참고용) {% endcomment %}
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <div class="p-1">
+                            <span class="text-red-700 font-medium text-sm">{{error}}</span> 
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <button class="rounded-lg mt-6 px-2 py-3 w-full text-white font-medium bg-red-500">Continue</button>
             </form>
 
             {% include "partials/social_login.html" %}

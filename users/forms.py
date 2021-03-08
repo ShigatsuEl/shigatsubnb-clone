@@ -19,7 +19,7 @@ class LoginForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 "placeholder": "Password",
-                "class": "form-btn rounded-b-lg mb-6",
+                "class": "form-btn rounded-b-lg",
             }
         ),
         label="",
@@ -76,11 +76,21 @@ class SignUpForm(forms.ModelForm):
         widget=forms.PasswordInput(
             attrs={
                 "placeholder": "Confirm Password",
-                "class": "form-btn rounded-b-lg mb-6",
+                "class": "form-btn rounded-b-lg",
             }
         ),
         label="",
     )
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        try:
+            models.User.objects.get(email=email)
+            raise forms.ValidationError(
+                "A user has already registered using this email", code="existing_user"
+            )
+        except models.User.DoesNotExist:
+            return email
 
     # clean_password로 선언하면 작동하지 않을 것이다
     # Django는 순서대로 data를 clean하기 때문에 password를 clean하는 메서드엔 password1이 없다

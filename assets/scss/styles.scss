@@ -20,4 +20,10 @@
   @apply border px-2 py-3 w-full;
 }
 
+.input.has_error {
+  input {
+    @apply bg-red-200 border-gray-400 focus:border-gray-600;
+  }
+}
+
 @tailwind utilities;
