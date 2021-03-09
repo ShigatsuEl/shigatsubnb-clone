@@ -22,7 +22,7 @@
             </div>
             <span class="mb-3">{{user_obj.bio}}</span>
             {% if user == user_obj %}
-                <a class="btn-link" href="#">Edit Profile</a>
+                <a class="btn-link" href="{% url "users:update" %}">Edit Profile</a>
             {% endif %}
         </div>
 
