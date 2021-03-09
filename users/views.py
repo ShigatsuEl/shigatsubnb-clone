@@ -238,3 +238,9 @@ class UserProfileView(DetailView):
     # 때문에 profile을 가면 내 profile이 아닌 다른 사람의 profile을 보여주게 될 수도 있다
     # DetailView는 이것에 대한 해결책으로 context_object_name field를 바꿔 해결할 수 있다
     context_object_name = "user_obj"
+
+    # get_context_data는 템플릿 안에 더 많은 context를 사용할 수 있게 해주는 method이다
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["hello"] = "Hello!"
+        return context
