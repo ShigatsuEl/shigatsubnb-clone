@@ -97,7 +97,7 @@ def github_callback(request):
             error = token_json.get("error", None)
             # code가 limit time이 지나 만료된 code로 access_token을 얻으려 한다면 error가 발생
             if error is not None:
-                raise GithubException()
+                raise GithubException("Can't get authorization code")
             else:
                 # ACCESS TOKEN을 얻는다면 이제 정상적으로 Github에게 API를 요청할 수 있다
                 access_token = token_json.get("access_token")
@@ -124,7 +124,9 @@ def github_callback(request):
                     try:
                         user = models.User.objects.get(email=email)
                         if user.login_method != models.User.LOGIN_GITHUB:
-                            raise GithubException()
+                            raise GithubException(
+                                f"You already have an account in a different way by {user.login_method}"
+                            )
                     # DB에 user가 존재하지 않으면 Github을 통해 새 유저를 만들고 로그인하여 홈으로 리다이렉트한다
                     except models.User.DoesNotExist:
                         user = models.User.objects.create(
@@ -138,13 +140,16 @@ def github_callback(request):
                         user.set_unusable_password()
                         user.save()
                     login(request, user)
+                    messages.success(
+                        request, f"Welcome {user.first_name + user.last_name}"
+                    )
                     return redirect(reverse("core:home"))
                 else:
-                    raise GithubException()
+                    raise GithubException("Can't get your github profile")
         else:
-            raise GithubException()
-    except GithubException:
-        # send error message
+            raise GithubException("Can't get authorization code")
+    except GithubException as e:
+        messages.error(request, e)
         return redirect(reverse("users:login"))
 
 
@@ -166,7 +171,6 @@ def kakao_callback(request):
     try:
         # code를 통해 token으로 발급받는 과정
         code = request.GET.get("code")
-        raise KakaoException()
         REST_API_KEY = os.environ.get("KAKAO_KEY")
         REDIRECT_URI = "http://127.0.0.1:8000/users/login/kakao/callback"
         token_request = requests.get(
@@ -176,7 +180,7 @@ def kakao_callback(request):
         error = token_json.get("error", None)
         # toekn을 받는데 실패하면 KakaoException 예외처리
         if error is not None:
-            raise KakaoException()
+            raise KakaoException("Can't get authorization code")
         access_token = token_json.get("access_token")
         profile_request = requests.get(
             "https://kapi.kakao.com/v2/user/me",
@@ -185,14 +189,16 @@ def kakao_callback(request):
         profile_json = profile_request.json()
         email = profile_json.get("kakao_account", None).get("email")
         if email is None:
-            raise KakaoException()
+            raise KakaoException("Email was not given correctly.")
         nickname = profile_json.get("properties", None).get("nickname")
         profile_image = profile_json.get("properties", None).get("profile_image")
         # Kakao로 가입한 유저인지 확인 후 맞으면 로그인 처리, 다르면 KakaoException 예외처리
         try:
             user = models.User.objects.get(email=email)
             if user.login_method != models.User.LOGIN_KAKAO:
-                raise KakaoException()
+                raise KakaoException(
+                    f"You already have an account in a different way by {user.login_method}"
+                )
         # DB에 user가 존재하지 않으면 계정생성
         except models.User.DoesNotExist:
             user = models.User.objects.create(
@@ -212,8 +218,9 @@ def kakao_callback(request):
                 user.avatar.save(
                     f"{nickname}-avatar", ContentFile(photo_request.content)
                 )
+        messages.success(request, f"Welcome {user.first_name + user.last_name}")
         login(request, user)
         return redirect(reverse("core:home"))
-    except KakaoException:
-        messages.error(request, "Kakao login failed")
+    except KakaoException as e:
+        messages.error(request, e)
         return redirect(reverse("users:login"))
