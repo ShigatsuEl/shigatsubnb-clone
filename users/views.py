@@ -1,6 +1,6 @@
 import os
 import requests
-from django.views.generic import FormView
+from django.views.generic import FormView, DetailView
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
@@ -227,3 +227,14 @@ def kakao_callback(request):
     except KakaoException as e:
         messages.error(request, e)
         return redirect(reverse("users:login"))
+
+
+class UserProfileView(DetailView):
+
+    """ UserProfileView Definition """
+
+    model = models.User
+    # DetailView는 문제점이 하나 있는데 로그인한 유저를 기억하지 못하고 뷰에서 찾았던 user object를 가리키게 된다
+    # 때문에 profile을 가면 내 profile이 아닌 다른 사람의 profile을 보여주게 될 수도 있다
+    # DetailView는 이것에 대한 해결책으로 context_object_name field를 바꿔 해결할 수 있다
+    context_object_name = "user_obj"

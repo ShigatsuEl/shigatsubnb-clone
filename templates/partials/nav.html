@@ -2,6 +2,12 @@
     {% comment %} user은 Django의 context_processor가 자동으로 template에 추가한다 {% endcomment %}
     {% if user.is_authenticated %}
         <li class="nav_link">
+            {% comment %} User Model은 get_absolute_url이라는 메서드를 가지고 있다 {% endcomment %}
+            {% comment %} get_abolute_url은 url을 반환하며 어드민 패널에서 view on site 기능을 제공하기 때문에 사용한다 {% endcomment %}
+            {% comment %} a href="{% url 'users:profile' user.pk %}"로 해도 작동하지만 어드민 패널의 view on site 기능은 제공하지 않는다 {% endcomment %}
+            <a href="{{user.get_absolute_url}}">Profile</a>
+        </li>
+        <li class="nav_link">
             <a href="{% url "users:logout" %}">Log out</a>
         </li>
     {% else %}
