@@ -5,6 +5,7 @@ from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.core.files.base import ContentFile
+from django.contrib import messages
 from . import forms
 from . import models
 
@@ -165,6 +166,7 @@ def kakao_callback(request):
     try:
         # code를 통해 token으로 발급받는 과정
         code = request.GET.get("code")
+        raise KakaoException()
         REST_API_KEY = os.environ.get("KAKAO_KEY")
         REDIRECT_URI = "http://127.0.0.1:8000/users/login/kakao/callback"
         token_request = requests.get(
@@ -213,4 +215,5 @@ def kakao_callback(request):
         login(request, user)
         return redirect(reverse("core:home"))
     except KakaoException:
+        messages.error(request, "Kakao login failed")
         return redirect(reverse("users:login"))
