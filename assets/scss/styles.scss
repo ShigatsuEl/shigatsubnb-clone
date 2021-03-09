@@ -23,6 +23,10 @@
   @apply border px-2 py-3 w-full;
 }
 
+.btn-link {
+  @apply rounded-lg py-3 w-full text-center text-lg text-white bg-red-400;
+}
+
 .input.has_error {
   input {
     @apply bg-red-200 border-gray-400 focus:border-gray-600;
