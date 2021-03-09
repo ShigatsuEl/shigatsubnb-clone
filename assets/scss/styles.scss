@@ -29,4 +29,42 @@
   }
 }
 
+@keyframes messageFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.message {
+  animation: messageFadeIn 3s ease-in-out forwards;
+  &.debug {
+    @apply bg-red-600;
+  }
+  &.info {
+    @apply bg-red-400;
+  }
+  &.success {
+    @apply bg-red-400;
+  }
+  &.warning {
+    @apply bg-red-600;
+  }
+  &.error {
+    @apply bg-red-600;
+  }
+}
+
 @tailwind utilities;
