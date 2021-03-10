@@ -13,13 +13,12 @@ from . import models
 from . import mixins
 
 
-class LoginView(mixins.LoggedOutOnlyView, FormView):
+class LoginView(mixins.LoggedOutOnlyMixin, FormView):
 
     """ Login View Definition """
 
     template_name = "users/login.html"
     form_class = forms.LoginForm
-    success_url = reverse_lazy("core:home")
 
     def form_valid(self, form):
         email = form.cleaned_data.get("email")
@@ -30,6 +29,14 @@ class LoginView(mixins.LoggedOutOnlyView, FormView):
             login(self.request, user)
         return super().form_valid(form)
 
+    # get_success_url메서드는 로그인 후 원래 가고자 했던 url로 redirect해줄 것이다
+    def get_success_url(self):
+        next_arg = self.request.GET.get("next")
+        if next_arg is not None:
+            return next_arg
+        else:
+            return reverse("core:home")
+
 
 def logout_view(request):
     messages.info(
@@ -39,7 +46,7 @@ def logout_view(request):
     return redirect("core:home")
 
 
-class SignUpView(mixins.LoggedOutOnlyView, FormView):
+class SignUpView(mixins.LoggedOutOnlyMixin, FormView):
 
     """ SignUp View Deifinition """
 
@@ -249,7 +256,7 @@ class UserProfileView(DetailView):
         return context
 
 
-class UpdateProfileView(SuccessMessageMixin, UpdateView):
+class UpdateProfileView(mixins.LoggedInOnlyMixin, SuccessMessageMixin, UpdateView):
 
     """ UpdateProfile View Definition """
 
@@ -272,7 +279,9 @@ class UpdateProfileView(SuccessMessageMixin, UpdateView):
     """
 
 
-class UpdatePasswordView(SuccessMessageMixin, PasswordChangeView):
+class UpdatePasswordView(
+    mixins.LoggedInOnlyMixin, SuccessMessageMixin, PasswordChangeView
+):
 
     """ Update Password View """
 
