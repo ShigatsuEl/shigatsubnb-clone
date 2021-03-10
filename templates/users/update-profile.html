@@ -16,8 +16,8 @@
         <div class="p-6 w-full">
             {% include "mixins/auth/form.html" with form=form %}
 
-            <div>
-                <span><a class="font-bold text-sm underline" href="{% url "users:signup" %}">Change Password</a></span>
+            <div class="text-center py-2">
+                <span><a class="font-bold text-sm text-green-400" href="{% url "users:signup" %}">Change Password</a></span>
             </div>
 
         </div>

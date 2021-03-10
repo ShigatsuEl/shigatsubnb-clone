@@ -113,3 +113,36 @@ class SignUpForm(forms.ModelForm):
         user.username = email
         user.set_password(password)
         user.save()
+
+
+class UpdateProfileForm(forms.ModelForm):
+
+    """ Update Profile Form Definition """
+
+    class Meta:
+
+        model = models.User
+        fields = (
+            "first_name",
+            "last_name",
+            "gender",
+            "bio",
+            "birthdate",
+            "language",
+            "currency",
+        )
+        widgets = {
+            "first_name": forms.TextInput(
+                attrs={"placeholder": "First Name", "class": "form-btn rounded-t-lg"}
+            ),
+            "last_name": forms.TextInput(
+                attrs={"placeholder": "Last Name", "class": "form-btn"}
+            ),
+            "gender": forms.Select(attrs={"class": "form-btn"}),
+            "bio": forms.Textarea(
+                attrs={"placeholder": "About me", "class": "form-btn"}
+            ),
+            "birthdate": forms.DateInput(attrs={"class": "form-btn"}),
+            "language": forms.Select(attrs={"class": "form-btn"}),
+            "currency": forms.Select(attrs={"class": "form-btn rounded-b-lg"}),
+        }

@@ -33,6 +33,11 @@
   }
 }
 
+textarea {
+  resize: none;
+  height: 100px;
+}
+
 @keyframes messageFadeIn {
   0% {
     opacity: 0;

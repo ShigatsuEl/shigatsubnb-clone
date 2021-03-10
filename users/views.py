@@ -252,16 +252,7 @@ class UpdateProfileView(UpdateView):
 
     model = models.User
     template_name = "users/update-profile.html"
-    fields = (
-        "first_name",
-        "last_name",
-        "avatar",
-        "gender",
-        "bio",
-        "birthdate",
-        "language",
-        "currency",
-    )
+    form_class = forms.UpdateProfileForm
 
     def get_object(self, queryset=None):
         return self.request.user
