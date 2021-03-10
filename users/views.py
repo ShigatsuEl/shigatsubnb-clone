@@ -280,7 +280,10 @@ class UpdateProfileView(mixins.LoggedInOnlyMixin, SuccessMessageMixin, UpdateVie
 
 
 class UpdatePasswordView(
-    mixins.LoggedInOnlyMixin, SuccessMessageMixin, PasswordChangeView
+    mixins.LoggedInOnlyMixin,
+    mixins.EmailLoginOnlyMixin,
+    SuccessMessageMixin,
+    PasswordChangeView,
 ):
 
     """ Update Password View """

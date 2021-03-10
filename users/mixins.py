@@ -25,3 +25,16 @@ class LoggedInOnlyMixin(LoginRequiredMixin):
     """ LoggedInOnly Mixin Definition """
 
     login_url = reverse_lazy("users:login")
+
+
+# Email 로그인 유저만 통과하는 Mixin
+class EmailLoginOnlyMixin(UserPassesTestMixin):
+
+    """ EmailLoginOnly Mixin Definition """
+
+    def test_func(self):
+        return self.request.user.login_method == "email"
+
+    def handle_no_permission(self):
+        messages.error(self.request, "Can't go there")
+        return redirect(reverse("core:home"))
