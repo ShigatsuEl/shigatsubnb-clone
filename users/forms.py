@@ -168,7 +168,6 @@ class UpdatePasswordForm(PasswordChangeForm):
     )
     new_password2 = forms.CharField(
         required=True,
-        label="Συνθηματικό (Επαναλάβατε)",
         widget=forms.PasswordInput(
             attrs={
                 "placeholder": "Confrim New Password",

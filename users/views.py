@@ -258,6 +258,16 @@ class UpdateProfileView(UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
 
+    # form을 customize하기 위해서 2가지 방법이 있다
+    # 1)form_class를 지정해 form을 만드는 방법
+    # 2)UpdateView의 get_form메서드를 사용하는 방법
+    """ 
+    Ex)
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class=form_class)
+        form.fields['birthdate'].widget.attrs = {'placeholder': 'Birthdate'}
+    """
+
 
 class UpdatePasswordView(PasswordChangeView):
 
