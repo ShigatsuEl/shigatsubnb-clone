@@ -7,11 +7,13 @@ from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.core.files.base import ContentFile
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from . import forms
 from . import models
+from . import mixins
 
 
-class LoginView(FormView):
+class LoginView(mixins.LoggedOutOnlyView, FormView):
 
     """ Login View Definition """
 
@@ -37,7 +39,7 @@ def logout_view(request):
     return redirect("core:home")
 
 
-class SignUpView(FormView):
+class SignUpView(mixins.LoggedOutOnlyView, FormView):
 
     """ SignUp View Deifinition """
 
@@ -247,13 +249,14 @@ class UserProfileView(DetailView):
         return context
 
 
-class UpdateProfileView(UpdateView):
+class UpdateProfileView(SuccessMessageMixin, UpdateView):
 
     """ UpdateProfile View Definition """
 
     model = models.User
     template_name = "users/update-profile.html"
     form_class = forms.UpdateProfileForm
+    success_message = "Profile Updated"
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -269,10 +272,14 @@ class UpdateProfileView(UpdateView):
     """
 
 
-class UpdatePasswordView(PasswordChangeView):
+class UpdatePasswordView(SuccessMessageMixin, PasswordChangeView):
 
     """ Update Password View """
 
     model = models.User
     template_name = "users/update-password.html"
     form_class = forms.UpdatePasswordForm
+    success_message = "Password Updated"
+
+    def get_success_url(self):
+        return self.request.user.get_absolute_url()
