@@ -15,4 +15,25 @@
         </div>
     </div>
 
+    <div class="flex w-3/4 mx-auto pb-56">
+        <div class="w-7/12">
+            <div class="flex justify-between">
+                <div>
+                    <h4 class="text-2xl font-medium mb-px">{{room.name}}</h4>
+                    <h6 class="text-gray-700 text-sm font-light">{{room.city}}</h6>
+                </div>
+                <a class="flex flex-col items-center" href="{{room.host.get_absolute_url}}">
+                    {% include "mixins/user_avatar.html" with user=room.host %}
+                    <span class="mt-1 text-sm font-light">{{room.host.first_name}}{{room.host_last_name}}</span>
+                </a>
+            </div>
+            <div class="flex">
+                {{room.room_type}}
+                {{room.get_beds}}
+                {{room.bedrooms}}
+            </div>
+        </div>
+        <div class="w-1/3"></div>
+    </div>
+
 {% endblock content %}
