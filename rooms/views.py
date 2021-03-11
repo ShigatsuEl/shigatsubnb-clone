@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, View
+from django.views.generic import ListView, DetailView, View, UpdateView
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from . import models
@@ -110,3 +110,12 @@ class SearchView(View):
             form = forms.SearchForm()
 
         return render(request, "rooms/search.html", {"form": form})
+
+
+class EditRoomView(UpdateView):
+
+    """ EditRoomView Definition """
+
+    model = models.Room
+    template_name = "rooms/room_edit.html"
+    form_class = forms.UpdateRoomForm
