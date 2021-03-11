@@ -38,6 +38,10 @@ textarea {
   height: 100px;
 }
 
+.border-section {
+  @apply border-b border-gray-300 py-10;
+}
+
 @keyframes messageFadeIn {
   0% {
     opacity: 0;

@@ -142,3 +142,19 @@ class Room(core_models.TimeStampModel):
     def get_four_sub_photo(self):
         photos = self.photos.all()[1:5]
         return photos
+
+    def get_enumerate_amenity(self):
+        enumerate_amenity = enumerate(self.amenities.all())
+        return enumerate_amenity
+
+    def get_amenity_count(self):
+        count = self.amenities.count() - 1
+        return count
+
+    def get_enumerate_facility(self):
+        enumerate_facility = enumerate(self.facilities.all())
+        return enumerate_facility
+
+    def get_facility_count(self):
+        count = self.facilities.count() - 1
+        return count
