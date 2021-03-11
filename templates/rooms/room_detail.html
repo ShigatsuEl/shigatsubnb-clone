@@ -17,9 +17,9 @@
 
     <div class="flex w-3/4 mx-auto pb-56">
         <div class="w-7/12">
-            <div class="flex justify-between">
+            <div class="flex justify-between mb-5">
                 <div>
-                    <h4 class="text-2xl font-medium mb-px">{{room.name}}</h4>
+                    <h4 class="text-2xl font-medium mb-1">{{room.name}}</h4>
                     <h6 class="text-gray-700 text-sm font-light">{{room.city}}</h6>
                 </div>
                 <a class="flex flex-col items-center" href="{{room.host.get_absolute_url}}">
@@ -27,10 +27,53 @@
                     <span class="mt-1 text-sm font-light">{{room.host.first_name}}{{room.host_last_name}}</span>
                 </a>
             </div>
-            <div class="flex">
-                {{room.room_type}}
-                {{room.get_beds}}
-                {{room.bedrooms}}
+            <div class="flex border-b mb-5 border-gray-300 pb-5">
+                <span class="mr-5">{{room.room_type}}</span>
+                <span class="mr-5">{{ room.beds }} bed{{ room.beds|pluralize }}</span>
+                <span class="mr-5">{{room.bedrooms}} bedroom{{room.bedrooms|pluralize}}</span>
+                <span class="mr-5">{{room.baths}} bath{{room.baths|pluralize}}</span>
+                <span class="mr-5">{{room.guests}} guest{{room.guests|pluralize}}</span>
+            </div>
+            <div class="flex flex-col border-b border-gray-300">
+                <div class="flex mb-5">
+                    <i class="fas fa-home mt-1 mr-4 text-2xl"></i>
+                    <div class="flex flex-col">
+                        <h4 class="text-gray-600 font-semibold">Whole House</h4>
+                        <span>This is {{room.room_type}} house.</span>
+                    </div>
+                </div>
+                <div class="flex mb-5">
+                    <i class="fas fa-bath mt-1 mr-4 text-2xl "></i>
+                    <div class="flex flex-col">
+                        <h4 class="text-gray-600 font-semibold">Enhance Cleanliness</h4>
+                        <span>A host who has agreed to follow Shigatsubnb's enhanced five-step cleaning process.</span>
+                    </div>
+                </div>
+                {% if room.host.superhost %}
+                    <div class="flex mb-5">
+                        <i class="fas fa-award mt-1 mr-4 text-2xl"></i>
+                        <div class="flex flex-col">
+                            <h4 class="text-gray-600 font-semibold">{{room.host.first_name}}{{room.host.last_name}} is a Superhost</h4>
+                            <span>Superhosts are highly experienced and highly rated hosts who are committed to ensuring that their guests stay comfortably in their accommodation.</span>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="flex mb-5">
+                    <i class="fab fa-galactic-republic mt-1 mr-4 text-2xl"></i>
+                    <div class="flex flex-col">
+                        <h4 class="text-gray-600 font-semibold">Refund Policy</h4>
+                        <span>If canceled up to 30 days before check-in, a full refund will be given.</span>
+                    </div>
+                </div>
+                {% if room.host.house_rules %}
+                    <div class="flex mb-5">
+                        <i class="fas fa-ruler-combined mt-1 mr-4 text-2xl"></i>
+                        <div class="flex flex-col">
+                            <h4 class="text-gray-600 font-semibold">House Rules</h4>
+                            <span>{{house_rules}}</span>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="w-1/3"></div>
