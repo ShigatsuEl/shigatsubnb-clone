@@ -6,36 +6,13 @@
 
 {% block content %}
 
-<div>
-    {% comment %} Model 이름인 Room을 Django가 첫글자만 소문자로 바꿔서 room으로 준다 {% endcomment %}
-    {% comment %} room 대신 object를 사용해도 된다 {% endcomment %}
-    <h1>{{object.name}}</h1>
-    <h3>{{room.description}}</h3>
-</div>
-<div>
-    <h2>By: <a href="{{room.host.get_absolute_url}}">{{room.host.username}}</a>
-    {% if room.host.superhost %}
-        (superhost)
-    {% endif %}
-    </h2>
-    <h3>Amenity</h3>
-    <ul>
-    {% for amenity in room.amenities.all %}
-        <li>{{amenity}}</li>
-    {% endfor %}
-    </ul>
-    <h3>Facility</h3>
-    <ul>
-    {% for facilty in room.facilities.all %}
-        <li>{{facilty}}</li>
-    {% endfor %}
-    </ul>
-    <h3>House Rules</h3>
-    <ul>
-    {% for rule in room.house_rules.all %}
-        <li>{{rule}}</li>
-    {% endfor %}
-    </ul>
-</div>
+    <div class="flex container mb-20 border-2 border-gray-700 max-w-full h-75vh">
+        <div class="border border-gray-500 w-1/2 h-full bg-cover bg-center" style="background-image: url({{room.get_first_photo}});"></div>
+        <div class="flex flex-wrap w-1/2 h-full">
+            {% for photo in room.get_four_sub_photo %}
+                <div class="border border-gray-500 w-1/2 h-auto bg-cover bg-center" style="background-image: url({{photo.file.url}});"></div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock content %}

@@ -125,7 +125,13 @@ class Room(core_models.TimeStampModel):
         else:
             return 0
 
-    def first_photo(self):
+    def formatted(self):
+        location = f"{self.city} · {self.country.name}"
+        location = location if len(location) < 20 else f"{location[:20]}..."
+        name = self.name if len(self.name) < 35 else f"{self.name[:35]}..."
+        return {"location": location, "name": name}
+
+    def get_first_photo(self):
         # Python은 array의 멤버를 아래와 같이 변수로 하나하나 할당하는 것이 가능하다
         # one, two, three = self.photos.all()[:1]
         # one, two, three에 각각 해당하는 배열의 인덱스를 할당할 것이다
@@ -133,8 +139,6 @@ class Room(core_models.TimeStampModel):
         (photo,) = self.photos.all()[:1]
         return photo.file.url
 
-    def formatted(self):
-        location = f"{self.city} · {self.country.name}"
-        location = location if len(location) < 20 else f"{location[:20]}..."
-        name = self.name if len(self.name) < 35 else f"{self.name[:35]}..."
-        return {"location": location, "name": name}
+    def get_four_sub_photo(self):
+        photos = self.photos.all()[1:5]
+        return photos
