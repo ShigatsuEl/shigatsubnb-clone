@@ -15,22 +15,26 @@
         <h3 class="flex justify-center items-center border-b w-full h-16 text-base font-extrabold">Update Room Photos</h3>
         <div class="flex flex-col p-6 w-full">
 
-        {% for photo in room.photos.all %}
-            <div class="flex justify-between mb-5 border-2 rounded-lg p-2 w-full shadow-lg">
-                <div class="flex items-center w-4/5">
-                    <img class="mr-5 w-1/4 h-25vh" src="{{photo.file.url}}">
-                    <span class="text-xl">{{photo.caption}}</span>
-                </div>
-                <div class="flex flex-col justify-center w-1/5">
-                    <a class="btn-link mb-5" href="{% url 'rooms:edit-photo' room.pk photo.pk %}">Edit</a>
-                    <a class="btn-link bg-red-500" href="{% url 'rooms:delete-photo' room.pk photo.pk %}">Delete</a>
-                </div>
+            <div class="flex self-end w-1/4 mb-5">
+                <a class="btn-link" href="{% url "rooms:add-photo" room.pk %}">Upload Photo</a>
             </div>
-        {% endfor %}
 
-        <div class="flex justify-center">
-            <a class="text-gray-400 font-semibold hover:text-gray-700" href="{{room.get_absolute_url}}edit">Back to edit room</a>
-        </div>
+            {% for photo in room.photos.all %}
+                <div class="flex justify-between mb-5 border-2 rounded-lg p-2 w-full shadow-lg">
+                    <div class="flex items-center w-4/5">
+                        <img class="mr-5 w-1/4 h-25vh" src="{{photo.file.url}}">
+                        <span class="text-xl">{{photo.caption}}</span>
+                    </div>
+                    <div class="flex flex-col justify-center w-1/5">
+                        <a class="btn-link mb-5" href="{% url 'rooms:edit-photo' room.pk photo.pk %}">Edit</a>
+                        <a class="btn-link bg-red-500" href="{% url 'rooms:delete-photo' room.pk photo.pk %}">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="flex justify-center">
+                <a class="text-gray-400 font-semibold hover:text-gray-700" href="{{room.get_absolute_url}}edit">Back to edit room</a>
+            </div>
 
         </div>
     </div>

@@ -109,3 +109,30 @@ class UpdatePhotoForm(forms.ModelForm):
                 }
             ),
         }
+
+
+class CreatePhotoForm(forms.ModelForm):
+
+    """ UploadPhoto Form Definition """
+
+    class Meta:
+
+        model = models.Photo
+        fields = (
+            "file",
+            "caption",
+        )
+        widgets = {
+            "file": forms.FileInput(attrs={"class": "form-btn"}),
+            "caption": forms.TextInput(
+                attrs={
+                    "placeholder": "Photo description",
+                    "class": "form-btn",
+                }
+            ),
+        }
+
+    def save(self, pk, *args, **kwargs):
+        # commit옵션을 False로 지정하면 object를 생성하지만 데이터베이스에 저장은 하지 않는다
+        photo = super().save(commit=False)
+        print(pk)
