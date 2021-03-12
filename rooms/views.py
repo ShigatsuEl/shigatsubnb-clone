@@ -128,3 +128,18 @@ class EditRoomView(user_mixins.LoggedInOnlyMixin, UpdateView):
         if room.host.pk != self.request.user.pk:
             raise Http404()
         return room
+
+
+class RoomPhotosView(user_mixins.LoggedInOnlyMixin, DetailView):
+
+    """ RoomPhotosView Definition """
+
+    model = models.Room
+    template_name = "room/room_photos.html"
+
+    # Room object를 주는 역할을 한다
+    def get_object(self, queryset=None):
+        room = super().get_object(queryset=queryset)
+        if room.host.pk != self.request.user.pk:
+            raise Http404()
+        return room
