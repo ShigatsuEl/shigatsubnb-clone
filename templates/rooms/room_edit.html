@@ -17,7 +17,7 @@
             {% include "mixins/room/form.html" with form=form %}
 
             <div class="text-center py-2">
-                <span><a class="font-bold text-sm text-green-400" href="#">Edit Photos</a></span>
+                <span><a class="font-bold text-sm text-green-400" href="{% url 'rooms:photos' room.pk %}">Edit Photos</a></span>
             </div>
 
         </div>

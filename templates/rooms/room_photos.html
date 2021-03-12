@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+
+    {{room.name}}'s Photos
+
+{% endblock page_title %}
+
+{% block search-bar %}
+{% endblock search-bar %}
+
+{% block content %}
+
+    <div class="flex flex-col items-center mt-32 mx-auto mb-10 border-2 rounded-lg w-3/4 shadow-lg">
+        <h3 class="flex justify-center items-center border-b w-full h-16 text-base font-extrabold">Update Room Photos</h3>
+        <div class="flex flex-col p-6 w-full">
+
+        {% for photo in room.photos.all %}
+            <div class="flex justify-between mb-5 border-2 rounded-lg p-2 w-full shadow-lg">
+                <div class="flex items-center w-4/5">
+                    <img class="mr-5 w-1/4 h-25vh" src="{{photo.file.url}}">
+                    <span class="text-xl">{{photo.caption}}</span>
+                </div>
+                <div class="flex flex-col justify-center w-1/5">
+                    <a class="btn-link mb-5" href="#">Edit</a>
+                    <a class="btn-link bg-red-500" href="#">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock content %}

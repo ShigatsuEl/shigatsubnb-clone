@@ -135,7 +135,7 @@ class RoomPhotosView(user_mixins.LoggedInOnlyMixin, DetailView):
     """ RoomPhotosView Definition """
 
     model = models.Room
-    template_name = "room/room_photos.html"
+    template_name = "rooms/room_photos.html"
 
     # Room object를 주는 역할을 한다
     def get_object(self, queryset=None):
