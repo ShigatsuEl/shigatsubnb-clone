@@ -135,4 +135,6 @@ class CreatePhotoForm(forms.ModelForm):
     def save(self, pk, *args, **kwargs):
         # commit옵션을 False로 지정하면 object를 생성하지만 데이터베이스에 저장은 하지 않는다
         photo = super().save(commit=False)
-        print(pk)
+        room = models.Room.objects.get(pk=pk)
+        photo.room = room
+        photo.save()
