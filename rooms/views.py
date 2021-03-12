@@ -177,10 +177,17 @@ class EditPhotoView(user_mixins.LoggedInOnlyMixin, SuccessMessageMixin, UpdateVi
 
     model = models.Photo
     template_name = "rooms/photo_edit.html"
+    form_class = forms.UpdatePhotoForm
     # URL에 있는 pk의 이름을 찾기 위해 사용
     pk_url_kwarg = "photo_pk"
-    fields = ("caption",)
     success_message = "Photo Updated"
+
+    # Photo object를 주는 역할을 한다
+    def get_object(self, queryset=None):
+        photo = super().get_object(queryset=queryset)
+        if photo.room.host.pk != self.request.user.pk:
+            raise Http404()
+        return photo
 
     def get_success_url(self):
         room_pk = self.kwargs.get("room_pk")

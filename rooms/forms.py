@@ -87,3 +87,25 @@ class UpdateRoomForm(forms.ModelForm):
                 attrs={"class": "form-btn rounded-b-lg"}
             ),
         }
+
+
+class UpdatePhotoForm(forms.ModelForm):
+
+    """ UpdatePhoto Form Definitiom """
+
+    class Meta:
+
+        model = models.Photo
+        fields = (
+            "file",
+            "caption",
+        )
+        widgets = {
+            "file": forms.FileInput(attrs={"class": "form-btn"}),
+            "caption": forms.TextInput(
+                attrs={
+                    "placeholder": "Photo description",
+                    "class": "form-btn",
+                }
+            ),
+        }
