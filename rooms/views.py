@@ -214,9 +214,13 @@ class CreateRoomView(user_mixins.LoggedInOnlyMixin, FormView):
     form_class = forms.CreateRoomForm
     template_name = "rooms/room_create.html"
 
+    # CreateRoomView에서 form_valid 메서드를 사용하는 이유는 form을 저장하기 전, user를 가로채기 위함
     def form_valid(self, form):
         room = form.save()
         room.host = self.request.user
         room.save()
+        # Many to Many Field는 저장되지 않는데 save_m2m 메서드를 따로 호출해야 한다
+        # save_m2m 메서드는 반드시 model이 save 된 후에 호출되어야 정상적으로 작동된다
+        form.save_m2m()
         messages.success(self.request, "Room Created")
         return redirect(reverse("rooms:detail", kwargs={"pk": room.pk}))
