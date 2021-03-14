@@ -73,11 +73,11 @@ class UpdateRoomForm(forms.ModelForm):
             "beds": forms.NumberInput(attrs={"class": "form-btn"}),
             "bedrooms": forms.NumberInput(attrs={"class": "form-btn"}),
             "baths": forms.NumberInput(attrs={"class": "form-btn"}),
-            "check_in": forms.TextInput(
-                attrs={"placeholder": "Check In", "class": "form-btn"}
+            "check_in": forms.TimeInput(
+                attrs={"type": "time", "placeholder": "Check In", "class": "form-btn"}
             ),
-            "check_out": forms.TextInput(
-                attrs={"placeholder": "Check Out", "class": "form-btn"}
+            "check_out": forms.TimeInput(
+                attrs={"type": "time", "placeholder": "Check Out", "class": "form-btn"}
             ),
             "instant_book": forms.CheckboxInput(attrs={"class": "border px-2 py-3"}),
             "room_type": forms.Select(attrs={"class": "form-btn"}),

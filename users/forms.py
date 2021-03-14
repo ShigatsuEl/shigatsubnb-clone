@@ -143,7 +143,14 @@ class UpdateProfileForm(forms.ModelForm):
             "bio": forms.Textarea(
                 attrs={"placeholder": "About me", "class": "form-btn"}
             ),
-            "birthdate": forms.DateInput(attrs={"class": "form-btn"}),
+            "birthdate": forms.DateInput(
+                format=("%Y-%m-%d"),
+                attrs={
+                    "type": "date",
+                    "placeholder": "Select a birthdate",
+                    "class": "form-btn",
+                },
+            ),
             "language": forms.Select(attrs={"class": "form-btn"}),
             "currency": forms.Select(attrs={"class": "form-btn rounded-b-lg"}),
         }
