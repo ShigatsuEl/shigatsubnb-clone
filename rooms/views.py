@@ -201,6 +201,14 @@ class AddPhotoView(user_mixins.LoggedInOnlyMixin, FormView):
     template_name = "rooms/photo_create.html"
     form_class = forms.CreatePhotoForm
 
+    def get_context_data(self, **kwargs):
+        """Insert the form into the context dict."""
+        pk = self.kwargs.get("pk")
+        if 'room' not in kwargs:
+            kwargs['room'] = models.Room.objects.get(pk=pk)
+        print(super().get_context_data(**kwargs)['room'].pk)
+        return super().get_context_data(**kwargs)
+
     # form 검사기 -> 여기서는 pk를 form에 전달한다
     def form_valid(self, form):
         pk = self.kwargs.get("pk")

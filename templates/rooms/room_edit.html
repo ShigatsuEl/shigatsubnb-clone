@@ -16,8 +16,10 @@
         <div class="p-6 w-full">
             {% include "mixins/room/form.html" with form=form %}
 
-            <div class="text-center py-2">
-                <span><a class="font-bold text-sm text-green-400" href="{% url 'rooms:photos' room.pk %}">Edit Photos</a></span>
+            <div class="flex items-center py-2">
+                <a class="flex justify-end w-2/5 font-bold text-sm text-green-300 hover:text-green-400" href="{% url 'rooms:photos' room.pk %}">Edit Photos</a>
+                <span class="flex justify-center w-1/5 mx-2 text-sm font-semibold">or</span>
+                <a class="flex justify-start w-2/5 text-gray-400 font-semibold hover:text-gray-700" href="{{room.get_absolute_url}}">Back to the room</a>
             </div>
 
         </div>

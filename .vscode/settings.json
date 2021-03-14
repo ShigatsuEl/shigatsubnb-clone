@@ -11,7 +11,8 @@
   "emmet.includeLanguages": {
     "django-html": "html"
   },
-  "prettier.disableLanguages": [
-    "django-html"
-  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[django-html]": {
+    "editor.defaultFormatter": null
+  }
 }

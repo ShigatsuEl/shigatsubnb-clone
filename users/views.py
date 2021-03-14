@@ -265,6 +265,7 @@ class UpdateProfileView(mixins.LoggedInOnlyMixin, SuccessMessageMixin, UpdateVie
     template_name = "users/update-profile.html"
     form_class = forms.UpdateProfileForm
     success_message = "Profile Updated"
+    context_object_name = 'user'
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -293,6 +294,11 @@ class UpdatePasswordView(
     template_name = "users/update-password.html"
     form_class = forms.UpdatePasswordForm
     success_message = "Password Updated"
+
+    def get_context_data(self, **kwargs):
+        user = self.request.user
+        kwargs['user'] = user
+        return super().get_context_data(**kwargs)
 
     def get_success_url(self):
         return self.request.user.get_absolute_url()
