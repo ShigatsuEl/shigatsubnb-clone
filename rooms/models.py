@@ -136,8 +136,11 @@ class Room(core_models.TimeStampModel):
         # one, two, three = self.photos.all()[:1]
         # one, two, three에 각각 해당하는 배열의 인덱스를 할당할 것이다
         # 아래 식은 Array가 아닌 QuerySet이므로 작동하진 않지만 ,를 붙여주면 Python이 배열로 인식한다
-        (photo,) = self.photos.all()[:1]
-        return photo.file.url
+        try:
+            (photo,) = self.photos.all()[:1]
+            return photo.file.url
+        except ValueError:
+            return None
 
     def get_four_sub_photo(self):
         photos = self.photos.all()[1:5]

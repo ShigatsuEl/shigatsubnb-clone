@@ -138,3 +138,63 @@ class CreatePhotoForm(forms.ModelForm):
         room = models.Room.objects.get(pk=pk)
         photo.room = room
         photo.save()
+
+
+class CreateRoomForm(forms.ModelForm):
+
+    """ CreateRoom Form Definitio """
+
+    class Meta:
+
+        model = models.Room
+        fields = (
+            "name",
+            "description",
+            "country",
+            "city",
+            "price",
+            "address",
+            "guests",
+            "beds",
+            "bedrooms",
+            "baths",
+            "check_in",
+            "check_out",
+            "instant_book",
+            "room_type",
+            "amenities",
+            "facilities",
+            "house_rules",
+        )
+        widgets = {
+            "name": forms.TextInput(
+                attrs={"placeholder": "Room Name", "class": "form-btn rounded-t-lg"}
+            ),
+            "description": forms.Textarea(attrs={"class": "form-btn"}),
+            "country": forms.Select(attrs={"class": "form-btn"}),
+            "city": forms.TextInput(attrs={"placeholder": "City", "class": "form-btn"}),
+            "price": forms.NumberInput(attrs={"class": "form-btn"}),
+            "address": forms.TextInput(attrs={"class": "form-btn"}),
+            "guests": forms.NumberInput(attrs={"class": "form-btn"}),
+            "beds": forms.NumberInput(attrs={"class": "form-btn"}),
+            "bedrooms": forms.NumberInput(attrs={"class": "form-btn"}),
+            "baths": forms.NumberInput(attrs={"class": "form-btn"}),
+            "check_in": forms.TimeInput(
+                attrs={"type": "time", "placeholder": "Check In", "class": "form-btn"}
+            ),
+            "check_out": forms.TimeInput(
+                attrs={"type": "time", "placeholder": "Check Out", "class": "form-btn"}
+            ),
+            "instant_book": forms.CheckboxInput(attrs={"class": "border px-2 py-3"}),
+            "room_type": forms.Select(attrs={"class": "form-btn"}),
+            "amenities": forms.SelectMultiple(attrs={"class": "form-btn"}),
+            "facilities": forms.SelectMultiple(attrs={"class": "form-btn"}),
+            "house_rules": forms.SelectMultiple(
+                attrs={"class": "form-btn rounded-b-lg"}
+            ),
+        }
+
+    def save(self, *args, **kwargs):
+        # commit옵션을 False로 지정하면 object를 생성하지만 데이터베이스에 저장은 하지 않는다
+        room = super().save(commit=False)
+        return room
