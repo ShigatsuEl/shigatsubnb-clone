@@ -4,10 +4,11 @@ from django.contrib.auth.views import PasswordChangeView
 from django.views.generic import FormView, DetailView, UpdateView
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
-from django.contrib.auth import authenticate, login, logout
-from django.core.files.base import ContentFile
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.files.base import ContentFile
 from . import forms
 from . import models
 from . import mixins
@@ -295,3 +296,16 @@ class UpdatePasswordView(
 
     def get_success_url(self):
         return self.request.user.get_absolute_url()
+
+
+@login_required
+def switch_hosting(request):
+
+    # 세션에서 정보를 삭제하는 법
+    # 1) del 키워드 사용 2) session pop을 사용
+    try:
+        del request.session["is_hosting"]
+    except KeyError:
+        # 세션에 정보를 추가하는 법
+        request.session["is_hosting"] = True
+    return redirect(reverse("core:home"))
