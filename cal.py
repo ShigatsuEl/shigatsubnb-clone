@@ -6,8 +6,10 @@ class Day:
 
     """ Day Definition """
 
-    def __init__(self, number, past):
+    def __init__(self, number, month, year, past):
         self.number = number
+        self.month = month
+        self.year = year
         self.past = past
 
     def __str__(self):
@@ -53,7 +55,7 @@ class Calendar(calendar.Calendar):
                 if month == self.month:
                     if day <= today:
                         past = True
-                new_day = Day(day, past)
+                new_day = Day(number=day, month=self.month, year=self.year, past=past)
                 days.append(new_day)
         return days
 
