@@ -164,6 +164,6 @@ class Room(core_models.TimeStampModel):
         return count
 
     def get_calendars(self):
-        calendar = Calendar(2019, 11)
-        print(calendar.get_month())
-        return False
+        this_month = Calendar(2021, 3)
+        next_month = Calendar(2021, 4)
+        return [this_month, next_month]
