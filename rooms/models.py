@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django_countries.fields import CountryField
 from core import models as core_models
+from cal import Calendar
 
 
 class AbstractItem(core_models.TimeStampModel):
@@ -161,3 +162,8 @@ class Room(core_models.TimeStampModel):
     def get_facility_count(self):
         count = self.facilities.count() - 1
         return count
+
+    def get_calendars(self):
+        calendar = Calendar(2019, 11)
+        print(calendar.get_month())
+        return False
