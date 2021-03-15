@@ -1,4 +1,17 @@
 import calendar
+from django.utils import timezone
+
+
+class Day:
+
+    """ Day Definition """
+
+    def __init__(self, number, past):
+        self.number = number
+        self.past = past
+
+    def __str__(self):
+        return str(self.number)
 
 
 class Calendar(calendar.Calendar):
@@ -33,7 +46,15 @@ class Calendar(calendar.Calendar):
             # 자바스크립트로 비교하면 구조 분해할당을 한 것과 같다
             # _문자는 사용하지 않겠다는 의미를 나타낸다
             for day, _ in week:
-                days.append(day)
+                now = timezone.now()
+                today = now.day
+                month = now.month
+                past = False
+                if month == self.month:
+                    if day <= today:
+                        past = True
+                new_day = Day(day, past)
+                days.append(new_day)
         return days
 
     def get_month(self):
