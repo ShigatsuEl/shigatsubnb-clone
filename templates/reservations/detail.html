@@ -34,7 +34,7 @@
                             <div class="flex">
                                 <a href="#" class="mr-2 rounded-md py-2 w-1/2 text-center text-white text-sm font-semibold bg-red-400">Send a Message</a>
                                 {% if reservation.status == 'pending' %}
-                                    <a href="#" class="rounded-md py-2 w-1/2 text-center text-white text-sm font-semibold bg-red-500">Cancel Reservation</a>
+                                    <a href="{% url 'reservations:edit' reservation.pk 'canceled' %}" class="rounded-md py-2 w-1/2 text-center text-white text-sm font-semibold bg-red-500">Cancel Reservation</a>
                                 {% endif %}
                             </div>
                         </div>
@@ -53,10 +53,12 @@
                 <div class="border-t-2 p-2 w-full text-center">
                     <a class="text-sm font-semibold" href="#">Send Message</a>
                 </div>
-                {% if reservation.room.host != user %}
-                    <div class="border-t-2 pt-2 w-full text-center">
-                        <a class="text-sm text-green-400 font-semibold" href="#">Confirm Reservation</a>
-                    </div>
+                {% if reservation.status == 'pending' %}
+                    {% if reservation.room.host != user %}
+                        <div class="border-t-2 pt-2 w-full text-center">
+                            <a class="text-sm text-green-400 font-semibold" href="{% url 'reservations:edit' reservation.pk 'confirmed' %}">Confirm Reservation</a>
+                        </div>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>
