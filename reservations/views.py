@@ -36,4 +36,7 @@ class ReservationDetailView(View):
 
     """ ReservationDetail View Definition """
 
-    pass
+    def get(self, pk):
+        reservation = models.Reservation.objects.get_or_none(pk=pk)
+        if not reservation:
+            return redirect(reverse("core:home"))
