@@ -26,3 +26,7 @@ class CreateReviewForm(forms.ModelForm):
             "check_in": forms.NumberInput(attrs={"class": "form-btn"}),
             "value": forms.NumberInput(attrs={"class": "form-btn"}),
         }
+
+    def save(self):
+        review = super().save(commit=False)
+        return review

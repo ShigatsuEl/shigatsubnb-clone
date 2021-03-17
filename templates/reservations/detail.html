@@ -42,10 +42,10 @@
                     {% if reservation.status == 'confirmed' and reservation.is_finished %}
                         <div class="flex flex-col border-t-2 p-3">
                             <span class="mb-5 text-lg text-gray-700 font-semibold">Write a Review</span>
-                            <form class="flex flex-col" action="" method="post">
+                            <form class="flex flex-col" action="{% url 'reviews:create' reservation.room.pk %}" method="post">
                                 {% csrf_token %}
                                 {{form}}
-                                <button class="self-center btn-link w-1/2">Submit Review</button>
+                                <button class="btn-link self-center mt-5 w-1/2">Submit Review</button>
                             </form>
                         </div>
                     {% endif %}
