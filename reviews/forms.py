@@ -6,6 +6,26 @@ class CreateReviewForm(forms.ModelForm):
 
     """ CreateReview Form Definition """
 
+    # Form Validator 추가
+    accurancy = forms.IntegerField(
+        min_value=1, max_value=5, widget=forms.NumberInput(attrs={"class": "form-btn"})
+    )
+    communication = forms.IntegerField(
+        min_value=1, max_value=5, widget=forms.NumberInput(attrs={"class": "form-btn"})
+    )
+    cleanliness = forms.IntegerField(
+        min_value=1, max_value=5, widget=forms.NumberInput(attrs={"class": "form-btn"})
+    )
+    location = forms.IntegerField(
+        min_value=1, max_value=5, widget=forms.NumberInput(attrs={"class": "form-btn"})
+    )
+    check_in = forms.IntegerField(
+        min_value=1, max_value=5, widget=forms.NumberInput(attrs={"class": "form-btn"})
+    )
+    value = forms.IntegerField(
+        min_value=1, max_value=5, widget=forms.NumberInput(attrs={"class": "form-btn"})
+    )
+
     class Meta:
         model = models.Review
         fields = (
@@ -17,15 +37,7 @@ class CreateReviewForm(forms.ModelForm):
             "check_in",
             "value",
         )
-        widgets = {
-            "review": forms.Textarea(attrs={"class": "form-btn"}),
-            "accurancy": forms.NumberInput(attrs={"class": "form-btn"}),
-            "communication": forms.NumberInput(attrs={"class": "form-btn"}),
-            "cleanliness": forms.NumberInput(attrs={"class": "form-btn"}),
-            "location": forms.NumberInput(attrs={"class": "form-btn"}),
-            "check_in": forms.NumberInput(attrs={"class": "form-btn"}),
-            "value": forms.NumberInput(attrs={"class": "form-btn"}),
-        }
+        widgets = {"review": forms.Textarea(attrs={"class": "form-btn"})}
 
     def save(self):
         review = super().save(commit=False)
