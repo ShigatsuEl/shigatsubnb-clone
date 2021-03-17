@@ -17,3 +17,12 @@ class CreateReviewForm(forms.ModelForm):
             "check_in",
             "value",
         )
+        widgets = {
+            "review": forms.Textarea(attrs={"class": "form-btn"}),
+            "accurancy": forms.NumberInput(attrs={"class": "form-btn"}),
+            "communication": forms.NumberInput(attrs={"class": "form-btn"}),
+            "cleanliness": forms.NumberInput(attrs={"class": "form-btn"}),
+            "location": forms.NumberInput(attrs={"class": "form-btn"}),
+            "check_in": forms.NumberInput(attrs={"class": "form-btn"}),
+            "value": forms.NumberInput(attrs={"class": "form-btn"}),
+        }
