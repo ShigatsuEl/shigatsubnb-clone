@@ -1,6 +1,7 @@
 import os
 import requests
 from django.http import HttpResponse
+from django.utils import translation
 from django.contrib.auth.views import PasswordChangeView
 from django.views.generic import FormView, DetailView, UpdateView
 from django.urls import reverse_lazy, reverse
@@ -10,6 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.files.base import ContentFile
+from config import settings
 from . import forms
 from . import models
 from . import mixins
@@ -322,5 +324,7 @@ def switch_language(request):
 
     lang = request.GET.get("lang", None)
     if lang is not None:
-        pass
-    return HttpResponse(status=200)
+        translation.activate(lang)
+        response = HttpResponse(200)
+        response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang)
+    return response
