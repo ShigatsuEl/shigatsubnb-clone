@@ -1,5 +1,9 @@
 {% load i18n %}
 
-<footer class="mx-auto border-t border-gray-300 py-10 text-center">
-    &copy; 2021 Shigatsubnb, Inc. {% trans "All rights reserved" %}
+<footer class="flex flex-col mx-auto border-t border-gray-300 py-10 text-center">
+    <span class="mb-2">&copy; 2021 Shigatsubnb, Inc. {% trans "All rights reserved" %}</span>
+    <select class="self-center border w-1/12" name="" id="js-lang">
+        <option value="en">English</option>
+        <option value="ko">Korean</option>
+    </select>
 </footer>

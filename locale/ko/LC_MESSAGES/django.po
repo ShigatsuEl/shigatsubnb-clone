@@ -20,8 +20,8 @@ msgstr ""
 
 #: .\templates\base.html:23
 msgid "Search by city"
-msgstr ""
+msgstr "도시명으로 검색"
 
 #: .\templates\partials\footer.html:4
 msgid "All rights reserved"
-msgstr ""
+msgstr "판권소유 및 저작권법 보호를 받고 있습니다"

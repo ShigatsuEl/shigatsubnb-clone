@@ -1,5 +1,6 @@
 import os
 import requests
+from django.http import HttpResponse
 from django.contrib.auth.views import PasswordChangeView
 from django.views.generic import FormView, DetailView, UpdateView
 from django.urls import reverse_lazy, reverse
@@ -265,7 +266,7 @@ class UpdateProfileView(mixins.LoggedInOnlyMixin, SuccessMessageMixin, UpdateVie
     template_name = "users/update-profile.html"
     form_class = forms.UpdateProfileForm
     success_message = "Profile Updated"
-    context_object_name = 'user'
+    context_object_name = "user"
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -297,7 +298,7 @@ class UpdatePasswordView(
 
     def get_context_data(self, **kwargs):
         user = self.request.user
-        kwargs['user'] = user
+        kwargs["user"] = user
         return super().get_context_data(**kwargs)
 
     def get_success_url(self):
@@ -315,3 +316,11 @@ def switch_hosting(request):
         # 세션에 정보를 추가하는 법
         request.session["is_hosting"] = True
     return redirect(reverse("core:home"))
+
+
+def switch_language(request):
+
+    lang = request.GET.get("lang", None)
+    if lang is not None:
+        pass
+    return HttpResponse(status=200)
