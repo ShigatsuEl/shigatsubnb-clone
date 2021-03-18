@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-17 12:59+0900\n"
+"POT-Creation-Date: 2021-03-18 12:16+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,3 +25,39 @@ msgstr "도시명으로 검색"
 #: .\templates\partials\footer.html:4
 msgid "All rights reserved"
 msgstr "판권소유 및 저작권법 보호를 받고 있습니다"
+
+#: .\users\models.py:21
+msgid "Male"
+msgstr "남자"
+
+#: .\users\models.py:22
+msgid "Female"
+msgstr "여자"
+
+#: .\users\models.py:23
+msgid "Other"
+msgstr "그 외"
+
+#: .\users\models.py:30
+msgid "Korean"
+msgstr "한국어"
+
+#: .\users\models.py:31
+msgid "English"
+msgstr "영어"
+
+#: .\users\models.py:54
+msgid "gender"
+msgstr "성별"
+
+#: .\users\models.py:56
+msgid "bio"
+msgstr "자기소개"
+
+#: .\users\models.py:59
+msgid "language"
+msgstr "언어"
+
+#: .\users\models.py:86
+msgid "Verify Shigatsubnb Account"
+msgstr "Shigatsubnb 계정 인증"

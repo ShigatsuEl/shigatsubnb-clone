@@ -3,7 +3,6 @@
 <footer class="flex flex-col mx-auto border-t border-gray-300 py-10 text-center">
     <span class="mb-2">&copy; 2021 Shigatsubnb, Inc. {% trans "All rights reserved" %}</span>
     {% get_current_language as LANGUAGE_CODE %}
-    {{LANGUAGE_CODE}}
     <select class="self-center border w-1/12" id="js-lang">
         <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
         <option value="ko" {% if LANGUAGE_CODE == 'ko' %}selected{% endif %}>Korean</option>
