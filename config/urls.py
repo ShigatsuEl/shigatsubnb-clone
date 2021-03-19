@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 # Divide and Conquer -> URL과 VIEW를 쪼개보자
 urlpatterns = [
     path("", include("core.urls", namespace="core")),
+    path("conversations/", include("conversations.urls", namespace="conversations")),
     path("users/", include("users.urls", namespace="users")),
     path("lists/", include("lists.urls", namespace="lists")),
     path("rooms/", include("rooms.urls", namespace="rooms")),

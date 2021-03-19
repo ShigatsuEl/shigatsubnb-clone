@@ -32,7 +32,7 @@
                             <span class="mb-px text-sm text-gray-700 font-semibold">Contact your Shigatsubnb Host</span>
                             <span class="mb-2 text-sm">Your host is the best person to contact for questions about your reservation.</span>
                             <div class="flex">
-                                <a href="#" class="mr-2 rounded-md py-2 w-1/2 text-center text-white text-sm font-semibold bg-red-400">Send a Message</a>
+                                <a href="{% url 'conversations:go' reservation.room.host.pk reservation.guest.pk %}" class="mr-2 rounded-md py-2 w-1/2 text-center text-white text-sm font-semibold bg-red-400">Send a Message</a>
                                 {% if reservation.status == 'pending' %}
                                     <a href="{% url 'reservations:edit' reservation.pk 'canceled' %}" class="rounded-md py-2 w-1/2 text-center text-white text-sm font-semibold bg-red-500">Cancel Reservation</a>
                                 {% endif %}
