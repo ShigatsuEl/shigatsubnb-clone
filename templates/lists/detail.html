@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+
+    {{user.first_name}}{{user.last_name}}'s Favorite Room
+
+
+{% endblock page_title %}
+
+{% block content %}
+
+    <div style="min-height: 65vh;">
+        <div class="flex flex-col items-center mt-32 mx-auto mb-10 border-2 rounded-lg p-10 xl:w-1/3 lg:w-2/5 md:w-2/5 sm:w-4/5  shadow-lg">
+
+            {% include "mixins/user_avatar.html" with user=user %}
+
+            <div class="flex items-center my-1">
+                <span class="text-2xl font-semibold">{{user.first_name}}{{user.last_name}}</span>
+                {% if user.superhost %}
+                    <i class="fas fa-check-circle ml-1 text-red-500"></i>
+                {% endif %}
+            </div>
+            <span class="mb-3">{{user.bio}}</span>
+        </div>
+
+        <div class="container flex flex-col items-center">
+            <h3>{{user.first_name}}{{user.last_name}}'s Favorite Rooms</h3>
+            <div class="flex flex-wrap w-full mt-10 px-20">
+                {% for room in user.list.rooms.all %}
+                    {% include "mixins/room_card.html" with room=room %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

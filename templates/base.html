@@ -12,15 +12,15 @@
 <body class="mt-20 text-gray-700 font-light">
     {% include "partials/messages.html" %}
     <header class="container fixed inset-0 flex justify-between items-center px-20 max-w-full h-20 shadow-md bg-black">
-        <div class="w-1/3">
+        <div class="w-2/5">
             <a class="flex items-center" href="{% url "core:home" %}">
                 <img class="w-7 mr-2" src="{% static 'img/logo-white.png' %}">
                 <h1 class="text-base text-white">Shigatsubnb</h1>
             </a>
         </div>
         {% block search-bar %}
-            <form class="flex justify-center w-1/3" method="get" action="{% url "rooms:search" %}">
-                <input class="search-box border rounded-3xl w-3/5 text-center placeholder-gray-500 text-gray-900 shadow-md hover:shadow-lg focus:outline-none focus:ring-1 focus:ring-gray-400 px-6 py-2" type="text" placeholder="{% trans "Search by city" %}" name="city" />
+            <form class="flex justify-center w-1/5" method="get" action="{% url "rooms:search" %}">
+                <input class="search-box border rounded-3xl w-full text-center placeholder-gray-500 text-gray-900 shadow-md hover:shadow-lg focus:outline-none focus:ring-1 focus:ring-gray-400 px-6 py-2" type="text" placeholder="{% trans "Search by city" %}" name="city" />
             </form>
         {% endblock search-bar %}
         {% include "partials/nav.html" %}
