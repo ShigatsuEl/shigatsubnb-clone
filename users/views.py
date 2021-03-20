@@ -5,13 +5,14 @@ from django.utils import translation
 from django.contrib.auth.views import PasswordChangeView
 from django.views.generic import FormView, DetailView, UpdateView
 from django.urls import reverse_lazy, reverse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.files.base import ContentFile
 from config import settings
+from reservations import models as reservation_models
 from . import forms
 from . import models
 from . import mixins
@@ -257,7 +258,17 @@ class UserProfileView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["hello"] = "Hello!"
+        print(context)
         return context
+
+    def get(self, *args, **kwargs):
+        user = self.request.user
+        reservations = reservation_models.Reservation.objects.filter(guest=user)
+        return render(
+            self.request,
+            "users/user_detail.html",
+            {"user_obj": user, "reservations": reservations},
+        )
 
 
 class UpdateProfileView(mixins.LoggedInOnlyMixin, SuccessMessageMixin, UpdateView):
