@@ -11,10 +11,10 @@
 </head>
 <body class="mt-20 text-gray-700 font-light">
     {% include "partials/messages.html" %}
-    <header class="container fixed inset-0 flex justify-between items-center px-20 max-w-full h-20 shadow-md bg-black">
+    <header class="container fixed inset-0 flex justify-between items-center px-20 max-w-full h-20 shadow-md bg-black" id="js-header">
         <div class="w-2/5">
-            <a class="flex items-center" href="{% url "core:home" %}">
-                <img class="w-7 mr-2" src="{% static 'img/logo-white.png' %}">
+            <a class="flex items-center" id="js-logo" href="{% url "core:home" %}">
+                <i class="fab fa-airbnb mr-2 text-4xl text-white"></i>
                 <h1 class="text-base text-white">Shigatsubnb</h1>
             </a>
         </div>
@@ -31,11 +31,45 @@
     {% include "partials/footer.html" %}
     <script>
         const langSelect = document.getElementById("js-lang");
+        const header = document.getElementById("js-header");
+        const logo = document.querySelector("#js-logo i");
+        const heading = document.querySelector("#js-logo h1");
+        const nav = document.querySelectorAll("#js-nav li");
+        console.log(nav);
+
         const handleLangChange = () => {
             const selected = langSelect.value;
             fetch(`{% url 'users:switch-language' %}?lang=${selected}`).then(() => window.location.reload());
         }
+
+        const handleHeader = () => {
+            const scrollLocation = document.documentElement.scrollTop;
+            if(scrollLocation > 0) {
+                header.classList.add('bg-white');
+                header.classList.remove('bg-black');
+                logo.classList.add("text-red-400");
+                logo.classList.remove("text-white");
+                heading.classList.add('text-red-400');
+                heading.classList.remove('text-white');
+                nav.forEach((li) => {
+                    li.classList.add("nav-link_pink");
+                    li.classList.remove("nav-link_white");
+                })
+            } else {
+                header.classList.add('bg-black');
+                header.classList.remove('bg-white');
+                logo.classList.add("text-white");
+                logo.classList.remove("text-red-400");
+                heading.classList.add('text-white');
+                heading.classList.remove('text-red-400');
+                nav.forEach((li) => {
+                    li.classList.add("nav-link_white");
+                    li.classList.remove("nav-link_pink");
+                })
+            }
+        }
         langSelect.addEventListener("change", handleLangChange);
+        window.addEventListener("scroll", handleHeader);
     </script>
     
 </body>
