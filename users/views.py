@@ -4,8 +4,8 @@ from django.http import HttpResponse
 from django.utils import translation
 from django.contrib.auth.views import PasswordChangeView
 from django.views.generic import FormView, DetailView, UpdateView
-from django.urls import reverse_lazy, reverse
-from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.shortcuts import redirect, render, reverse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -256,19 +256,16 @@ class UserProfileView(DetailView):
 
     # get_context_data는 템플릿 안에 더 많은 context를 사용할 수 있게 해주는 method이다
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["hello"] = "Hello!"
-        print(context)
+        try:
+            context = super().get_context_data(**kwargs)
+            user_pk = self.kwargs.get("pk")
+            guest = models.User.objects.get_or_none(pk=user_pk)
+            reservations = reservation_models.Reservation.objects.filter(guest=guest)
+            context["reservations"] = reservations
+            # print(context)
+        except models.User.DoesNotExist:
+            return redirect(reverse("core:home"))
         return context
-
-    def get(self, *args, **kwargs):
-        user = self.request.user
-        reservations = reservation_models.Reservation.objects.filter(guest=user)
-        return render(
-            self.request,
-            "users/user_detail.html",
-            {"user_obj": user, "reservations": reservations},
-        )
 
 
 class UpdateProfileView(mixins.LoggedInOnlyMixin, SuccessMessageMixin, UpdateView):
