@@ -16,7 +16,7 @@
             </li>
         {% endif %}
         <li class="nav-link_white">
-            <a href="{% url "lists:see-favs" %}">Favs({{user.list.rooms.count}})</a>
+            <a href="{% url "lists:see-favs" %}">Favs({% if user.list.rooms.count > 0 %}{{user.list.rooms.count}}{% else %}0{% endif %})</a>
         </li>
         <li class="nav-link_white">
             {% comment %} User Model은 get_absolute_url이라는 메서드를 가지고 있다 {% endcomment %}
