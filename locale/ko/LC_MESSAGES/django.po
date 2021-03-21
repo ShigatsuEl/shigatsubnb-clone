@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-21 12:29+0900\n"
+"POT-Creation-Date: 2021-03-21 12:39+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,54 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\reservations\models.py:12
+msgid "Day"
+msgstr "날짜"
+
+#: .\reservations\models.py:14
+msgid "Reservation"
+msgstr "예약"
+
+#: .\reservations\models.py:32
+msgid "Pending"
+msgstr "진행중"
+
+#: .\reservations\models.py:33
+msgid "Confirmed"
+msgstr "완료"
+
+#: .\reservations\models.py:34
+msgid "Canceled"
+msgstr "취소"
+
+#: .\reservations\models.py:37 .\reviews\models.py:27 .\rooms\models.py:101
+msgid "Check In"
+msgstr "예약"
+
+#: .\reservations\models.py:38 .\rooms\models.py:104
+msgid "Check Out"
+msgstr "체크아웃"
+
+#: .\reservations\models.py:40
+msgid "Status"
+msgstr "상태"
+
+#: .\reservations\models.py:46 .\rooms\models.py:89
+msgid "Guest"
+msgstr "손님"
+
+#: .\reservations\models.py:52 .\reviews\models.py:42
+msgid "Room"
+msgstr "객실"
+
+#: .\reservations\models.py:63
+msgid "In Progress"
+msgstr "진행상태"
+
+#: .\reservations\models.py:73
+msgid "Is Finished"
+msgstr "완료상태"
 
 #: .\reviews\models.py:12 .\reviews\models.py:48
 msgid "Review"
@@ -38,10 +86,6 @@ msgstr "청결성"
 msgid "Location"
 msgstr "위치"
 
-#: .\reviews\models.py:27 .\rooms\models.py:101
-msgid "Check In"
-msgstr "예약"
-
 #: .\reviews\models.py:30
 msgid "Value"
 msgstr "가격"
@@ -49,10 +93,6 @@ msgstr "가격"
 #: .\reviews\models.py:36
 msgid "User"
 msgstr "사용자"
-
-#: .\reviews\models.py:42
-msgid "Room"
-msgstr "객실"
 
 #: .\reviews\models.py:61
 msgid "AVG"
@@ -130,10 +170,6 @@ msgstr "가격"
 msgid "Address"
 msgstr "주소"
 
-#: .\rooms\models.py:89
-msgid "Guest"
-msgstr "손님"
-
 #: .\rooms\models.py:92
 msgid "Bed"
 msgstr "침대"
@@ -145,10 +181,6 @@ msgstr "침실"
 #: .\rooms\models.py:98
 msgid "Bath"
 msgstr "욕실"
-
-#: .\rooms\models.py:104
-msgid "Check Out"
-msgstr "체크아웃"
 
 #: .\rooms\models.py:106
 msgid "Instant Book"
