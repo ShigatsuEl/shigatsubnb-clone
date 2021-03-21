@@ -36,8 +36,8 @@ class User(AbstractUser):
     CURRENCY_USD = "usd"
 
     CURRENCY_CHOICES = (
-        (CURRENCY_KRW, "KRW"),
-        (CURRENCY_USD, "USD"),
+        (CURRENCY_KRW, _("KRW")),
+        (CURRENCY_USD, _("USD")),
     )
 
     LOGIN_EMAIL = "email"
@@ -45,17 +45,17 @@ class User(AbstractUser):
     LOGIN_KAKAO = "kakao"
 
     LOGIN_CHOICES = (
-        (LOGIN_EMAIL, "Email"),
-        (LOGIN_GITHUB, "Github"),
-        (LOGIN_KAKAO, "Kakao"),
+        (LOGIN_EMAIL, _("Email")),
+        (LOGIN_GITHUB, _("Github")),
+        (LOGIN_KAKAO, _("Kakao")),
     )
 
-    avatar = models.ImageField(upload_to="avatars", blank=True)
+    avatar = models.ImageField(_("avatar"), upload_to="avatars", blank=True)
     gender = models.CharField(
         _("gender"), choices=GENDER_CHOICES, max_length=10, blank=True
     )
     bio = models.TextField(_("bio"), default="", blank=True)
-    birthdate = models.DateField(blank=True, null=True)
+    birthdate = models.DateField(_("birthdate"), blank=True, null=True)
     language = models.CharField(
         _("language"),
         choices=LANGUAGE_CHOICES,
@@ -64,13 +64,19 @@ class User(AbstractUser):
         default=LANGUAGE_KOREAN,
     )
     currency = models.CharField(
-        choices=CURRENCY_CHOICES, max_length=3, blank=True, default=CURRENCY_KRW
+        _("currency"),
+        choices=CURRENCY_CHOICES,
+        max_length=3,
+        blank=True,
+        default=CURRENCY_KRW,
     )
-    superhost = models.BooleanField(default=False)
-    email_verified = models.BooleanField(default=False)
-    email_secret = models.CharField(max_length=20, default="", blank=True)
+    superhost = models.BooleanField(_("superhost"), default=False)
+    email_verified = models.BooleanField(_("email_verified"), default=False)
+    email_secret = models.CharField(
+        _("email_secret"), max_length=20, default="", blank=True
+    )
     login_method = models.CharField(
-        max_length=50, choices=LOGIN_CHOICES, default=LOGIN_EMAIL
+        _("login_method"), max_length=50, choices=LOGIN_CHOICES, default=LOGIN_EMAIL
     )
     objects = core_managers.CustomUserManager()
 

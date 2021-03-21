@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-18 12:16+0900\n"
+"POT-Creation-Date: 2021-03-21 11:44+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,38 +26,90 @@ msgstr "도시명으로 검색"
 msgid "All rights reserved"
 msgstr "판권소유 및 저작권법 보호를 받고 있습니다"
 
-#: .\users\models.py:21
+#: .\users\admin.py:25
+msgid "Custom Profile"
+msgstr "추가 프로필 정보"
+
+#: .\users\models.py:22
 msgid "Male"
 msgstr "남자"
 
-#: .\users\models.py:22
+#: .\users\models.py:23
 msgid "Female"
 msgstr "여자"
 
-#: .\users\models.py:23
+#: .\users\models.py:24
 msgid "Other"
 msgstr "그 외"
 
-#: .\users\models.py:30
+#: .\users\models.py:31
 msgid "Korean"
 msgstr "한국어"
 
-#: .\users\models.py:31
+#: .\users\models.py:32
 msgid "English"
 msgstr "영어"
 
-#: .\users\models.py:54
+#: .\users\models.py:39
+msgid "KRW"
+msgstr "원"
+
+#: .\users\models.py:40
+msgid "USD"
+msgstr "달러"
+
+#: .\users\models.py:48
+msgid "Email"
+msgstr "이메일"
+
+#: .\users\models.py:49
+msgid "Github"
+msgstr "깃허브"
+
+#: .\users\models.py:50
+msgid "Kakao"
+msgstr "카카오"
+
+#: .\users\models.py:53
+msgid "avatar"
+msgstr "프로필 사진"
+
+#: .\users\models.py:55
 msgid "gender"
 msgstr "성별"
 
-#: .\users\models.py:56
+#: .\users\models.py:57
 msgid "bio"
 msgstr "자기소개"
 
-#: .\users\models.py:59
+#: .\users\models.py:58
+msgid "birthdate"
+msgstr "생년월일"
+
+#: .\users\models.py:60
 msgid "language"
 msgstr "언어"
 
-#: .\users\models.py:86
+#: .\users\models.py:67
+msgid "currency"
+msgstr "통화"
+
+#: .\users\models.py:73
+msgid "superhost"
+msgstr "슈퍼호스트"
+
+#: .\users\models.py:74
+msgid "email_verified"
+msgstr "이메일 인증"
+
+#: .\users\models.py:76
+msgid "email_secret"
+msgstr "이메일 보안"
+
+#: .\users\models.py:79
+msgid "login_method"
+msgstr "로그인 방식"
+
+#: .\users\models.py:94
 msgid "Verify Shigatsubnb Account"
 msgstr "Shigatsubnb 계정 인증"

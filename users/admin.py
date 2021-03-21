@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from . import models
+from django.utils.translation import gettext_lazy as _
 from rooms import models as room_models
+from . import models
 
 
 class RoomInline(admin.TabularInline):
@@ -16,11 +17,12 @@ class CustomUserAdmin(UserAdmin):
 
     """ Custom User Admin """
 
+    # Room Admin 패널을 가져올 수 있다
     inlines = (RoomInline,)
 
     fieldsets = UserAdmin.fieldsets + (
         (
-            "Custom Profile",
+            _("Custom Profile"),
             {
                 "fields": (
                     "avatar",
