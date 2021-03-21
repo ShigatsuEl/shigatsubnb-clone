@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 from core import models as core_models
 from cal import Calendar
@@ -10,7 +11,7 @@ class AbstractItem(core_models.TimeStampModel):
 
     """ Abstract Item """
 
-    name = models.CharField(max_length=80)
+    name = models.CharField(_("Title"), max_length=80)
 
     class Meta:
         abstract = True
@@ -60,8 +61,8 @@ class Photo(core_models.TimeStampModel):
 
     """ Photo Model Definition """
 
-    caption = models.CharField(max_length=80)
-    file = models.ImageField(upload_to="room_photos")
+    caption = models.CharField(_("Caption"), max_length=80)
+    file = models.ImageField(_("File"), upload_to="room_photos")
     room = models.ForeignKey("Room", related_name="photos", on_delete=models.CASCADE)
 
     def __str__(self):
@@ -72,34 +73,65 @@ class Room(core_models.TimeStampModel):
 
     """ Room Model Definition """
 
-    name = models.CharField(max_length=140)
-    description = models.TextField()
-    country = CountryField()
-    city = models.CharField(max_length=80)
-    price = models.IntegerField()
-    address = models.CharField(max_length=140)
-    guests = models.IntegerField()
-    beds = models.IntegerField()
-    bedrooms = models.IntegerField()
-    baths = models.IntegerField()
-    check_in = models.TimeField()
-    check_out = models.TimeField()
-    instant_book = models.BooleanField(default=False)
+    name = models.CharField(_("Name"), max_length=140)
+    description = models.TextField(
+        _("Description"),
+    )
+    country = CountryField(
+        _("Country"),
+    )
+    city = models.CharField(_("City"), max_length=80)
+    price = models.IntegerField(
+        _("Price"),
+    )
+    address = models.CharField(_("Address"), max_length=140)
+    guests = models.IntegerField(
+        _("Guest"),
+    )
+    beds = models.IntegerField(
+        _("Bed"),
+    )
+    bedrooms = models.IntegerField(
+        _("Bedroom"),
+    )
+    baths = models.IntegerField(
+        _("Bath"),
+    )
+    check_in = models.TimeField(
+        _("Check In"),
+    )
+    check_out = models.TimeField(
+        _("Check Out"),
+    )
+    instant_book = models.BooleanField(_("Instant Book"), default=False)
     # Foreign Key = 일대다 관계를 가지고 있다
     # Room 어드민 패널은 User Model을 가지고 있지만 반대로 User 어드민 패널은 Room Model이 없다
     # User 어드민 패널에선 볼 수 없지만 Django가 set 필드를 주기 때문에 접근이 가능하다
     # 즉, Foreign Key로 참조하게 되면 참조된 모델도 참조한 모델을 접근할 수 있다
     # related_name -> 어떤 모델(1번째 인자)에서 접근할 때 사용되는 키워드이다(set 대신 사용)
     host = models.ForeignKey(
-        "users.User", related_name="rooms", on_delete=models.CASCADE
+        "users.User",
+        related_name="rooms",
+        on_delete=models.CASCADE,
+        verbose_name=_("Host"),
     )
     room_type = models.ForeignKey(
-        "RoomType", related_name="rooms", on_delete=models.SET_NULL, null=True
+        "RoomType",
+        related_name="rooms",
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name=_("Room Type"),
     )
     # Many To Many Field = 다대다 관계를 가지고 있다
-    amenities = models.ManyToManyField("Amenity", related_name="rooms", blank=True)
-    facilities = models.ManyToManyField("Facility", related_name="rooms", blank=True)
-    house_rules = models.ManyToManyField("HouseRule", related_name="rooms", blank=True)
+    amenities = models.ManyToManyField(
+        "Amenity", related_name="rooms", blank=True, verbose_name=_("Amenity")
+    )
+    facilities = models.ManyToManyField(
+        "Facility", related_name="rooms", blank=True, verbose_name=_("Facility")
+    )
+    house_rules = models.ManyToManyField(
+        "HouseRule", related_name="rooms", blank=True, verbose_name=_("House Rule")
+    )
 
     def __str__(self):
         return self.name
@@ -126,6 +158,8 @@ class Room(core_models.TimeStampModel):
             return round(all_rating / len(all_reviews), 2)
         else:
             return 0
+
+    total_rating.short_description = _("Total Rating")
 
     def formatted(self):
         location = f"{self.city} · {self.country.name}"

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
+from django.utils.translation import gettext_lazy as _
 from . import models
 
 
@@ -12,6 +13,8 @@ class ItemAdmin(admin.ModelAdmin):
 
     def used_by(self, obj):
         return obj.rooms.count()
+
+    used_by.short_description = _("Used By")
 
 
 # Inline Aamin = Admin 안에 Admin을 집어넣는 방법
@@ -35,7 +38,7 @@ class RoomAdmin(admin.ModelAdmin):
     # fieldsets = Model이 어떻게 보여질지 구성하는 필드
     fieldsets = (
         (
-            "Basic Info",
+            _("Basic Info"),
             {
                 "fields": (
                     "name",
@@ -48,13 +51,13 @@ class RoomAdmin(admin.ModelAdmin):
                 )
             },
         ),
-        ("Times", {"fields": ("check_in", "check_out", "instant_book")}),
-        ("Spaces", {"fields": ("guests", "beds", "bedrooms", "baths")}),
+        (_("Times"), {"fields": ("check_in", "check_out", "instant_book")}),
+        (_("Spaces"), {"fields": ("guests", "beds", "bedrooms", "baths")}),
         (
-            "More About the Space",
+            _("More About the Space"),
             {"fields": ("amenities", "facilities", "house_rules")},
         ),
-        ("Last Details", {"fields": ("host",)}),
+        (_("Last Details"), {"fields": ("host",)}),
     )
 
     # list_display = 어드민 패널에서 보여지는 구성리스트
@@ -111,24 +114,24 @@ class RoomAdmin(admin.ModelAdmin):
     def count_amenities(self, obj):
         return obj.amenities.count()
 
-    count_amenities.short_description = "Amenity Count"
+    count_amenities.short_description = _("Amenity Count")
 
     def count_photos(self, obj):
         return obj.photos.count()
 
-    count_photos.short_description = "Photo Count"
+    count_photos.short_description = _("Photo Count")
 
 
 @admin.register(models.Photo)
 class PhotoAdmin(admin.ModelAdmin):
 
-    """ """
+    """ Photo Admin Definition """
 
-    list_display = ("__str__", "get_thumbnail")
+    list_display = ("caption", "get_thumbnail")
 
     def get_thumbnail(self, obj):
         # Django는 우리를 해킹으로부터 지키기 위해 이러한 html형식을 막게 되어있다
         # 따라서 Django에게 이것은 안전한 문자열임을 알릴 필요가 있다
         return mark_safe(f'<img src="{obj.file.url}" width="50px" />')
 
-    get_thumbnail.short_description = "Thumbnail"
+    get_thumbnail.short_description = _("Thumbnail")

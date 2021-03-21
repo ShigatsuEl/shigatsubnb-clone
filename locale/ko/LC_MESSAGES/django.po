@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-21 11:44+0900\n"
+"POT-Creation-Date: 2021-03-21 12:06+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,130 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\rooms\admin.py:17
+msgid "Used By"
+msgstr "사용 횟수"
+
+#: .\rooms\admin.py:41
+msgid "Basic Info"
+msgstr "기본 정보"
+
+#: .\rooms\admin.py:54
+msgid "Times"
+msgstr "예약 타임"
+
+#: .\rooms\admin.py:55
+msgid "Spaces"
+msgstr "구성"
+
+#: .\rooms\admin.py:57
+msgid "More About the Space"
+msgstr "더 자세한 구성정보"
+
+#: .\rooms\admin.py:60
+msgid "Last Details"
+msgstr "추가정보"
+
+#: .\rooms\admin.py:117
+msgid "Amenity Count"
+msgstr "편의용품 개수"
+
+#: .\rooms\admin.py:122
+msgid "Photo Count"
+msgstr "사진 개수"
+
+#: .\rooms\admin.py:137
+msgid "Thumbnail"
+msgstr "썸네일"
+
+#: .\rooms\models.py:14
+msgid "Title"
+msgstr "제목"
+
+#: .\rooms\models.py:64
+msgid "Caption"
+msgstr "제목"
+
+#: .\rooms\models.py:65
+msgid "File"
+msgstr "파일"
+
+#: .\rooms\models.py:76
+msgid "Name"
+msgstr "객실 이름"
+
+#: .\rooms\models.py:78
+msgid "Description"
+msgstr "객실 설명란"
+
+#: .\rooms\models.py:81
+msgid "Country"
+msgstr "나라"
+
+#: .\rooms\models.py:83
+msgid "City"
+msgstr "도시"
+
+#: .\rooms\models.py:85
+msgid "Price"
+msgstr "가격"
+
+#: .\rooms\models.py:87
+msgid "Address"
+msgstr "주소"
+
+#: .\rooms\models.py:89
+msgid "Guest"
+msgstr "손님"
+
+#: .\rooms\models.py:92
+msgid "Bed"
+msgstr "침대"
+
+#: .\rooms\models.py:95
+msgid "Bedroom"
+msgstr "침실"
+
+#: .\rooms\models.py:98
+msgid "Bath"
+msgstr "욕실"
+
+#: .\rooms\models.py:101
+msgid "Check In"
+msgstr "체크인"
+
+#: .\rooms\models.py:104
+msgid "Check Out"
+msgstr "체크아웃"
+
+#: .\rooms\models.py:106
+msgid "Instant Book"
+msgstr "즉시 예약"
+
+#: .\rooms\models.py:116
+msgid "Host"
+msgstr "객실주인"
+
+#: .\rooms\models.py:123
+msgid "Room Type"
+msgstr "객실 유형"
+
+#: .\rooms\models.py:127
+msgid "Amenity"
+msgstr "편의용품"
+
+#: .\rooms\models.py:130
+msgid "Facility"
+msgstr "편의시설"
+
+#: .\rooms\models.py:133
+msgid "House Rule"
+msgstr "객실 규칙"
+
+#: .\rooms\models.py:162
+msgid "Total Rating"
+msgstr "총합 점수"
 
 #: .\templates\base.html:23
 msgid "Search by city"
