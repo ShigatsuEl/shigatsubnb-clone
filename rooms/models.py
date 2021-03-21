@@ -27,6 +27,7 @@ class RoomType(AbstractItem):
     class Meta:
 
         verbose_name = "Room Type"
+        verbose_name_plural = _("Room Types")
         ordering = ["name"]
 
 
@@ -36,7 +37,7 @@ class Amenity(AbstractItem):
 
     class Meta:
 
-        verbose_name_plural = "Amenities"
+        verbose_name_plural = _("Amenities")
 
 
 class Facility(AbstractItem):
@@ -45,7 +46,7 @@ class Facility(AbstractItem):
 
     class Meta:
 
-        verbose_name_plural = "Facilities"
+        verbose_name_plural = _("Facilities")
 
 
 class HouseRule(AbstractItem):
@@ -55,6 +56,7 @@ class HouseRule(AbstractItem):
     class Meta:
 
         verbose_name = "House Rule"
+        verbose_name_plural = _("House Rules")
 
 
 class Photo(core_models.TimeStampModel):
@@ -67,6 +69,10 @@ class Photo(core_models.TimeStampModel):
 
     def __str__(self):
         return self.caption
+
+    class Meta:
+
+        verbose_name_plural = _("Photos")
 
 
 class Room(core_models.TimeStampModel):
@@ -205,3 +211,7 @@ class Room(core_models.TimeStampModel):
         this_month_cal = Calendar(this_year, this_month)
         next_month_cal = Calendar(this_year, this_month + 1 if this_month != 12 else 1)
         return [this_month_cal, next_month_cal]
+
+    class Meta:
+
+        verbose_name_plural = _("Rooms")

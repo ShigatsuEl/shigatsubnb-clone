@@ -62,3 +62,4 @@ class Review(core_models.TimeStampModel):
 
     class Meta:
         ordering = ("-created",)
+        verbose_name_plural = _("Reviews")

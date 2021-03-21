@@ -17,7 +17,7 @@ class BookedDay(core_models.TimeStampModel):
     class Meta:
 
         verbose_name = "Booked Day"
-        verbose_name_plural = "Booked Days"
+        verbose_name_plural = _("Booked Days")
 
 
 class Reservation(core_models.TimeStampModel):
@@ -93,3 +93,4 @@ class Reservation(core_models.TimeStampModel):
     class Meta:
 
         ordering = ["-status"]
+        verbose_name_plural = _("Reservations")

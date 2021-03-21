@@ -7,6 +7,11 @@ class List(core_models.TimeStampModel):
 
     """ List Model Definition """
 
+    class Meta:
+
+        verbose_name = _("List")
+        verbose_name_plural = _("Lists")
+
     name = models.CharField(_("Title"), max_length=80)
     user = models.OneToOneField(
         "users.User",

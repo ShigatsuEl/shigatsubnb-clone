@@ -7,6 +7,11 @@ class Conversation(core_models.TimeStampModel):
 
     """ Conversation Model Definition """
 
+    class Meta:
+
+        verbose_name = _("Conversation")
+        verbose_name_plural = _("Conversations")
+
     participants = models.ManyToManyField(
         "users.User",
         related_name="conversations",
@@ -16,14 +21,11 @@ class Conversation(core_models.TimeStampModel):
 
     # __str__메서드는 str을 반환한다
     # 따라서 return 값은 리스트가 아니라 join메서드를 사용한 문자열을 반환한다
-    # __str__ -> get_conversation
-    def get_conversation(self):
+    def __str__(self):
         usernames = []
         for user in self.participants.all():
             usernames.append(user.username)
         return ", ".join(usernames)
-
-    get_conversation.short_description = _("Conversation")
 
     def count_messages(self):
         return self.messages.count()
@@ -43,7 +45,7 @@ class Message(core_models.TimeStampModel):
     class Meta:
 
         verbose_name = _("Message")
-        verbose_name_plural = _("Message")
+        verbose_name_plural = _("Messages")
 
     message = models.TextField(_("Message"))
     user = models.ForeignKey(
