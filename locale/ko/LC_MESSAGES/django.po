@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-21 12:43+0900\n"
+"POT-Creation-Date: 2021-03-21 13:01+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: .\conversations\models.py:14
+msgid "Participant"
+msgstr "참여자"
+
+#: .\conversations\models.py:26 .\conversations\models.py:59
+msgid "Conversation"
+msgstr "대화"
+
+#: .\conversations\models.py:31
+msgid "Number of Messages"
+msgstr "메시지 수"
+
+#: .\conversations\models.py:36
+msgid "Number of Participants"
+msgstr "참여자 수"
+
+#: .\conversations\models.py:45 .\conversations\models.py:46
+#: .\conversations\models.py:48
+msgid "Message"
+msgstr "쪽지"
+
+#: .\conversations\models.py:53 .\lists\models.py:15 .\reviews\models.py:36
+msgid "User"
+msgstr "사용자"
+
+#: .\core\models.py:10
+msgid "Created"
+msgstr "생성날짜"
+
+#: .\core\models.py:11
+msgid "Updated"
+msgstr "최신날짜"
+
 #: .\lists\models.py:10 .\rooms\models.py:14
 msgid "Title"
 msgstr "제목"
-
-#: .\lists\models.py:15 .\reviews\models.py:36
-msgid "User"
-msgstr "사용자"
 
 #: .\lists\models.py:18 .\reservations\models.py:52 .\reviews\models.py:42
 msgid "Room"
