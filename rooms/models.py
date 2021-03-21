@@ -26,7 +26,7 @@ class RoomType(AbstractItem):
 
     class Meta:
 
-        verbose_name = "Room Type"
+        verbose_name = _("Room Type")
         verbose_name_plural = _("Room Types")
         ordering = ["name"]
 
@@ -37,6 +37,7 @@ class Amenity(AbstractItem):
 
     class Meta:
 
+        verbose_name = _("Amenity")
         verbose_name_plural = _("Amenities")
 
 
@@ -46,6 +47,7 @@ class Facility(AbstractItem):
 
     class Meta:
 
+        verbose_name = _("Facility")
         verbose_name_plural = _("Facilities")
 
 
@@ -55,7 +57,7 @@ class HouseRule(AbstractItem):
 
     class Meta:
 
-        verbose_name = "House Rule"
+        verbose_name = _("House Rule")
         verbose_name_plural = _("House Rules")
 
 

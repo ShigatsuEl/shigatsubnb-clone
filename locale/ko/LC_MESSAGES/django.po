@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-21 13:16+0900\n"
+"POT-Creation-Date: 2021-03-21 14:10+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,11 +102,11 @@ msgstr "완료"
 msgid "Canceled"
 msgstr "취소"
 
-#: .\reservations\models.py:37 .\reviews\models.py:27 .\rooms\models.py:107
+#: .\reservations\models.py:37 .\reviews\models.py:27 .\rooms\models.py:109
 msgid "Check In"
 msgstr "예약"
 
-#: .\reservations\models.py:38 .\rooms\models.py:110
+#: .\reservations\models.py:38 .\rooms\models.py:112
 msgid "Check Out"
 msgstr "체크아웃"
 
@@ -114,7 +114,7 @@ msgstr "체크아웃"
 msgid "Status"
 msgstr "상태"
 
-#: .\reservations\models.py:46 .\rooms\models.py:95
+#: .\reservations\models.py:46 .\rooms\models.py:97
 msgid "Guest"
 msgstr "손님"
 
@@ -198,99 +198,99 @@ msgstr "사진 개수"
 msgid "Thumbnail"
 msgstr "썸네일"
 
+#: .\rooms\models.py:29 .\rooms\models.py:131
+msgid "Room Type"
+msgstr "객실 유형"
+
 #: .\rooms\models.py:30
 msgid "Room Types"
 msgstr "객실 유형"
 
-#: .\rooms\models.py:40
-msgid "Amenities"
-msgstr "편의용품"
-
-#: .\rooms\models.py:49
-msgid "Facilities"
-msgstr "편의시설"
-
-#: .\rooms\models.py:59
-msgid "House Rules"
-msgstr "객실 규칙"
-
-#: .\rooms\models.py:66
-msgid "Caption"
-msgstr "제목"
-
-#: .\rooms\models.py:67
-msgid "File"
-msgstr "파일"
-
-#: .\rooms\models.py:75
-msgid "Photos"
-msgstr "사진"
-
-#: .\rooms\models.py:82
-msgid "Name"
-msgstr "객실 이름"
-
-#: .\rooms\models.py:84
-msgid "Description"
-msgstr "객실 설명란"
-
-#: .\rooms\models.py:87
-msgid "Country"
-msgstr "나라"
-
-#: .\rooms\models.py:89
-msgid "City"
-msgstr "도시"
-
-#: .\rooms\models.py:91
-msgid "Price"
-msgstr "가격"
-
-#: .\rooms\models.py:93
-msgid "Address"
-msgstr "주소"
-
-#: .\rooms\models.py:98
-msgid "Bed"
-msgstr "침대"
-
-#: .\rooms\models.py:101
-msgid "Bedroom"
-msgstr "침실"
-
-#: .\rooms\models.py:104
-msgid "Bath"
-msgstr "욕실"
-
-#: .\rooms\models.py:112
-msgid "Instant Book"
-msgstr "즉시 예약"
-
-#: .\rooms\models.py:122
-msgid "Host"
-msgstr "객실주인"
-
-#: .\rooms\models.py:129
-msgid "Room Type"
-msgstr "객실 유형"
-
-#: .\rooms\models.py:133
+#: .\rooms\models.py:40 .\rooms\models.py:135
 msgid "Amenity"
 msgstr "편의용품"
 
-#: .\rooms\models.py:136
+#: .\rooms\models.py:41
+msgid "Amenities"
+msgstr "편의용품"
+
+#: .\rooms\models.py:50 .\rooms\models.py:138
 msgid "Facility"
 msgstr "편의시설"
 
-#: .\rooms\models.py:139
+#: .\rooms\models.py:51
+msgid "Facilities"
+msgstr "편의시설"
+
+#: .\rooms\models.py:60 .\rooms\models.py:141
 msgid "House Rule"
 msgstr "객실 규칙"
 
-#: .\rooms\models.py:168
+#: .\rooms\models.py:61
+msgid "House Rules"
+msgstr "객실 규칙"
+
+#: .\rooms\models.py:68
+msgid "Caption"
+msgstr "제목"
+
+#: .\rooms\models.py:69
+msgid "File"
+msgstr "파일"
+
+#: .\rooms\models.py:77
+msgid "Photos"
+msgstr "사진"
+
+#: .\rooms\models.py:84
+msgid "Name"
+msgstr "객실 이름"
+
+#: .\rooms\models.py:86
+msgid "Description"
+msgstr "객실 설명란"
+
+#: .\rooms\models.py:89
+msgid "Country"
+msgstr "나라"
+
+#: .\rooms\models.py:91
+msgid "City"
+msgstr "도시"
+
+#: .\rooms\models.py:93
+msgid "Price"
+msgstr "가격"
+
+#: .\rooms\models.py:95
+msgid "Address"
+msgstr "주소"
+
+#: .\rooms\models.py:100
+msgid "Bed"
+msgstr "침대"
+
+#: .\rooms\models.py:103
+msgid "Bedroom"
+msgstr "침실"
+
+#: .\rooms\models.py:106
+msgid "Bath"
+msgstr "욕실"
+
+#: .\rooms\models.py:114
+msgid "Instant Book"
+msgstr "즉시 예약"
+
+#: .\rooms\models.py:124
+msgid "Host"
+msgstr "객실주인"
+
+#: .\rooms\models.py:170
 msgid "Total Rating"
 msgstr "총합 점수"
 
-#: .\rooms\models.py:217
+#: .\rooms\models.py:219
 msgid "Rooms"
 msgstr "객실"
 

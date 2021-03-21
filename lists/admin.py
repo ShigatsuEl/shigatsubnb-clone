@@ -7,7 +7,7 @@ class AdminList(admin.ModelAdmin):
 
     """ List Admin Definition """
 
-    list_display = ("name", "user", "count_rooms")
+    list_display = ("__str__", "user", "count_rooms")
 
     search_fields = ("name",)
 
