@@ -1,10 +1,12 @@
+{% load i18n %}
+
 <div class="w-1/4 mb-10 px-2">
     <a href="{% url 'rooms:detail' room.pk %}">
         <div class="rounded-lg mb-2 w-full h-72 bg-cover bg-center" style="background-image: url({{room.get_first_photo}});"></div>
         <div class="flex justify-between items- mb-2">
             <div>
                 {% if room.host.superhost %}
-                    <span class="mr-px border-2 border-black py-px px-1 rounded-md uppercase font-bold text-sm text-black">superhost</span>
+                    <span class="mr-px border-2 border-black py-px px-1 rounded-md uppercase font-bold text-sm text-black">{% trans "superhost" %}</span>
                 {% endif %}
                 <span class="text-sm text-gray-700">{{room.formatted.location}}</span>
             </div>

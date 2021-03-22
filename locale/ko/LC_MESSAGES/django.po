@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-21 14:10+0900\n"
+"POT-Creation-Date: 2021-03-22 10:25+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -298,9 +298,25 @@ msgstr "객실"
 msgid "Search by city"
 msgstr "도시명으로 검색"
 
+#: .\templates\mixins\room_card.html:9 .\users\models.py:73
+msgid "superhost"
+msgstr "슈퍼호스트"
+
+#: .\templates\partials\footer.html:4
+msgid "Inc."
+msgstr "주식회사."
+
 #: .\templates\partials\footer.html:4
 msgid "All rights reserved"
 msgstr "판권소유 및 저작권법 보호를 받고 있습니다"
+
+#: .\templates\rooms\room_list.html:5
+msgid "Home"
+msgstr "홈"
+
+#: .\templates\rooms\room_list.html:14
+msgid "Welcomte to Shigatsubnb"
+msgstr "Shigatsubnb에 오신 것을 환영합니다"
 
 #: .\users\admin.py:25
 msgid "Custom Profile"
@@ -369,10 +385,6 @@ msgstr "언어"
 #: .\users\models.py:67
 msgid "currency"
 msgstr "통화"
-
-#: .\users\models.py:73
-msgid "superhost"
-msgstr "슈퍼호스트"
 
 #: .\users\models.py:74
 msgid "email_verified"

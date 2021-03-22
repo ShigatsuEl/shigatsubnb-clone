@@ -169,8 +169,3 @@ LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
 LANGUAGE_COOKIE_NAME = "django_language"
 
 LANGUAGE_CODE = "en"  # default language
-
-LANGUAGES = (
-    ("en", "English"),
-    ("ko", "Korean"),
-)
