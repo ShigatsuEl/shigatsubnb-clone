@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="flex justify-center items-center w-full my-4">
     <div class="w-full h-px bg-gray-300"></div>
     <span class="text-sm mx-4">or</span>
@@ -8,13 +10,13 @@
     <div class="relative flex justify-center items-center mb-4 border-2 border-gray-400 px-2 py-2 rounded-lg">
         <a href="{% url "users:github-login" %}">
             <i class="fab fa-github absolute top-3 left-2"></i>
-            <span class="text-sm font-bold">Continue with Github</span>
+            <span class="text-sm font-bold">{% trans "Continue with Github" %}</span>
         </a>
     </div>
     <div class="relative flex justify-center items-center mb-4 border-2 border-gray-400 px-2 py-2 rounded-lg">
         <a href="{% url "users:kakao-login" %}">
             <i class="fas fa-comment absolute top-3 left-2 text-yellow-300"></i>
-            <span class="text-sm font-bold">Continue with Kakao</span>
+            <span class="text-sm font-bold">{% trans "Continue with Kakao" %}</span>
         </a>
     </div>
 </div>

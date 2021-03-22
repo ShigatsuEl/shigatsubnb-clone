@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-22 12:07+0900\n"
+"POT-Creation-Date: 2021-03-22 13:26+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -300,9 +300,9 @@ msgstr "객실"
 msgid "Search by city"
 msgstr "도시명으로 검색"
 
-#: .\templates\mixins\room\form.html:22
+#: .\templates\mixins\auth\form.html:22 .\templates\mixins\room\form.html:22
 msgid "Continue"
-msgstr "완료하기"
+msgstr "계속하기"
 
 #: .\templates\mixins\room_card.html:9 .\users\models.py:73
 msgid "superhost"
@@ -341,13 +341,23 @@ msgstr "프로필"
 msgid "Log Out"
 msgstr "로그아웃"
 
-#: .\templates\partials\nav.html:38
+#: .\templates\partials\nav.html:38 .\templates\users\login.html:6
+#: .\templates\users\login.html:16 .\templates\users\singup.html:21
 msgid "Log In"
 msgstr "로그인"
 
-#: .\templates\partials\nav.html:41
+#: .\templates\partials\nav.html:41 .\templates\users\login.html:21
+#: .\templates\users\singup.html:6 .\templates\users\singup.html:16
 msgid "Sign Up"
 msgstr "회원가입"
+
+#: .\templates\partials\social_login.html:13
+msgid "Continue with Github"
+msgstr "깃허브로 시작하기"
+
+#: .\templates\partials\social_login.html:19
+msgid "Continue with Kakao"
+msgstr "카카오로 시작하기"
 
 #: .\templates\reservations\detail.html:6
 #, python-format
@@ -551,6 +561,14 @@ msgstr "삭제하기"
 #: .\templates\rooms\room_photos.html:37
 msgid "Back to edit room"
 msgstr "객실정보 수정하러 돌아가기"
+
+#: .\templates\users\login.html:20
+msgid "Don't have an account? "
+msgstr "계정이 없으신가요? "
+
+#: .\templates\users\singup.html:20
+msgid "Already have account? "
+msgstr "이미 계정이 있으신가요? "
 
 #: .\users\admin.py:25
 msgid "Custom Profile"
