@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block page_title %}
 
-    Update Profile
+    {% trans "Update Profile" %}
 
 {% endblock page_title %}
 
@@ -12,20 +13,20 @@
 {% block content %}
 
     <div class="flex flex-col items-center mt-32 mx-auto mb-10 border-2 rounded-lg xl:w-1/3 lg:w-2/5 md:w-2/5 sm:w-4/5  shadow-lg">
-        <h3 class="flex justify-center items-center border-b w-full h-16 text-base font-extrabold">Update Profile</h3>
+        <h3 class="flex justify-center items-center border-b w-full h-16 text-base font-extrabold">{% trans "Update Profile" %}</h3>
         <div class="p-6 w-full">
             {% include "mixins/auth/form.html" with form=form %}
 
             {% comment %} object는 views.py에 정의된 get_object메서드에 의해 생긴 것 같다 {% endcomment %}
             {% if object.login_method == 'email' %}
                 <div class="flex items-center py-2">
-                    <a class="flex justify-end w-2/5 font-bold text-sm text-green-300 hover:text-green-400" href="{% url "users:update-password" %}">Change Password</a>
-                    <span class="flex justify-center w-1/5 mx-2 text-sm font-semibold">or</span>
-                    <a class="flex justify-start w-2/5 text-gray-400 font-semibold hover:text-gray-700" href="{% url "users:profile" user.pk %}">Back to the profile</a>
+                    <a class="flex justify-end w-2/5 font-bold text-sm text-green-300 hover:text-green-400" href="{% url "users:update-password" %}">{% trans "Change Password" %}</a>
+                    <span class="flex justify-center w-1/5 mx-2 text-sm font-semibold">{% trans "or" %}</span>
+                    <a class="flex justify-start w-2/5 text-gray-400 font-semibold hover:text-gray-700" href="{% url "users:profile" user.pk %}">{% trans "Back to the profile" %}</a>
                 </div>
             {% else %}
                 <div class="flex justify-center items-center py-2">
-                    <a class="text-gray-400 font-semibold hover:text-gray-700" href="{% url "users:profile" user.pk %}">Back to the profile</a>
+                    <a class="text-gray-400 font-semibold hover:text-gray-700" href="{% url "users:profile" user.pk %}">{% trans "Back to the profile" %}</a>
                 </div>
             {% endif %}
 

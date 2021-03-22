@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block page_title %}
 
-    {{user_obj.first_name}}{{user_obj.last_name}}'s Profile
+    {% blocktrans with first=user_obj.first_name last=user_obj.last_name %}{{first}}{{last}}'s Profile{% endblocktrans %}
 
 
 {% endblock page_title %}
@@ -22,13 +23,13 @@
             </div>
             <span class="mb-3">{{user_obj.bio}}</span>
             {% if user == user_obj %}
-                <a class="btn-link" href="{% url "users:update-profile" %}">Edit Profile</a>
+                <a class="btn-link" href="{% url "users:update-profile" %}">{% trans "Edit Profile" %}</a>
             {% endif %}
         </div>
 
         {% if user_obj.rooms.count > 0 %}
             <div class="container flex flex-col items-center">
-                <h3>{{user_obj.first_name}}{{user_obj.last_name}}'s Rooms</h3>
+                <h3>{% blocktrans with first=user_obj.first_name last=user_obj.last_name %}{{first}}{{last}}'s Rooms{% endblocktrans %}</h3>
                 <div class="flex flex-wrap mt-10 px-20">
                     {% for room in user_obj.rooms.all %}
                         {% include "mixins/room_card.html" with room=room %}
@@ -39,7 +40,7 @@
 
         {% if reservations.count > 0 %}
             <div class="flex flex-col items-center">
-                <h3>{{user_obj.first_name}}{{user_obj.last_name}}'s Reservations</h3>
+                <h3>{% blocktrans with first=user_obj.first_name last=user_obj.last_name %}{{first}}{{last}}'s Reservations{% endblocktrans %}</h3>
                 <div class="flex flex-wrap w-full h-full my-10 px-20">
                     {% for reservation in reservations.all %}
                         <a href="{% url 'reservations:detail' reservation.pk %}" class="flex mb-10 rounded-lg border-2 p-3 shadow-lg w-1/2">

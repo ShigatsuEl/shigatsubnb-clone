@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-22 13:26+0900\n"
+"POT-Creation-Date: 2021-03-22 13:48+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -525,7 +525,7 @@ msgstr "객실정보 수정"
 msgid "Edit Photos"
 msgstr "객실사진 수정"
 
-#: .\templates\rooms\room_edit.html:22
+#: .\templates\rooms\room_edit.html:22 .\templates\users\update-profile.html:25
 msgid "or"
 msgstr "또는"
 
@@ -569,6 +569,48 @@ msgstr "계정이 없으신가요? "
 #: .\templates\users\singup.html:20
 msgid "Already have account? "
 msgstr "이미 계정이 있으신가요? "
+
+#: .\templates\users\update-password.html:6
+msgid "Update Password"
+msgstr "비밀번호 변경"
+
+#: .\templates\users\update-password.html:16
+#: .\templates\users\update-profile.html:6
+#: .\templates\users\update-profile.html:16
+msgid "Update Profile"
+msgstr "프로필 수정하기"
+
+#: .\templates\users\update-password.html:22
+msgid "Back to the update profile"
+msgstr "프로필수정으로 돌아가기"
+
+#: .\templates\users\update-profile.html:24
+msgid "Change Password"
+msgstr "비밀번호 변경"
+
+#: .\templates\users\update-profile.html:26
+#: .\templates\users\update-profile.html:30
+msgid "Back to the profile"
+msgstr "프로필로 돌아가기"
+
+#: .\templates\users\user_detail.html:6
+#, python-format
+msgid "%(first)s%(last)s's Profile"
+msgstr "%(first)s%(last)s님의 프로필"
+
+#: .\templates\users\user_detail.html:26
+msgid "Edit Profile"
+msgstr "프로필 수정하기"
+
+#: .\templates\users\user_detail.html:32
+#, python-format
+msgid "%(first)s%(last)s's Rooms"
+msgstr "%(first)s%(last)s님의 프로필"
+
+#: .\templates\users\user_detail.html:43
+#, python-format
+msgid "%(first)s%(last)s's Reservations"
+msgstr "%(first)s%(last)s님의 예약"
 
 #: .\users\admin.py:25
 msgid "Custom Profile"
@@ -653,3 +695,7 @@ msgstr "로그인 방식"
 #: .\users\models.py:94
 msgid "Verify Shigatsubnb Account"
 msgstr "Shigatsubnb 계정 인증"
+
+#, python-format
+#~ msgid "%(user.first_name)s%(user.last_name)s's Rooms"
+#~ msgstr "%(user.first_name)s%(user.last_name)s님의 객실"
