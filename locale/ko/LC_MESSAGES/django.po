@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-22 10:25+0900\n"
+"POT-Creation-Date: 2021-03-22 11:11+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -158,7 +158,7 @@ msgstr "가격"
 msgid "AVG"
 msgstr "평균값"
 
-#: .\reviews\models.py:65
+#: .\reviews\models.py:65 .\templates\rooms\room_detail.html:159
 msgid "Reviews"
 msgstr "후기"
 
@@ -207,6 +207,7 @@ msgid "Room Types"
 msgstr "객실 유형"
 
 #: .\rooms\models.py:40 .\rooms\models.py:135
+#: .\templates\rooms\room_detail.html:94
 msgid "Amenity"
 msgstr "편의용품"
 
@@ -215,6 +216,7 @@ msgid "Amenities"
 msgstr "편의용품"
 
 #: .\rooms\models.py:50 .\rooms\models.py:138
+#: .\templates\rooms\room_detail.html:106
 msgid "Facility"
 msgstr "편의시설"
 
@@ -226,7 +228,7 @@ msgstr "편의시설"
 msgid "House Rule"
 msgstr "객실 규칙"
 
-#: .\rooms\models.py:61
+#: .\rooms\models.py:61 .\templates\rooms\room_detail.html:79
 msgid "House Rules"
 msgstr "객실 규칙"
 
@@ -309,6 +311,125 @@ msgstr "주식회사."
 #: .\templates\partials\footer.html:4
 msgid "All rights reserved"
 msgstr "판권소유 및 저작권법 보호를 받고 있습니다"
+
+#: .\templates\partials\nav.html:10
+msgid "Stop Hosting"
+msgstr "호스팅 정지"
+
+#: .\templates\partials\nav.html:12
+msgid "Start Hosting"
+msgstr "호스팅 시작"
+
+#: .\templates\partials\nav.html:18
+msgid "Create Room"
+msgstr "방 만들기"
+
+#: .\templates\partials\nav.html:22
+msgid "Favs"
+msgstr "찜"
+
+#: .\templates\partials\nav.html:31
+msgid "Profile"
+msgstr "프로필"
+
+#: .\templates\partials\nav.html:34
+msgid "Log Out"
+msgstr "로그아웃"
+
+#: .\templates\partials\nav.html:38
+msgid "Log In"
+msgstr "로그인"
+
+#: .\templates\partials\nav.html:41
+msgid "Sign Up"
+msgstr "회원가입"
+
+#: .\templates\rooms\room_detail.html:33
+msgid "Remove From Favorite"
+msgstr "찜 목록에서 삭제하기"
+
+#: .\templates\rooms\room_detail.html:35
+msgid "Save to Favorite"
+msgstr "찜 목록에 저장하기"
+
+#: .\templates\rooms\room_detail.html:39
+#, python-format
+msgid "%(beds)s bed%(beds|pluralize)s"
+msgstr "%(beds)s 침대%(beds|pluralize)s"
+
+#: .\templates\rooms\room_detail.html:40
+#, python-format
+msgid "%(bedrooms)s bedroom%(bedrooms|pluralize)s"
+msgstr "%(bedrooms)s 침실%(bedrooms|pluralize)s"
+
+#: .\templates\rooms\room_detail.html:41
+#, python-format
+msgid "%(baths)s bath%(baths|pluralize)s"
+msgstr "%(baths)s 욕실%(baths|pluralize)s"
+
+#: .\templates\rooms\room_detail.html:42
+#, python-format
+msgid "%(guests)s guest%(guests|pluralize)s"
+msgstr "%(guests)s 손님%(guests|pluralize)s"
+
+#: .\templates\rooms\room_detail.html:48
+msgid "Whole House"
+msgstr "하우스 전체"
+
+#: .\templates\rooms\room_detail.html:49
+#, python-format
+msgid "This is %(room_type)s house."
+msgstr "%(room_type)s 집입니다."
+
+#: .\templates\rooms\room_detail.html:55
+msgid "Enhance Cleanliness"
+msgstr "청결 유지"
+
+#: .\templates\rooms\room_detail.html:56
+msgid ""
+"A host who has agreed to follow Shigatsubnb's enhanced five-step cleaning "
+"process."
+msgstr ""
+"본 객실주인은 Shigatsubnb의 5단계 걸친 강화된 청결 수준을 동의하고 있습니다."
+
+#: .\templates\rooms\room_detail.html:63
+#, python-format
+msgid "%(host.first_name)s%(host.last_name)s is a Superhost"
+msgstr "%(host.first_name)s%(host.last_name)s님은 슈퍼호스트입니다."
+
+#: .\templates\rooms\room_detail.html:64
+msgid ""
+"Superhosts are highly experienced and highly rated hosts who are committed "
+"to ensuring that their guests stay comfortably in their accommodation."
+msgstr ""
+"슈퍼 호스트들은 게스트가 숙소에서 편안하게 머무를 수 있도록 최선을 다하며 경"
+"험이 풍부하고 평점이 높은 호스트입니다."
+
+#: .\templates\rooms\room_detail.html:71
+msgid "Refund Policy"
+msgstr "환불 정책"
+
+#: .\templates\rooms\room_detail.html:72
+msgid "If canceled up to 30 days before check-in, a full refund will be given."
+msgstr "30일 이내에 예약을 취소하실 경우, 전액 환불 가능합니다."
+
+#: .\templates\rooms\room_detail.html:90
+msgid "Room Description"
+msgstr "객실 설명"
+
+#: .\templates\rooms\room_detail.html:120
+msgid "Edit Room"
+msgstr "객실정보 수정"
+
+#: .\templates\rooms\room_detail.html:167
+#, python-format
+msgid "%(count)s"
+msgstr "%(count)s"
+
+#: .\templates\rooms\room_detail.html:168
+#, python-format
+msgid "review%(count|pluralize)s"
+msgstr "리뷰%(count|pluralize)s"
 
 #: .\templates\rooms\room_list.html:5
 msgid "Home"

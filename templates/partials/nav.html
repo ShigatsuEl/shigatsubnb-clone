@@ -1,38 +1,40 @@
+{% load i18n %}
+
 <ul class="flex justify-end w-2/5 text-xs font-bold h-full" id="js-nav">
     {% comment %} user은 Django의 context_processor가 자동으로 template에 추가한다 {% endcomment %}
     {% if user.is_authenticated %}
         <li class="nav-link_white">
             <a href="{% url "users:switch-hosting" %}">
                 {% if request.session.is_hosting %}
-                    Stop Hosting
+                    {% trans "Stop Hosting" %}
                 {% else %}
-                    Start Hosting
+                    {% trans "Start Hosting" %}
                 {% endif %}
             </a>
         </li>
         {% if request.session.is_hosting %}
             <li class="nav-link_white">
-                <a href="{% url "rooms:create" %}">Create Room</a>
+                <a href="{% url "rooms:create" %}">{% trans "Create Room" %}</a>
             </li>
         {% endif %}
         <li class="nav-link_white">
-            <a href="{% url "lists:see-favs" %}">Favs({% if user.list.rooms.count > 0 %}{{user.list.rooms.count}}{% else %}0{% endif %})</a>
+            <a href="{% url "lists:see-favs" %}">{% trans "Favs" %}({% if user.list.rooms.count > 0 %}{{user.list.rooms.count}}{% else %}0{% endif %})</a>
         </li>
         <li class="nav-link_white">
             {% comment %} User Model은 get_absolute_url이라는 메서드를 가지고 있다 {% endcomment %}
             {% comment %} get_abolute_url은 url을 반환하며 어드민 패널에서 view on site 기능을 제공하기 때문에 사용한다 {% endcomment %}
             {% comment %} a href="{% url 'users:profile' user.pk %}"로 해도 작동하지만 어드민 패널의 view on site 기능은 제공하지 않는다 {% endcomment %}
-            <a href="{{user.get_absolute_url}}">Profile</a>
+            <a href="{{user.get_absolute_url}}">{% trans "Profile" %}</a>
         </li>
         <li class="nav-link_white">
-            <a href="{% url "users:logout" %}">Log Out</a>
+            <a href="{% url "users:logout" %}">{% trans "Log Out" %}</a>
         </li>
     {% else %}
         <li class="nav-link_white">
-            <a href="{% url "users:login" %}">Log In</a>
+            <a href="{% url "users:login" %}">{% trans "Log In" %}</a>
         </li>
         <li class="nav-link_white">
-            <a href="{% url "users:signup" %}">Sign Up</a>
+            <a href="{% url "users:signup" %}">{% trans "Sign Up" %}</a>
         </li>
     {% endif %}
 </ul>
