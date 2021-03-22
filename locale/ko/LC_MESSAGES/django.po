@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-22 11:37+0900\n"
+"POT-Creation-Date: 2021-03-22 12:07+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -348,6 +348,60 @@ msgstr "로그인"
 #: .\templates\partials\nav.html:41
 msgid "Sign Up"
 msgstr "회원가입"
+
+#: .\templates\reservations\detail.html:6
+#, python-format
+msgid "Reservation %(check_in)s"
+msgstr "%(check_in)s 예약하기"
+
+#: .\templates\reservations\detail.html:17
+msgid "Contact Your Host"
+msgstr "객실주인에게 연락하기"
+
+#: .\templates\reservations\detail.html:33
+msgid "Contact your Shigatsubnb Host"
+msgstr "Shigatsubnb의 객실주인에게 연락하세요"
+
+#: .\templates\reservations\detail.html:34
+msgid ""
+"Your host is the best person to contact for questions about your reservation."
+msgstr "객실주인은 여러분의 질문을 대답하기에 가장 적합한 인물입니다."
+
+#: .\templates\reservations\detail.html:36
+msgid "Send a Message"
+msgstr "쪽지 보내기"
+
+#: .\templates\reservations\detail.html:38
+msgid "Cancel Reservation"
+msgstr "예약 취소하기"
+
+#: .\templates\reservations\detail.html:45
+msgid "Write a Review"
+msgstr "후기 작성하기"
+
+#: .\templates\reservations\detail.html:49
+msgid "Submit Review"
+msgstr "후기 작성완료"
+
+#: .\templates\reservations\detail.html:58
+msgid "Contact Your Guest"
+msgstr "손님에게 연락하기"
+
+#: .\templates\reservations\detail.html:59
+msgid ""
+"The easier way to reach an agreement is to work with your guest directly. "
+"Send them a message, offer a refund, or request additional payment"
+msgstr ""
+"합의에 도달하는 더 쉬운 방법은 손님과 직접 작업하는 것입니다. 메시지를 보내거"
+"나 환불을 제공하거나 추가 결제를 요청합니다."
+
+#: .\templates\reservations\detail.html:66
+msgid "Send Message"
+msgstr "쪽지 보내기"
+
+#: .\templates\reservations\detail.html:71
+msgid "Confirm Reservation"
+msgstr "예약 완료하기"
 
 #: .\templates\rooms\photo_create.html:6 .\templates\rooms\photo_create.html:16
 #: .\templates\rooms\room_photos.html:20
