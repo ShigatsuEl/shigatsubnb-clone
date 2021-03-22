@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-22 11:11+0900\n"
+"POT-Creation-Date: 2021-03-22 11:37+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -300,6 +300,10 @@ msgstr "객실"
 msgid "Search by city"
 msgstr "도시명으로 검색"
 
+#: .\templates\mixins\room\form.html:22
+msgid "Continue"
+msgstr "완료하기"
+
 #: .\templates\mixins\room_card.html:9 .\users\models.py:73
 msgid "superhost"
 msgstr "슈퍼호스트"
@@ -320,7 +324,8 @@ msgstr "호스팅 정지"
 msgid "Start Hosting"
 msgstr "호스팅 시작"
 
-#: .\templates\partials\nav.html:18
+#: .\templates\partials\nav.html:18 .\templates\rooms\room_create.html:6
+#: .\templates\rooms\room_create.html:16
 msgid "Create Room"
 msgstr "방 만들기"
 
@@ -343,6 +348,23 @@ msgstr "로그인"
 #: .\templates\partials\nav.html:41
 msgid "Sign Up"
 msgstr "회원가입"
+
+#: .\templates\rooms\photo_create.html:6 .\templates\rooms\photo_create.html:16
+#: .\templates\rooms\room_photos.html:20
+msgid "Upload Photo"
+msgstr "객실사진 추가"
+
+#: .\templates\rooms\photo_create.html:21
+msgid "Back to the room photos"
+msgstr "객실사진으로 돌아가기"
+
+#: .\templates\rooms\photo_edit.html:6 .\templates\rooms\photo_edit.html:16
+msgid "Update Photo"
+msgstr "객실사진 수정"
+
+#: .\templates\rooms\photo_edit.html:21
+msgid "Back to update room photos"
+msgstr "객실사진으로 돌아가기"
 
 #: .\templates\rooms\room_detail.html:33
 msgid "Remove From Favorite"
@@ -431,6 +453,22 @@ msgstr "%(count)s"
 msgid "review%(count|pluralize)s"
 msgstr "리뷰%(count|pluralize)s"
 
+#: .\templates\rooms\room_edit.html:6 .\templates\rooms\room_edit.html:16
+msgid "Update Room"
+msgstr "객실정보 수정"
+
+#: .\templates\rooms\room_edit.html:21
+msgid "Edit Photos"
+msgstr "객실사진 수정"
+
+#: .\templates\rooms\room_edit.html:22
+msgid "or"
+msgstr "또는"
+
+#: .\templates\rooms\room_edit.html:23
+msgid "Back to the room"
+msgstr "객실로 돌아가기"
+
 #: .\templates\rooms\room_list.html:5
 msgid "Home"
 msgstr "홈"
@@ -438,6 +476,27 @@ msgstr "홈"
 #: .\templates\rooms\room_list.html:14
 msgid "Welcomte to Shigatsubnb"
 msgstr "Shigatsubnb에 오신 것을 환영합니다"
+
+#: .\templates\rooms\room_photos.html:6
+#, python-format
+msgid "%(name)s's Photos"
+msgstr "%(name)s님의 사진(들)"
+
+#: .\templates\rooms\room_photos.html:16
+msgid "Room Photos"
+msgstr "객실사진"
+
+#: .\templates\rooms\room_photos.html:30
+msgid "Edit"
+msgstr "수정하기"
+
+#: .\templates\rooms\room_photos.html:31
+msgid "Delete"
+msgstr "삭제하기"
+
+#: .\templates\rooms\room_photos.html:37
+msgid "Back to edit room"
+msgstr "객실정보 수정하러 돌아가기"
 
 #: .\users\admin.py:25
 msgid "Custom Profile"

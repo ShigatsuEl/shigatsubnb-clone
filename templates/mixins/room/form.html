@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <form class="w-full" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
@@ -15,5 +17,5 @@
         {% endfor %}
     {% endif %}
 
-    <button class="rounded-lg mt-6 px-2 py-3 w-full text-white font-medium bg-red-500">Continue</button>
+    <button class="rounded-lg mt-6 px-2 py-3 w-full text-white font-medium bg-red-500">{% trans "Continue" %}</button>
 </form>
