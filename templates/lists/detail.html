@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block page_title %}
 
-    {{user.first_name}}{{user.last_name}}'s Favorite Room
+    {% blocktrans with first=user.first_name last=user.last_name %}{{first}}{{last}}'s Favorite Room{% endblocktrans %}
 
 
 {% endblock page_title %}
@@ -24,7 +25,7 @@
         </div>
 
         <div class="container flex flex-col items-center">
-            <h3>{{user.first_name}}{{user.last_name}}'s Favorite Rooms</h3>
+            <h3>{% blocktrans with first=user.first_name last=user.last_name %}{{first}}{{last}}'s Favorite Rooms{% endblocktrans %}</h3>
             <div class="flex flex-wrap w-full mt-10 px-20">
                 {% for room in user.list.rooms.all %}
                     {% include "mixins/room_card.html" with room=room %}
