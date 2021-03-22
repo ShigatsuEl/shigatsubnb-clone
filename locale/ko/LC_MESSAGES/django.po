@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-22 13:48+0900\n"
+"POT-Creation-Date: 2021-03-22 13:53+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: .\conversations\models.py:12 .\conversations\models.py:61
+#: .\templates\conversations\detail.html:5
 msgid "Conversation"
 msgstr "객실 대화"
 
@@ -299,6 +300,22 @@ msgstr "객실"
 #: .\templates\base.html:23
 msgid "Search by city"
 msgstr "도시명으로 검색"
+
+#: .\templates\conversations\detail.html:16
+msgid "Conversation between"
+msgstr "대화 상대"
+
+#: .\templates\conversations\detail.html:30
+msgid "Add a Comment"
+msgstr "대화를 입력하세요"
+
+#: .\templates\conversations\detail.html:31
+msgid "Send Comment"
+msgstr "쪽지 보내기"
+
+#: .\templates\conversations\detail.html:37
+msgid "No messages"
+msgstr "쪽지가 없습니다"
 
 #: .\templates\mixins\auth\form.html:22 .\templates\mixins\room\form.html:22
 msgid "Continue"

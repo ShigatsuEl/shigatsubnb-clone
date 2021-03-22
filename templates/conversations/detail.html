@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block page_title %}
-    Conversation
+    {% trans "Conversation" %}
 {% endblock page_title %}
 
 {% block search-bar %}
@@ -12,7 +13,7 @@
     <div class="flex mx-auto w-4/5 my-10 mt-32">
 
         <div class="sticky top-32 flex flex-col border w-1/4 h-full p-10">
-            <span class="w-full text-center text-lg font-medium">Conversation between</span>
+            <span class="w-full text-center text-lg font-medium">{% trans "Conversation between" %}</span>
             <div class="flex justify-between mt-10 mb-5 items-center">
                 {% for user in conversation.participants.all  %}
                     <div class="flex flex-col items-center">
@@ -26,14 +27,14 @@
             </div>
             <form method="POST">
                 {% csrf_token %}
-                <textarea class="form-btn" name="message" id="message" cols="30" rows="10" placeholder="Add a Comment" required></textarea>
-                <button class="btn-link mt-5 py-2">Send Comment</button>
+                <textarea class="form-btn" name="message" id="message" cols="30" rows="10" placeholder="{% trans "Add a Comment" %}" required></textarea>
+                <button class="btn-link mt-5 py-2">{% trans "Send Comment" %}</button>
             </form>
             
         </div>
         <div class="flex flex-col flex-grow h-full ml-10 border p-10">
             {% if conversation.messages.count == 0 %}
-                <span>No messages</span>
+                <span>{% trans "No messages" %}</span>
             {% else %}
                 {% for message in conversation.messages.all  %}
                     <div class="mb-10 {% if message.user.pk == user.pk %}self-end text-right{% endif %}">
