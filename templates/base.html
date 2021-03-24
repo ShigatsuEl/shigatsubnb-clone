@@ -11,15 +11,15 @@
 </head>
 <body class="mt-20 text-gray-700 font-light">
     {% include "partials/messages.html" %}
-    <header class="container fixed inset-0 flex justify-between items-center px-20 max-w-full h-20 shadow-md bg-black" id="js-header">
-        <div class="w-2/5">
+    <header class="container fixed inset-0 flex justify-between items-center px-5 max-w-full h-20 shadow-md bg-black lg:px-20 sm:px-10" id="js-header">
+        <div class="flex w-1/4 lg:w-2/5">
             <a class="flex items-center" id="js-logo" href="{% url "core:home" %}">
                 <i class="fab fa-airbnb mr-2 text-4xl text-white"></i>
                 <h1 class="text-base text-white">Shigatsubnb</h1>
             </a>
         </div>
         {% block search-bar %}
-            <form class="flex justify-center w-1/5" method="get" action="{% url "rooms:search" %}">
+            <form class="flex justify-center w-2/5 lg:w-1/5" method="get" action="{% url "rooms:search" %}">
                 <input class="search-box border rounded-3xl w-full text-center placeholder-gray-500 text-gray-900 shadow-md hover:shadow-lg focus:outline-none focus:ring-1 focus:ring-gray-400 px-6 py-2" type="text" placeholder="{% trans "Search by city" %}" name="city" />
             </form>
         {% endblock search-bar %}
@@ -35,7 +35,9 @@
         const logo = document.querySelector("#js-logo i");
         const heading = document.querySelector("#js-logo h1");
         const nav = document.querySelectorAll("#js-nav li");
-        console.log(nav);
+        const bar = document.getElementById("js-bar");
+        const hiddenBar = document.getElementById("js-hidden-bar");
+        const hiddenNav = document.getElementById("js-hidden-nav");
 
         const handleLangChange = () => {
             const selected = langSelect.value;
@@ -55,6 +57,7 @@
                     li.classList.add("nav-link_pink");
                     li.classList.remove("nav-link_white");
                 })
+                bar.classList.add("text-red-400");
             } else {
                 header.classList.add('bg-black');
                 header.classList.remove('bg-white');
@@ -66,10 +69,24 @@
                     li.classList.add("nav-link_white");
                     li.classList.remove("nav-link_pink");
                 })
+                bar.classList.remove("text-red-400");
             }
         }
-        langSelect.addEventListener("change", handleLangChange);
+
+        const handleBarClick = () => {
+            hiddenNav.classList.toggle("hidden");
+            hiddenNav.classList.toggle("flex");
+        }
+
+        const handleHiddenBarClick = () => {
+            hiddenNav.classList.toggle("hidden");
+            hiddenNav.classList.toggle("flex");
+        }
+
         window.addEventListener("scroll", handleHeader);
+        langSelect.addEventListener("change", handleLangChange);
+        bar.addEventListener("click", handleBarClick);
+        hiddenBar.addEventListener("click", handleHiddenBarClick);
     </script>
     
 </body>

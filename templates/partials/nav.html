@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<ul class="flex justify-end w-2/5 text-xs font-bold h-full" id="js-nav">
+<ul class="hidden justify-end w-1/4 text-xs font-bold h-full lg:flex lg:w-2/5" id="js-nav">
     {% comment %} user은 Django의 context_processor가 자동으로 template에 추가한다 {% endcomment %}
     {% if user.is_authenticated %}
         <li class="nav-link_white">
@@ -38,3 +38,53 @@
         </li>
     {% endif %}
 </ul>
+
+<div class="flex justify-end w-1/4 text-lg text-white font-bold lg:hidden lg:w-2/5">
+    <i class="fas fa-bars cursor-pointer" id="js-bar"></i>
+</div>
+
+<div class="absolute top-0 left-0 hidden justify-between px-5 w-full h-20 bg-white z-10 sm:px-10" id="js-hidden-nav">
+    <div class="hidden w-1/3 lg:w-2/5 text-red-400 sm:flex">
+        <a class="flex items-center" id="js-logo" href="{% url "core:home" %}">
+            <i class="fab fa-airbnb mr-2 text-4xl"></i>
+            <h1 class="text-base">Shigatsubnb</h1>
+        </a>
+    </div>
+    <ul class="flex text-xs font-bold h-full">
+        {% if user.is_authenticated %}
+            <li class="nav-link_pink">
+                <a href="{% url "users:switch-hosting" %}">
+                    {% if request.session.is_hosting %}
+                        {% trans "Stop Hosting" %}
+                    {% else %}
+                        {% trans "Start Hosting" %}
+                    {% endif %}
+                </a>
+            </li>
+            {% if request.session.is_hosting %}
+                <li class="nav-link_pink">
+                    <a href="{% url "rooms:create" %}">{% trans "Create Room" %}</a>
+                </li>
+            {% endif %}
+            <li class="nav-link_pink">
+                <a href="{% url "lists:see-favs" %}">{% trans "Favs" %}({% if user.list.rooms.count > 0 %}{{user.list.rooms.count}}{% else %}0{% endif %})</a>
+            </li>
+            <li class="nav-link_pink">
+                <a href="{{user.get_absolute_url}}">{% trans "Profile" %}</a>
+            </li>
+            <li class="nav-link_pink">
+                <a href="{% url "users:logout" %}">{% trans "Log Out" %}</a>
+            </li>
+        {% else %}
+            <li class="nav-link_pink">
+                <a href="{% url "users:login" %}">{% trans "Log In" %}</a>
+            </li>
+            <li class="nav-link_pink">
+                <a href="{% url "users:signup" %}">{% trans "Sign Up" %}</a>
+            </li>
+        {% endif %}
+            <div class="nav-link_pink text-lg border-none font-bold cursor-pointer" id="js-hidden-bar">
+                <i class="fas fa-bars"></i>
+            </div>
+    </ul>
+</div>
