@@ -49,6 +49,12 @@ textarea {
   @apply border-b border-gray-300 py-10;
 }
 
+.sm-items-unset {
+  @media (min-width: 640px) {
+    align-items: unset !important;
+  }
+}
+
 @keyframes messageFadeIn {
   0% {
     opacity: 0;
