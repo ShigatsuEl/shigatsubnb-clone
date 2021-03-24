@@ -1,9 +1,9 @@
 {% load i18n %}
 
-<footer class="flex flex-col mx-auto border-t border-gray-300 py-10 text-center">
+<footer class="flex flex-col mx-auto border-t px-10 border-gray-300 py-10 text-center">
     <span class="mb-2">&copy; 2021 Shigatsubnb, {% trans "Inc." %} {% trans "All rights reserved" %}</span>
     {% get_current_language as LANGUAGE_CODE %}
-    <select class="self-center border w-1/12" id="js-lang">
+    <select class="w-1/4 self-center border md:w-1/12 sm:w-1/6" id="js-lang">
         <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
         <option value="ko" {% if LANGUAGE_CODE == 'ko' %}selected{% endif %}>Korean</option>
     </select>
