@@ -38,6 +38,24 @@
         const bar = document.getElementById("js-bar");
         const hiddenBar = document.getElementById("js-hidden-bar");
         const hiddenNav = document.getElementById("js-hidden-nav");
+        const homeImg = document.getElementById("js-home-img");
+
+        const data = [
+            "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+            "https://images.unsplash.com/photo-1484950763426-56b5bf172dbb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+            "https://images.unsplash.com/photo-1556634202-129a046351c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+            "https://images.unsplash.com/photo-1487119998088-a65531a3ae5c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80",
+            "https://images.unsplash.com/photo-1500021804447-2ca2eaaaabeb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+            "https://images.unsplash.com/photo-1484821582734-6c6c9f99a672?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1791&q=80",
+            "https://images.unsplash.com/photo-1531214273921-f62327a9a822?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1949&q=80",
+            "https://images.unsplash.com/photo-1535156123341-18b2b37d485a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80",
+            "https://images.unsplash.com/photo-1533501747004-381b96042e88?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+            "https://images.unsplash.com/photo-1505642257289-9f2d7dd73641?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1994&q=80"
+
+        ]
+
+        const randomNum = Math.floor(Math.random() * 10);
+        console.log(randomNum);
 
         const handleLangChange = () => {
             const selected = langSelect.value;
@@ -83,10 +101,17 @@
             hiddenNav.classList.toggle("flex");
         }
 
+        const handleHomeImg = () => {
+            homeImg.style = `background-image: url(${data[randomNum]});`
+        }
+
         window.addEventListener("scroll", handleHeader);
         langSelect.addEventListener("change", handleLangChange);
         bar.addEventListener("click", handleBarClick);
         hiddenBar.addEventListener("click", handleHiddenBarClick);
+        if (homeImg) {
+            window.addEventListener("load", handleHomeImg);
+        }
     </script>
     
 </body>
