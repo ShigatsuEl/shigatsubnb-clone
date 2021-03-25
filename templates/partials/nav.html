@@ -50,7 +50,7 @@
             <h1 class="text-base">Shigatsubnb</h1>
         </a>
     </div>
-    <ul class="flex justify-between text-xs font-bold w-full h-full sm:w-max">
+    <ul class="flex {% if user.is_authenticated %}justify-between{% else %}justify-end{% endif %} text-xs font-bold w-full h-full sm:w-max">
         {% if user.is_authenticated %}
             <li class="nav-link_pink ml-0 sm:ml-4">
                 <a href="{% url "users:switch-hosting" %}">
