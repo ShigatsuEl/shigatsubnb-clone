@@ -28,7 +28,7 @@
         </div>
 
         {% if user_obj.rooms.count > 0 %}
-            <div class="container flex flex-col items-center">
+            <div class="flex flex-col items-center">
                 <h3>{% blocktrans with first=user_obj.first_name last=user_obj.last_name %}{{first}}{{last}}'s Rooms{% endblocktrans %}</h3>
                 <div class="flex flex-wrap mt-10 px-20">
                     {% for room in user_obj.rooms.all %}
