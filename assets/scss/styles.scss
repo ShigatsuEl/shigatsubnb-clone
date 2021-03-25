@@ -49,6 +49,12 @@ textarea {
   @apply border-b border-gray-300 py-10;
 }
 
+.xl-justify-unset {
+  @media (min-width: 1280px) {
+    justify-content: unset !important;
+  }
+}
+
 .sm-items-unset {
   @media (min-width: 640px) {
     align-items: unset !important;
