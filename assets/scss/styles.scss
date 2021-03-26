@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 
+.checkbox-input {
+  @apply relative;
+  top: 2px;
+}
+
 .search-box {
   transition: box-shadow 0.2s linear;
 }
