@@ -23,8 +23,10 @@
         </div>
     </div>
 
-    {% for room in rooms %}
-        <h3>{{room.name}}</h3>
-    {% endfor %}
+    <div class="flex flex-wrap mt-20 px-20">
+        {% for room in rooms %}
+            {% include "mixins/room_card.html" with room=room %}
+        {% endfor %}
+    </div>
 
 {% endblock content %}
