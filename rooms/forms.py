@@ -2,6 +2,7 @@ from django import forms
 from django.core.validators import MinValueValidator
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
+from django.utils.translation import gettext_lazy as _
 from . import models
 
 
@@ -9,22 +10,26 @@ from . import models
 class SearchForm(forms.Form):
 
     city = forms.CharField(
-        initial="Anywhere", widget=forms.TextInput(attrs={"class": "form-btn"})
+        initial="Anywhere",
+        label=_("City"),
+        widget=forms.TextInput(attrs={"class": "form-btn"}),
     )
     country = CountryField(default="KR").formfield(
-        widget=CountrySelectWidget(attrs={"class": "form-btn"})
+        widget=CountrySelectWidget(attrs={"class": "form-btn"}), label=_("Country")
     )
     # ModelChoiceField는 Select Option과 똑같은 Form 기능이다
     # ModelChoiceField는 Foreign Key에 해당한다
     # ModeleChoiceField는 인자로 QuerySet을 가진다
     room_type = forms.ModelChoiceField(
         required=False,
+        label=_("Room Type"),
         empty_label="Any Kind",
         queryset=models.RoomType.objects.all(),
         widget=forms.Select(attrs={"class": "form-btn"}),
     )
     price = forms.IntegerField(
         required=False,
+        label=_("Price"),
         validators=[
             MinValueValidator(0),
         ],
@@ -32,6 +37,7 @@ class SearchForm(forms.Form):
     )
     guests = forms.IntegerField(
         required=False,
+        label=_("Guests"),
         validators=[
             MinValueValidator(0),
         ],
@@ -39,6 +45,7 @@ class SearchForm(forms.Form):
     )
     bedrooms = forms.IntegerField(
         required=False,
+        label=_("Bedrooms"),
         validators=[
             MinValueValidator(0),
         ],
@@ -46,6 +53,7 @@ class SearchForm(forms.Form):
     )
     beds = forms.IntegerField(
         required=False,
+        label=_("Beds"),
         validators=[
             MinValueValidator(0),
         ],
@@ -53,25 +61,32 @@ class SearchForm(forms.Form):
     )
     baths = forms.IntegerField(
         required=False,
+        label=_("Baths"),
         validators=[
             MinValueValidator(0),
         ],
         widget=forms.NumberInput(attrs={"class": "form-btn"}),
     )
     instant_book = forms.BooleanField(
-        required=False, widget=forms.CheckboxInput(attrs={"class": "checkbox-input"})
+        required=False,
+        label=_("Instant Book"),
+        widget=forms.CheckboxInput(attrs={"class": "checkbox-input"}),
     )
     superhost = forms.BooleanField(
-        required=False, widget=forms.CheckboxInput(attrs={"class": "checkbox-input"})
+        required=False,
+        label=_("Superhost"),
+        widget=forms.CheckboxInput(attrs={"class": "checkbox-input"}),
     )
     # ModelMultipleChoiceField는 Many to Many Field에 해당한다
     amenities = forms.ModelMultipleChoiceField(
         required=False,
+        label=_("Amenities"),
         queryset=models.Amenity.objects.all(),
         widget=forms.CheckboxSelectMultiple(attrs={"class": "form-btn w-auto"}),
     )
     facilities = forms.ModelMultipleChoiceField(
         required=False,
+        label=_("Facilities"),
         queryset=models.Facility.objects.all(),
         widget=forms.CheckboxSelectMultiple(attrs={"class": "form-btn w-auto"}),
     )

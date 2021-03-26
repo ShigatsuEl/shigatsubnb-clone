@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-22 13:57+0900\n"
+"POT-Creation-Date: 2021-03-26 14:28+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -199,9 +199,53 @@ msgstr "사진 개수"
 msgid "Thumbnail"
 msgstr "썸네일"
 
-#: .\rooms\models.py:29 .\rooms\models.py:131
+#: .\rooms\forms.py:14 .\rooms\models.py:91
+msgid "City"
+msgstr "도시"
+
+#: .\rooms\forms.py:18 .\rooms\models.py:89
+msgid "Country"
+msgstr "나라"
+
+#: .\rooms\forms.py:25 .\rooms\models.py:29 .\rooms\models.py:131
 msgid "Room Type"
 msgstr "객실 유형"
+
+#: .\rooms\forms.py:32 .\rooms\models.py:93
+msgid "Price"
+msgstr "가격"
+
+#: .\rooms\forms.py:40
+msgid "Guests"
+msgstr "손님"
+
+#: .\rooms\forms.py:48
+msgid "Bedrooms"
+msgstr "침실"
+
+#: .\rooms\forms.py:56
+msgid "Beds"
+msgstr "침대"
+
+#: .\rooms\forms.py:64
+msgid "Baths"
+msgstr "욕실"
+
+#: .\rooms\forms.py:72 .\rooms\models.py:114
+msgid "Instant Book"
+msgstr "즉시 예약"
+
+#: .\rooms\forms.py:77
+msgid "Superhost"
+msgstr "슈퍼호스트"
+
+#: .\rooms\forms.py:83 .\rooms\models.py:41
+msgid "Amenities"
+msgstr "편의용품"
+
+#: .\rooms\forms.py:89 .\rooms\models.py:51
+msgid "Facilities"
+msgstr "편의시설"
 
 #: .\rooms\models.py:30
 msgid "Room Types"
@@ -212,17 +256,9 @@ msgstr "객실 유형"
 msgid "Amenity"
 msgstr "편의용품"
 
-#: .\rooms\models.py:41
-msgid "Amenities"
-msgstr "편의용품"
-
 #: .\rooms\models.py:50 .\rooms\models.py:138
 #: .\templates\rooms\room_detail.html:106
 msgid "Facility"
-msgstr "편의시설"
-
-#: .\rooms\models.py:51
-msgid "Facilities"
 msgstr "편의시설"
 
 #: .\rooms\models.py:60 .\rooms\models.py:141
@@ -253,18 +289,6 @@ msgstr "객실 이름"
 msgid "Description"
 msgstr "객실 설명란"
 
-#: .\rooms\models.py:89
-msgid "Country"
-msgstr "나라"
-
-#: .\rooms\models.py:91
-msgid "City"
-msgstr "도시"
-
-#: .\rooms\models.py:93
-msgid "Price"
-msgstr "가격"
-
 #: .\rooms\models.py:95
 msgid "Address"
 msgstr "주소"
@@ -280,10 +304,6 @@ msgstr "침실"
 #: .\rooms\models.py:106
 msgid "Bath"
 msgstr "욕실"
-
-#: .\rooms\models.py:114
-msgid "Instant Book"
-msgstr "즉시 예약"
 
 #: .\rooms\models.py:124
 msgid "Host"
@@ -318,10 +338,12 @@ msgid "No messages"
 msgstr "쪽지가 없습니다"
 
 #: .\templates\lists\detail.html:6
+#, python-format
 msgid "%(first)s%(last)s's Favorite Room"
 msgstr "%(first)s%(last)s님의 찜"
 
 #: .\templates\lists\detail.html:28
+#, python-format
 msgid "%(first)s%(last)s's Favorite Rooms"
 msgstr "%(first)s%(last)s님의 찜 목록"
 
@@ -333,6 +355,12 @@ msgstr "계속하기"
 msgid "superhost"
 msgstr "슈퍼호스트"
 
+#: .\templates\mixins\search\form.html:21 .\templates\rooms\search.html:16
+#, fuzzy
+#| msgid "Search by city"
+msgid "Search"
+msgstr "도시명으로 검색"
+
 #: .\templates\partials\footer.html:4
 msgid "Inc."
 msgstr "주식회사."
@@ -341,38 +369,40 @@ msgstr "주식회사."
 msgid "All rights reserved"
 msgstr "판권소유 및 저작권법 보호를 받고 있습니다"
 
-#: .\templates\partials\nav.html:10
+#: .\templates\partials\nav.html:10 .\templates\partials\nav.html:62
 msgid "Stop Hosting"
 msgstr "호스팅 정지"
 
-#: .\templates\partials\nav.html:12
+#: .\templates\partials\nav.html:12 .\templates\partials\nav.html:64
 msgid "Start Hosting"
 msgstr "호스팅 시작"
 
-#: .\templates\partials\nav.html:18 .\templates\rooms\room_create.html:6
-#: .\templates\rooms\room_create.html:16
+#: .\templates\partials\nav.html:18 .\templates\partials\nav.html:70
+#: .\templates\rooms\room_create.html:6 .\templates\rooms\room_create.html:16
 msgid "Create Room"
 msgstr "방 만들기"
 
-#: .\templates\partials\nav.html:22
+#: .\templates\partials\nav.html:22 .\templates\partials\nav.html:74
 msgid "Favs"
 msgstr "찜"
 
-#: .\templates\partials\nav.html:31
+#: .\templates\partials\nav.html:31 .\templates\partials\nav.html:77
 msgid "Profile"
 msgstr "프로필"
 
-#: .\templates\partials\nav.html:34
+#: .\templates\partials\nav.html:34 .\templates\partials\nav.html:80
 msgid "Log Out"
 msgstr "로그아웃"
 
-#: .\templates\partials\nav.html:38 .\templates\users\login.html:6
-#: .\templates\users\login.html:16 .\templates\users\singup.html:21
+#: .\templates\partials\nav.html:38 .\templates\partials\nav.html:84
+#: .\templates\users\login.html:6 .\templates\users\login.html:16
+#: .\templates\users\singup.html:21
 msgid "Log In"
 msgstr "로그인"
 
-#: .\templates\partials\nav.html:41 .\templates\users\login.html:21
-#: .\templates\users\singup.html:6 .\templates\users\singup.html:16
+#: .\templates\partials\nav.html:41 .\templates\partials\nav.html:87
+#: .\templates\users\login.html:21 .\templates\users\singup.html:6
+#: .\templates\users\singup.html:16
 msgid "Sign Up"
 msgstr "회원가입"
 
@@ -402,27 +432,27 @@ msgid ""
 "Your host is the best person to contact for questions about your reservation."
 msgstr "객실주인은 여러분의 질문을 대답하기에 가장 적합한 인물입니다."
 
-#: .\templates\reservations\detail.html:36
+#: .\templates\reservations\detail.html:37
 msgid "Send a Message"
 msgstr "쪽지 보내기"
 
-#: .\templates\reservations\detail.html:38
+#: .\templates\reservations\detail.html:39
 msgid "Cancel Reservation"
 msgstr "예약 취소하기"
 
-#: .\templates\reservations\detail.html:45
+#: .\templates\reservations\detail.html:47
 msgid "Write a Review"
 msgstr "후기 작성하기"
 
-#: .\templates\reservations\detail.html:49
+#: .\templates\reservations\detail.html:51
 msgid "Submit Review"
 msgstr "후기 작성완료"
 
-#: .\templates\reservations\detail.html:58
+#: .\templates\reservations\detail.html:60
 msgid "Contact Your Guest"
 msgstr "손님에게 연락하기"
 
-#: .\templates\reservations\detail.html:59
+#: .\templates\reservations\detail.html:61
 msgid ""
 "The easier way to reach an agreement is to work with your guest directly. "
 "Send them a message, offer a refund, or request additional payment"
@@ -430,11 +460,11 @@ msgstr ""
 "합의에 도달하는 더 쉬운 방법은 손님과 직접 작업하는 것입니다. 메시지를 보내거"
 "나 환불을 제공하거나 추가 결제를 요청합니다."
 
-#: .\templates\reservations\detail.html:66
+#: .\templates\reservations\detail.html:69
 msgid "Send Message"
 msgstr "쪽지 보내기"
 
-#: .\templates\reservations\detail.html:71
+#: .\templates\reservations\detail.html:75
 msgid "Confirm Reservation"
 msgstr "예약 완료하기"
 
@@ -587,6 +617,12 @@ msgstr "삭제하기"
 msgid "Back to edit room"
 msgstr "객실정보 수정하러 돌아가기"
 
+#: .\templates\rooms\search.html:21
+#, fuzzy
+#| msgid "Back to the room"
+msgid "Back to Home"
+msgstr "객실로 돌아가기"
+
 #: .\templates\users\login.html:20
 msgid "Don't have an account? "
 msgstr "계정이 없으신가요? "
@@ -720,6 +756,36 @@ msgstr "로그인 방식"
 #: .\users\models.py:94
 msgid "Verify Shigatsubnb Account"
 msgstr "Shigatsubnb 계정 인증"
+
+#~ msgid "city"
+#~ msgstr "도시"
+
+#~ msgid "room_type"
+#~ msgstr "객실 형태"
+
+#~ msgid "price"
+#~ msgstr "가격"
+
+#~ msgid "guests"
+#~ msgstr "손님"
+
+#~ msgid "bedrooms"
+#~ msgstr "침실"
+
+#~ msgid "beds"
+#~ msgstr "침대"
+
+#~ msgid "baths"
+#~ msgstr "욕실"
+
+#~ msgid "instant_book"
+#~ msgstr "즉시 예약"
+
+#~ msgid "amenities"
+#~ msgstr "편의용품"
+
+#~ msgid "facilities"
+#~ msgstr "편의시설"
 
 #, python-format
 #~ msgid "%(user.first_name)s%(user.last_name)s's Rooms"
