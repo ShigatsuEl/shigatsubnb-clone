@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import redirect, reverse, render
@@ -32,6 +33,8 @@ class ConversationDetailView(View):
         conversation = models.Conversation.objects.get_or_none(pk=pk)
         if not conversation:
             raise Http404()
+        if self.request.user not in conversation.participants.all():
+            raise Http404()
         form = forms.AddCommentForm()
         return render(
             self.request,
@@ -45,8 +48,11 @@ class ConversationDetailView(View):
         conversation = models.Conversation.objects.get_or_none(pk=pk)
         if not conversation:
             raise Http404()
-        if message is not None:
-            models.Message.objects.create(
-                message=message, user=self.request.user, conversation=conversation
-            )
+        if self.request.user in conversation.participants.all():
+            if message is not None:
+                models.Message.objects.create(
+                    message=message, user=self.request.user, conversation=conversation
+                )
+        else:
+            messages.error(self.request, "You are not conversation participant")
         return redirect(reverse("conversations:detail", kwargs={"pk": pk}))
