@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-26 14:28+0900\n"
+"POT-Creation-Date: 2021-03-27 12:32+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -199,51 +199,51 @@ msgstr "사진 개수"
 msgid "Thumbnail"
 msgstr "썸네일"
 
-#: .\rooms\forms.py:14 .\rooms\models.py:91
+#: .\rooms\forms.py:15 .\rooms\models.py:91
 msgid "City"
 msgstr "도시"
 
-#: .\rooms\forms.py:18 .\rooms\models.py:89
+#: .\rooms\forms.py:20 .\rooms\models.py:89
 msgid "Country"
 msgstr "나라"
 
-#: .\rooms\forms.py:25 .\rooms\models.py:29 .\rooms\models.py:131
+#: .\rooms\forms.py:27 .\rooms\models.py:29 .\rooms\models.py:131
 msgid "Room Type"
 msgstr "객실 유형"
 
-#: .\rooms\forms.py:32 .\rooms\models.py:93
+#: .\rooms\forms.py:34 .\rooms\models.py:93
 msgid "Price"
 msgstr "가격"
 
-#: .\rooms\forms.py:40
+#: .\rooms\forms.py:42
 msgid "Guests"
 msgstr "손님"
 
-#: .\rooms\forms.py:48
+#: .\rooms\forms.py:50
 msgid "Bedrooms"
 msgstr "침실"
 
-#: .\rooms\forms.py:56
+#: .\rooms\forms.py:58
 msgid "Beds"
 msgstr "침대"
 
-#: .\rooms\forms.py:64
+#: .\rooms\forms.py:66
 msgid "Baths"
 msgstr "욕실"
 
-#: .\rooms\forms.py:72 .\rooms\models.py:114
+#: .\rooms\forms.py:74 .\rooms\models.py:114
 msgid "Instant Book"
 msgstr "즉시 예약"
 
-#: .\rooms\forms.py:77
+#: .\rooms\forms.py:79
 msgid "Superhost"
 msgstr "슈퍼호스트"
 
-#: .\rooms\forms.py:83 .\rooms\models.py:41
+#: .\rooms\forms.py:85 .\rooms\models.py:41
 msgid "Amenities"
 msgstr "편의용품"
 
-#: .\rooms\forms.py:89 .\rooms\models.py:51
+#: .\rooms\forms.py:91 .\rooms\models.py:51
 msgid "Facilities"
 msgstr "편의시설"
 
@@ -318,7 +318,7 @@ msgid "Rooms"
 msgstr "객실"
 
 #: .\templates\base.html:23
-msgid "Search by city"
+msgid "Search by country"
 msgstr "도시명으로 검색"
 
 #: .\templates\conversations\detail.html:16
@@ -355,11 +355,10 @@ msgstr "계속하기"
 msgid "superhost"
 msgstr "슈퍼호스트"
 
-#: .\templates\mixins\search\form.html:21 .\templates\rooms\search.html:16
-#, fuzzy
-#| msgid "Search by city"
+#: .\templates\mixins\search\form.html:21 .\templates\rooms\search.html:6
+#: .\templates\rooms\search.html:16
 msgid "Search"
-msgstr "도시명으로 검색"
+msgstr "검색하기"
 
 #: .\templates\partials\footer.html:4
 msgid "Inc."
@@ -618,10 +617,12 @@ msgid "Back to edit room"
 msgstr "객실정보 수정하러 돌아가기"
 
 #: .\templates\rooms\search.html:21
-#, fuzzy
-#| msgid "Back to the room"
 msgid "Back to Home"
-msgstr "객실로 돌아가기"
+msgstr "홈으로 돌아가기"
+
+#: .\templates\rooms\search.html:31
+msgid "No Search Result"
+msgstr "검색 결과가 없습니다"
 
 #: .\templates\users\login.html:20
 msgid "Don't have an account? "
@@ -756,37 +757,3 @@ msgstr "로그인 방식"
 #: .\users\models.py:94
 msgid "Verify Shigatsubnb Account"
 msgstr "Shigatsubnb 계정 인증"
-
-#~ msgid "city"
-#~ msgstr "도시"
-
-#~ msgid "room_type"
-#~ msgstr "객실 형태"
-
-#~ msgid "price"
-#~ msgstr "가격"
-
-#~ msgid "guests"
-#~ msgstr "손님"
-
-#~ msgid "bedrooms"
-#~ msgstr "침실"
-
-#~ msgid "beds"
-#~ msgstr "침대"
-
-#~ msgid "baths"
-#~ msgstr "욕실"
-
-#~ msgid "instant_book"
-#~ msgstr "즉시 예약"
-
-#~ msgid "amenities"
-#~ msgstr "편의용품"
-
-#~ msgid "facilities"
-#~ msgstr "편의시설"
-
-#, python-format
-#~ msgid "%(user.first_name)s%(user.last_name)s's Rooms"
-#~ msgstr "%(user.first_name)s%(user.last_name)s님의 객실"

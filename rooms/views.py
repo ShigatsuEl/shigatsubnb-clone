@@ -111,8 +111,7 @@ class SearchView(View):
 
         else:
 
-            # Unbounded Form
-            form = forms.SearchForm()
+            form = forms.SearchForm(request.GET)
 
         return render(request, "rooms/search.html", {"form": form})
 
@@ -204,9 +203,9 @@ class AddPhotoView(user_mixins.LoggedInOnlyMixin, FormView):
     def get_context_data(self, **kwargs):
         """Insert the form into the context dict."""
         pk = self.kwargs.get("pk")
-        if 'room' not in kwargs:
-            kwargs['room'] = models.Room.objects.get(pk=pk)
-        print(super().get_context_data(**kwargs)['room'].pk)
+        if "room" not in kwargs:
+            kwargs["room"] = models.Room.objects.get(pk=pk)
+        print(super().get_context_data(**kwargs)["room"].pk)
         return super().get_context_data(**kwargs)
 
     # form 검사기 -> 여기서는 pk를 form에 전달한다

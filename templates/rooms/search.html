@@ -3,7 +3,7 @@
 
 {% block page_title %}
 
-    Search
+    {% trans "Search" %}
 
 {% endblock page_title %}
 
@@ -27,6 +27,10 @@
         {% for room in rooms %}
             {% include "mixins/room_card.html" with room=room %}
         {% endfor %}
+        {% if not rooms %}
+            <h3 class="w-full text-xl text-gray-800 text-center mb-20">{% trans "No Search Result" %}</h3>
+        {% else %}
+        {% endif %}
     </div>
 
 {% endblock content %}

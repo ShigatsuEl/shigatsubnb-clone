@@ -10,12 +10,14 @@ from . import models
 class SearchForm(forms.Form):
 
     city = forms.CharField(
-        initial="Anywhere",
+        required=False,
+        initial="",
         label=_("City"),
         widget=forms.TextInput(attrs={"class": "form-btn"}),
     )
     country = CountryField(default="KR").formfield(
-        widget=CountrySelectWidget(attrs={"class": "form-btn"}), label=_("Country")
+        widget=CountrySelectWidget(attrs={"class": "form-btn"}),
+        label=_("Country"),
     )
     # ModelChoiceField는 Select Option과 똑같은 Form 기능이다
     # ModelChoiceField는 Foreign Key에 해당한다
