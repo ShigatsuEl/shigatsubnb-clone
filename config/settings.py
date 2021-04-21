@@ -26,7 +26,7 @@ SECRET_KEY = "u4w08=-s#sebf-uh+5in&d4k$0@6exkd@!fw1j8i78&t=lzax$"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shigatsubnb-clone.eba-bwmv4jgs.ap-northeast-2.elasticbeanstalk.com']
 
 
 # Application definition
