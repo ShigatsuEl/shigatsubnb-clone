@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "u4w08=-s#sebf-uh+5in&d4k$0@6exkd@!fw1j8i78&t=lzax$"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DEBUG'))
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -89,7 +89,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-if DEBUG: 
+if DEBUG is False: 
 
     DATABASES = {
         "default": {
