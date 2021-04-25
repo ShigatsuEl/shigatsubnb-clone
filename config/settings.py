@@ -26,7 +26,7 @@ SECRET_KEY = "u4w08=-s#sebf-uh+5in&d4k$0@6exkd@!fw1j8i78&t=lzax$"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(os.environ.get('DEBUG'))
 
-ALLOWED_HOSTS = ['.elasticbeanstalk.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
