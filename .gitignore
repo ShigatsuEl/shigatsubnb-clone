@@ -146,9 +146,6 @@ uploads/
 # node_modules
 node_modules
 
-# static
-static/
-
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
