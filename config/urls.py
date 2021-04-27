@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import os
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -20,6 +21,7 @@ from django.conf.urls.static import static
 
 def trigger_error(request):
     division_by_zero = 1 / 0
+
 
 # Divide and Conquer -> URL과 VIEW를 쪼개보자
 urlpatterns = [
@@ -30,7 +32,7 @@ urlpatterns = [
     path("rooms/", include("rooms.urls", namespace="rooms")),
     path("reservations/", include("reservations.urls", namespace="reservations")),
     path("reviews/", include("reviews.urls", namespace="reviews")),
-    path("admin/", admin.site.urls),
+    path(os.environ.get("DJANGO_ADMIN", "admin/"), admin.site.urls),
     path('sentry-debug/', trigger_error),
 ]
 
