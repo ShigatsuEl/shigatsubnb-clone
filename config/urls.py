@@ -18,6 +18,9 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
 # Divide and Conquer -> URL과 VIEW를 쪼개보자
 urlpatterns = [
     path("", include("core.urls", namespace="core")),
@@ -28,6 +31,7 @@ urlpatterns = [
     path("reservations/", include("reservations.urls", namespace="reservations")),
     path("reviews/", include("reviews.urls", namespace="reviews")),
     path("admin/", admin.site.urls),
+    path('sentry-debug/', trigger_error),
 ]
 
 # DEBUG = True(개발서버)인 경우에만 실행
