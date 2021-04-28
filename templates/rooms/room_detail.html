@@ -25,7 +25,7 @@
                 </div>
                 <a class="flex flex-col items-center" href="{{room.host.get_absolute_url}}">
                     {% include "mixins/user_avatar.html" with user=room.host h_and_w='w-16 h-16' text='text-2xl' %}
-                    <span class="mt-1 text-sm font-light">{{room.host.first_name}}{{room.host_last_name}}</span>
+                    <span class="mt-1 text-sm font-light">{{room.host.first_name}}{{room.host.last_name}}</span>
                 </a>
             </div>
             {% on_favs room as on_favs_boolean %}
