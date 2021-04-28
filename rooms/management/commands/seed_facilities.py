@@ -21,6 +21,13 @@ class Command(BaseCommand):
             "Elevator",
             "Parking",
             "Gym",
+            "Samll Banquet",
+            "Amuse Restaurant",
+            "Cafe",
+            "Conference Room",
+            "Public Service Lounge",
+            "Fitness",
+            "Pool",
         ]
         for facility in facilities:
             Facility.objects.create(name=facility)
