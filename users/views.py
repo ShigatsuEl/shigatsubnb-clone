@@ -128,6 +128,7 @@ def github_callback(request):
                     },
                 )
                 profile_json = profile_request.json()
+                print(profile_json)
                 username = profile_json.get("login", None)
                 # username이 없다는 것은 Github에서 user정보를 받아오지 못함을 의미
                 if username is not None:
@@ -138,6 +139,9 @@ def github_callback(request):
                     email = name if email is None else email
                     bio = profile_json.get("bio")
                     bio = "" if bio is None else bio
+                    avatar_url = profile_json.get("avatar_url")
+                    avatar_url = "" if avatar_url is None else avatar_url
+
                     # Github으로 login을 시도할 때 user가 db에 존재한다면 로그인, 아니면 에러를 발생시킨다
                     try:
                         user = models.User.objects.get(email=email)
@@ -157,6 +161,11 @@ def github_callback(request):
                         )
                         user.set_unusable_password()
                         user.save()
+                        if avatar_url is not None:
+                            avatar_request = requests.get(avatar_url)
+                            user.avatar.save(
+                                f"{name}-avatar", ContentFile(avatar_request.content)
+                            )
                     login(request, user)
                     messages.success(
                         request, f"Welcome {user.first_name + user.last_name}"
@@ -175,7 +184,7 @@ def kakao_login(request):
     # Kakao Login 클릭 시, Kakao authorize로 이동
     # Kakao authorize 페이지에서 모든 정보를 동의 후 callback url로 redirect
     REST_API_KEY = os.environ.get("KAKAO_KEY")
-    REDIRECT_URI = "http://shigatsubnb-clone.eba-bwmv4jgs.ap-northeast-2.elasticbeanstalk.com/login/kakao/callback"
+    REDIRECT_URI = "http://shigatsubnb-clone.eba-bwmv4jgs.ap-northeast-2.elasticbeanstalk.com/users/login/kakao/callback"
     return redirect(
         f"https://kauth.kakao.com/oauth/authorize?client_id={REST_API_KEY}&redirect_uri={REDIRECT_URI}&response_type=code"
     )
@@ -190,7 +199,7 @@ def kakao_callback(request):
         # code를 통해 token으로 발급받는 과정
         code = request.GET.get("code")
         REST_API_KEY = os.environ.get("KAKAO_KEY")
-        REDIRECT_URI = "http://shigatsubnb-clone.eba-bwmv4jgs.ap-northeast-2.elasticbeanstalk.com/login/kakao/callback"
+        REDIRECT_URI = "http://shigatsubnb-clone.eba-bwmv4jgs.ap-northeast-2.elasticbeanstalk.com/users/login/kakao/callback"
         token_request = requests.get(
             f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={REST_API_KEY}&redirect_uri={REDIRECT_URI}&code={code}"
         )
