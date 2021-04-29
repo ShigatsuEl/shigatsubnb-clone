@@ -19,7 +19,8 @@
 
             {% trans "Already have account? " as form_question %} 
             {% trans "Log In" as target_page %}
-            {% include "partials/social_login.html" with form_question=form_question target_page=target_page %}
+            {% trans "users:login" as href %}
+            {% include "partials/social_login.html" with form_question=form_question target_page=target_page href=href %}
 
         </div>
     </div>

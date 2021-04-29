@@ -50,12 +50,12 @@ class Command(BaseCommand):
         rules = room_models.HouseRule.objects.all()
         for pk in created_clean:
             room = room_models.Room.objects.get(pk=pk)
-            for i in range(3, random.randint(10, 30)):
+            for i in range(0, random.randint(5, 10)):
                 room_models.Photo.objects.create(
                     caption=seeder.faker.sentence(),
                     # Foreign Key를 가능하게 하기 위함
                     room=room,
-                    file=f"room_photos/{random.randint(1, 31)}.webp",
+                    file=f"room_photos/{random.randint(1, 60)}.jpg",
                 )
             for amenity in amenities:
                 magic_number = random.randint(1, 15)

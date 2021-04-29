@@ -5,7 +5,7 @@ from django.utils import translation
 from django.contrib.auth.views import PasswordChangeView
 from django.views.generic import FormView, DetailView, UpdateView
 from django.urls import reverse_lazy
-from django.shortcuts import redirect, render, reverse
+from django.shortcuts import redirect, reverse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -66,7 +66,11 @@ class SignUpView(mixins.LoggedOutOnlyMixin, FormView):
         user = authenticate(self.request, username=email, password=password)
         if user is not None:
             login(self.request, user)
-        user.verify_email()
+            messages.success(
+                self.request,
+                f"Welcome {user.first_name + user.last_name}"
+            )
+        # user.verify_email() # EB case not work
         return super().form_valid(form)
 
 

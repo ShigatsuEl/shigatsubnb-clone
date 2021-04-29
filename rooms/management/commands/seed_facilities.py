@@ -15,11 +15,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         facilities = [
-            "Private entrance",
-            "Paid parking on premises",
-            "Paid parking off premises",
             "Elevator",
-            "Parking",
+            "Free parking",
             "Gym",
             "Samll Banquet",
             "Amuse Restaurant",
@@ -27,8 +24,21 @@ class Command(BaseCommand):
             "Conference Room",
             "Public Service Lounge",
             "Fitness",
-            "Pool",
+            "Swimming Pool",
+            "Free Breakfast",
+            "Airport Transfer",
+            "Luggage Storage",
+            "Massage Shop",
+            "Bar",
+            "Souvenir Shop",
+            "Rent Car",
+            "Concierge",
+            "Laundry",
+            "Valet Parking",
+            "Taxi Service",
+            "Snack Bar",
+            "Children Area",
         ]
         for facility in facilities:
-            Facility.objects.create(name=facility)
+            Facility.objects.get_or_create(name=facility)
         self.stdout.write(self.style.SUCCESS(f"{len(facilities)} facilities created!"))
